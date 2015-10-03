@@ -1,0 +1,7 @@
+<resources>
+    <string name="global_empty_list">Não foi possível carregar o conteúdo.</string>
+    <string name="global_try_again">TENTAR NOVAMENTE</string>
+    <string name="global_unknown_error">Oops! Algo não ocorreu como planejamos</string>
+    <string name="global_network_error">Verifique sua conexão com a internet.</string>
+    <string name="app_name">PlaceHolderJ</string>
+</resources>
