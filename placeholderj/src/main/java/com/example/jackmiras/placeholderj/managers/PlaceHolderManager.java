@@ -36,13 +36,13 @@ public class PlaceHolderManager {
     public PlaceHolderManager(View view, int... viewsId) {
         for (int index = 0; index < viewsId.length; index++) {
             if (viewsId[index] == R.id.framelayout_view_loading) {
-                linearlayoutViewError = (ViewGroup) view.findViewById(R.id.framelayout_view_loading);
+                framelayoutViewLoading = view.findViewById(R.id.framelayout_view_loading);
             } else if (viewsId[index] == R.id.linearlayout_view_empty) {
-                framelayoutViewLoading = view.findViewById(R.id.linearlayout_view_empty);
+                linearlayoutViewEmpty = (ViewGroup) view.findViewById(R.id.linearlayout_view_empty);
                 textViewEmptyMessage = (TextView) view.findViewById(R.id.textview_empty_message);
                 textViewEmptyTryAgain = (TextView) view.findViewById(R.id.textview_empty_try_again);
             } else if (viewsId[index] == R.id.linearlayout_view_error) {
-                linearlayoutViewEmpty = (ViewGroup) view.findViewById(R.id.linearlayout_view_error);
+                linearlayoutViewError = (ViewGroup) view.findViewById(R.id.linearlayout_view_error);
                 imageViewErrorIcon = (ImageView) view.findViewById(R.id.imageview_error_icon);
                 textViewErrorMessage = (TextView) view.findViewById(R.id.textview_error_message);
                 textViewErrorTryAgain = (TextView) view.findViewById(R.id.textview_error_try_again);
