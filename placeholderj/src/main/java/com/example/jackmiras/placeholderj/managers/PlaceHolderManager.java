@@ -1,6 +1,7 @@
 package com.example.jackmiras.placeholderj.managers;
 
 import android.app.Activity;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import retrofit.RetrofitError;
  */
 public class PlaceHolderManager {
 
+    private Activity activity;
     private View viewContainer = null;
     private View framelayoutViewLoading = null;
     private ViewGroup linearlayoutViewEmpty = null;
@@ -31,6 +33,7 @@ public class PlaceHolderManager {
 
     public PlaceHolderManager(Activity activity, int... viewsId) {
         this(activity.getWindow().getDecorView(), viewsId);
+        this.activity = activity;
     }
 
     public PlaceHolderManager(View view, int... viewsId) {
@@ -90,6 +93,8 @@ public class PlaceHolderManager {
             imageViewErrorIcon.setImageResource(R.drawable.icon_error_unknown);
             textViewErrorMessage.setText(R.string.global_unknown_error);
         }
+        textViewErrorMessage.setTextColor(ContextCompat.getColor(activity, R.color.primary_text_color));
+        textViewErrorTryAgain.setTextColor(ContextCompat.getColor(activity, R.color.secondary_text_color));
         textViewErrorTryAgain.setOnClickListener(callback);
         setViewVisibility(linearlayoutViewError, View.VISIBLE);
     }
