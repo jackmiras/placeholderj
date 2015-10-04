@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.jackmiras.placeholderj.R;
-import com.example.jackmiras.placeholderj.enums.PlaceHolderType;
 
 import retrofit.RetrofitError;
 
@@ -30,47 +29,26 @@ public class PlaceHolderManager {
     private boolean isEmptyViewBeingShown;
 
 
-    public PlaceHolderManager(Activity activity, int viewContainerId, int viewId, PlaceHolderType type) {
-        this(activity.getWindow().getDecorView(), viewContainerId, viewId, type);
+    public PlaceHolderManager(Activity activity, int... viewsId) {
+        this(activity.getWindow().getDecorView(), viewsId);
     }
 
-    public PlaceHolderManager(View view, int viewContainerId, int viewId, PlaceHolderType type) {
-        switch (type) {
-            case LOADING:
-                setup(view, viewContainerId, viewId, 0, 0);
-                break;
-            case EMPTY:
-                setup(view, viewContainerId, 0, viewId, 0);
-                break;
-            case ERROR:
-                setup(view, viewContainerId, 0, 0, viewId);
-                break;
-        }
-    }
-
-    public PlaceHolderManager(Activity activity, int viewContainerId, int loadingViewId, int emptyTextId, int errorViewId) {
-        this(activity.getWindow().getDecorView(), viewContainerId, loadingViewId, emptyTextId, errorViewId);
-    }
-
-    public PlaceHolderManager(View view, int viewContainerId, int loadingViewId, int emptyTextId, int errorViewId) {
-        setup(view, viewContainerId, loadingViewId, emptyTextId, errorViewId);
-    }
-
-    public void setup(View view, int viewContainerId, int loadingViewId, int emptyTextId, int errorViewId) {
-        if (viewContainerId != 0)
-            viewContainer = view.findViewById(viewContainerId);
-        if (loadingViewId != 0)
-            framelayoutViewLoading = view.findViewById(loadingViewId);
-        if (emptyTextId != 0) {
-            linearlayoutViewEmpty = (ViewGroup) view.findViewById(emptyTextId);
-            textViewEmptyMessage = (TextView) view.findViewById(R.id.textview_empty_message);
-            textViewEmptyTryAgain = (TextView) view.findViewById(R.id.textview_empty_try_again);
-        }
-        if (errorViewId != 0) {
-            linearlayoutViewError = (ViewGroup) view.findViewById(errorViewId);
-            imageViewErrorIcon = (ImageView) view.findViewById(R.id.imageview_error_icon);
-            textViewErrorMessage = (TextView) view.findViewById(R.id.textview_error_message);
-            textViewErrorTryAgain = (TextView) view.findViewById(R.id.textview_error_try_again);
+    public PlaceHolderManager(View view, int... viewsId) {
+        for (int index = 0; index < viewsId.length; index++) {
+            if (viewsId[index] == R.id.framelayout_view_loading) {
+                linearlayoutViewError = (ViewGroup) view.findViewById(R.id.framelayout_view_loading);
+            } else if (viewsId[index] == R.id.linearlayout_view_empty) {
+                framelayoutViewLoading = view.findViewById(R.id.linearlayout_view_empty);
+                textViewEmptyMessage = (TextView) view.findViewById(R.id.textview_empty_message);
+                textViewEmptyTryAgain = (TextView) view.findViewById(R.id.textview_empty_try_again);
+            } else if (viewsId[index] == R.id.linearlayout_view_error) {
+                linearlayoutViewEmpty = (ViewGroup) view.findViewById(R.id.linearlayout_view_error);
+                imageViewErrorIcon = (ImageView) view.findViewById(R.id.imageview_error_icon);
+                textViewErrorMessage = (TextView) view.findViewById(R.id.textview_error_message);
+                textViewErrorTryAgain = (TextView) view.findViewById(R.id.textview_error_try_again);
+            } else {
+                viewContainer = view.findViewById(viewsId[index]);
+            }
         }
     }
 
