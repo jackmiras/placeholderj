@@ -15,7 +15,6 @@ import retrofit.RetrofitError;
  */
 public class PlaceHolderManager {
 
-    private Activity activity;
     private View viewContainer = null;
     private View framelayoutViewLoading = null;
     private ViewGroup linearlayoutViewEmpty = null;
@@ -32,7 +31,6 @@ public class PlaceHolderManager {
 
     public PlaceHolderManager(Activity activity, int... viewsId) {
         this(activity.getWindow().getDecorView(), viewsId);
-        this.activity = activity;
     }
 
     public PlaceHolderManager(View view, int... viewsId) {
@@ -51,10 +49,12 @@ public class PlaceHolderManager {
                     textViewErrorTryAgain = (TextView) view.findViewById(R.id.textview_error_try_again);
                 } else {
                     viewContainer = view.findViewById(viewsId[index]);
+                    if (viewContainer == null)
+                        throw new IllegalArgumentException("PlaceHolderManager can not inflate a root view with the id informed, please check the id of your root view is correct.");
                 }
             }
         } else {
-            throw new IllegalArgumentException("PlaceHolderManager(View view, int... viewsId) viewsId should have at least layout root id, one placeholder id and no more than three placeholders");
+            throw new IllegalArgumentException("PlaceHolderManager(View view, int... viewsId) viewsId should have at least layout root id, one placeholder id and no more than three placeholders.");
         }
     }
 
@@ -119,11 +119,11 @@ public class PlaceHolderManager {
     }
 
     public void changeViewsVisibility() {
-        if (!isLoadingViewBeingShown)
+        if (!isLoadingViewBeingShown && framelayoutViewLoading != null && framelayoutViewLoading.getVisibility() == View.VISIBLE)
             setViewVisibility(framelayoutViewLoading, View.GONE);
-        if (!isEmptyViewBeingShown)
+        if (!isEmptyViewBeingShown && linearlayoutViewEmpty != null && linearlayoutViewEmpty.getVisibility() == View.VISIBLE)
             setViewVisibility(linearlayoutViewEmpty, View.GONE);
-        if (!isEmptyViewBeingShown)
+        if (!isEmptyViewBeingShown && linearlayoutViewError != null && linearlayoutViewError.getVisibility() == View.VISIBLE)
             setViewVisibility(linearlayoutViewError, View.GONE);
         if (isLoadingViewBeingShown || isEmptyViewBeingShown || isErrorViewBeingShown)
             setViewVisibility(viewContainer, View.GONE);
