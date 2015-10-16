@@ -15,6 +15,7 @@ import retrofit.RetrofitError;
  */
 public class PlaceHolderManager {
 
+    private Activity activity;
     private View viewContainer = null;
     private View framelayoutViewLoading = null;
     private ViewGroup linearlayoutViewEmpty = null;
@@ -31,30 +32,25 @@ public class PlaceHolderManager {
 
     public PlaceHolderManager(Activity activity, int... viewsId) {
         this(activity.getWindow().getDecorView(), viewsId);
+        this.activity = activity;
     }
 
     public PlaceHolderManager(View view, int... viewsId) {
-        if (viewsId.length >= 2 && viewsId.length <= 4) {
-            for (int index = 0; index < viewsId.length; index++) {
-                if (viewsId[index] == R.id.framelayout_view_loading) {
-                    framelayoutViewLoading = view.findViewById(R.id.framelayout_view_loading);
-                } else if (viewsId[index] == R.id.linearlayout_view_empty) {
-                    linearlayoutViewEmpty = (ViewGroup) view.findViewById(R.id.linearlayout_view_empty);
-                    textViewEmptyMessage = (TextView) view.findViewById(R.id.textview_empty_message);
-                    textViewEmptyTryAgain = (TextView) view.findViewById(R.id.textview_empty_try_again);
-                } else if (viewsId[index] == R.id.linearlayout_view_error) {
-                    linearlayoutViewError = (ViewGroup) view.findViewById(R.id.linearlayout_view_error);
-                    imageViewErrorIcon = (ImageView) view.findViewById(R.id.imageview_error_icon);
-                    textViewErrorMessage = (TextView) view.findViewById(R.id.textview_error_message);
-                    textViewErrorTryAgain = (TextView) view.findViewById(R.id.textview_error_try_again);
-                } else {
-                    viewContainer = view.findViewById(viewsId[index]);
-                    if (viewContainer == null)
-                        throw new IllegalArgumentException("PlaceHolderManager can not inflate a root view with the id informed, please check the id of your root view is correct.");
-                }
+        for (int index = 0; index < viewsId.length; index++) {
+            if (viewsId[index] == R.id.view_loading) {
+                framelayoutViewLoading = view.findViewById(R.id.view_loading);
+            } else if (viewsId[index] == R.id.view_empty) {
+                linearlayoutViewEmpty = (ViewGroup) view.findViewById(R.id.view_empty);
+                textViewEmptyMessage = (TextView) view.findViewById(R.id.textview_empty_message);
+                textViewEmptyTryAgain = (TextView) view.findViewById(R.id.textview_empty_try_again);
+            } else if (viewsId[index] == R.id.view_error) {
+                linearlayoutViewError = (ViewGroup) view.findViewById(R.id.view_error);
+                imageViewErrorIcon = (ImageView) view.findViewById(R.id.imageview_error_icon);
+                textViewErrorMessage = (TextView) view.findViewById(R.id.textview_error_message);
+                textViewErrorTryAgain = (TextView) view.findViewById(R.id.textview_error_try_again);
+            } else {
+                viewContainer = view.findViewById(viewsId[index]);
             }
-        } else {
-            throw new IllegalArgumentException("PlaceHolderManager(View view, int... viewsId) viewsId should have at least layout root id, one placeholder id and no more than three placeholders.");
         }
     }
 
