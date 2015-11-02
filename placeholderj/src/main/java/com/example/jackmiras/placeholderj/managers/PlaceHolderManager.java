@@ -15,7 +15,6 @@ import retrofit.RetrofitError;
  */
 public class PlaceHolderManager {
 
-    private Activity activity;
     private View viewContainer = null;
     private View framelayoutViewLoading = null;
     private ViewGroup linearlayoutViewEmpty = null;
@@ -29,10 +28,8 @@ public class PlaceHolderManager {
     private boolean isErrorViewBeingShown;
     private boolean isEmptyViewBeingShown;
 
-
     public PlaceHolderManager(Activity activity, int... viewsId) {
         this(activity.getWindow().getDecorView(), viewsId);
-        this.activity = activity;
     }
 
     public PlaceHolderManager(View view, int... viewsId) {
