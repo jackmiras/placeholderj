@@ -33,20 +33,20 @@ public class PlaceHolderManager {
     }
 
     public PlaceHolderManager(View view, int... viewsId) {
-        for (int index = 0; index < viewsId.length; index++) {
-            if (viewsId[index] == R.id.view_loading) {
+        for (int aViewsId : viewsId) {
+            if (aViewsId == R.id.view_loading) {
                 framelayoutViewLoading = view.findViewById(R.id.view_loading);
-            } else if (viewsId[index] == R.id.view_empty) {
+            } else if (aViewsId == R.id.view_empty) {
                 linearlayoutViewEmpty = (ViewGroup) view.findViewById(R.id.view_empty);
                 textViewEmptyMessage = (TextView) view.findViewById(R.id.textview_empty_message);
                 textViewEmptyTryAgain = (TextView) view.findViewById(R.id.textview_empty_try_again);
-            } else if (viewsId[index] == R.id.view_error) {
+            } else if (aViewsId == R.id.view_error) {
                 linearlayoutViewError = (ViewGroup) view.findViewById(R.id.view_error);
                 imageViewErrorIcon = (ImageView) view.findViewById(R.id.imageview_error_icon);
                 textViewErrorMessage = (TextView) view.findViewById(R.id.textview_error_message);
                 textViewErrorTryAgain = (TextView) view.findViewById(R.id.textview_error_try_again);
             } else {
-                viewContainer = view.findViewById(viewsId[index]);
+                viewContainer = view.findViewById(aViewsId);
             }
         }
     }
@@ -72,7 +72,7 @@ public class PlaceHolderManager {
         changeViewsVisibility();
         if (error == null && textViewEmptyTryAgain.getVisibility() == View.VISIBLE) {
             textViewEmptyTryAgain.setVisibility(View.GONE);
-        } else {
+        } else if (callback != null){
             textViewEmptyTryAgain.setVisibility(View.VISIBLE);
             textViewEmptyTryAgain.setOnClickListener(callback);
         }
