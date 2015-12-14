@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj;
+package com.example.jackmiras.placeholderj.library;
 
 /**
  * Created by jackson on 12/12/15.

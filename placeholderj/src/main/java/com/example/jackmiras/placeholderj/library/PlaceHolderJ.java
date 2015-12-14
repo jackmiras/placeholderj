@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj;
+package com.example.jackmiras.placeholderj.library;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.jackmiras.placeholderj.R;
 
 import retrofit.RetrofitError;
 
@@ -70,7 +68,7 @@ public class PlaceHolderJ {
                 viewEmpty = (ViewGroup) view.findViewById(R.id.view_empty);
                 viewEmptyImage = (ImageView) view.findViewById(R.id.imageview_empty_icon);
                 viewEmptyMessage = (TextView) view.findViewById(R.id.textview_empty_message);
-                viewEmptyTryAgainButton = (TextView) view.findViewById(R.id.textview_empty_try_again);
+                viewEmptyTryAgainButton = (TextView) view.findViewById(R.id.button_try_again);
             } else if (aViewsId == R.id.view_error) {
                 viewError = (ViewGroup) view.findViewById(R.id.view_error);
                 viewErrorImage = (ImageView) view.findViewById(R.id.imageview_error_icon);
@@ -188,15 +186,20 @@ public class PlaceHolderJ {
     }
 
     private void changeViewsVisibility() {
-        if (!isLoadingViewBeingShown && viewLoading != null && viewLoading.getVisibility() == View.VISIBLE)
+        if (!isLoadingViewBeingShown && viewLoading != null && viewLoading.getVisibility() == View.VISIBLE) {
             setViewVisibility(viewLoading, View.GONE);
-        if (!isEmptyViewBeingShown && viewEmpty != null && viewEmpty.getVisibility() == View.VISIBLE)
+        }
+        if (!isEmptyViewBeingShown && viewEmpty != null && viewEmpty.getVisibility() == View.VISIBLE) {
             setViewVisibility(viewEmpty, View.GONE);
-        if (!isEmptyViewBeingShown && viewError != null && viewError.getVisibility() == View.VISIBLE)
+        }
+        if (!isEmptyViewBeingShown && viewError != null && viewError.getVisibility() == View.VISIBLE) {
             setViewVisibility(viewError, View.GONE);
-        if (isLoadingViewBeingShown || isEmptyViewBeingShown || isErrorViewBeingShown)
+        }
+        if (isLoadingViewBeingShown || isEmptyViewBeingShown || isErrorViewBeingShown) {
             setViewVisibility(viewContainer, View.GONE);
-        if (!isLoadingViewBeingShown && !isEmptyViewBeingShown && !isErrorViewBeingShown)
+        }
+        if (!isLoadingViewBeingShown && !isEmptyViewBeingShown && !isErrorViewBeingShown) {
             setViewVisibility(viewContainer, View.VISIBLE);
+        }
     }
 }
