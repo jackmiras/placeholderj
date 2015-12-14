@@ -6,9 +6,10 @@
     android:clickable="true"
     android:gravity="center"
     android:orientation="vertical"
-    android:visibility="gone">
+    android:visibility="visible">
 
     <ImageView
+        android:id="@+id/imageview_empty_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_error_empty_list" />
@@ -25,12 +26,13 @@
         android:textColor="@color/secondary_text_color"
         android:textSize="16sp" />
 
-    <TextView
+    <Button
         android:id="@+id/textview_empty_try_again"
-        android:layout_width="match_parent"
+        android:layout_width="268dp"
         android:layout_height="44dp"
         android:gravity="center"
         android:text="@string/global_try_again"
+        android:textAllCaps="true"
         android:textColor="@color/primary_text_color"
         android:textSize="14sp"
         android:textStyle="bold" />
