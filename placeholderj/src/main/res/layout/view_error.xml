@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
+    android:background="@color/bg_primary_withe"
     android:gravity="center"
     android:orientation="vertical"
     android:visibility="visible">
@@ -22,7 +23,7 @@
         android:gravity="center"
         android:minWidth="320dp"
         android:text="@string/global_unknown_error"
-        android:textColor="@color/secondary_text_color"
+        android:textColor="@color/primary_text_color"
         android:textSize="16sp" />
 
     <Button
@@ -32,7 +33,8 @@
         android:gravity="center"
         android:text="@string/global_try_again"
         android:textAllCaps="true"
-        android:textColor="@color/primary_text_color"
+        android:textColor="@color/secondary_text_color"
         android:textSize="14sp"
+        android:background="@drawable/selector_bg_primary_white"
         android:textStyle="bold" />
 </LinearLayout>

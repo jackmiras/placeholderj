@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj.managers.library;
+package com.example.jackmiras.placeholderj;
 
 /**
  * Created by jackson on 12/12/15.
