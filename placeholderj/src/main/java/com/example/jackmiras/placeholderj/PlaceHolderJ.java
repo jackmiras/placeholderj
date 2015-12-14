@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj.managers;
+package com.example.jackmiras.placeholderj.managers.library;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj.managers;
+package com.example.jackmiras.placeholderj.managers.library;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
