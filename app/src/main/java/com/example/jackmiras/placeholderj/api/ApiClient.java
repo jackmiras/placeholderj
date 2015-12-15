@@ -31,6 +31,7 @@ public class ApiClient {
             public void intercept(RequestFacade request) {
                 request.addHeader("JsonStub-User-Key", "8bb1a40b-0ca4-4165-a36a-793683b46b62");
                 request.addHeader("JsonStub-Project-Key", "f895ce6b-5f79-45e8-ac33-4a614ac9ba28");
+                request.addHeader("Content-Type", "application/json");
             }
         };
 

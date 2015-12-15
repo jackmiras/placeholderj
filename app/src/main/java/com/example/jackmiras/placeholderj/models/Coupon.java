@@ -14,6 +14,8 @@ public class Coupon implements Serializable {
     public long id;
     @SerializedName("user_id")
     public long userId;
+    @SerializedName("company_name")
+    public String companyName;
     @SerializedName("title")
     public String title;
     @SerializedName("description")
@@ -26,6 +28,8 @@ public class Coupon implements Serializable {
     public String code;
     @SerializedName("expiration_date")
     public Date exprirationDate;
+    @SerializedName("redeem_phone")
+    public String redeemPhone;
     @SerializedName("type")
     public Type type;
 

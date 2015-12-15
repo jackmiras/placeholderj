@@ -11,8 +11,7 @@ import android.widget.TextView;
 import com.example.jackmiras.placeholderj.adapter.MainAdapter;
 import com.example.jackmiras.placeholderj.api.ApiClient;
 import com.example.jackmiras.placeholderj.library.PlaceHolderJ;
-import com.example.jackmiras.placeholderj.models.Coupon;
-import com.example.jackmiras.placeholderj.models.ResponseArray;
+import com.example.jackmiras.placeholderj.models.CouponResponse;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -63,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void requestUserCoupons() {
         placeHolderJ.showLoading();
-        ApiClient.getServices().getUserCoupons(new Callback<ResponseArray<Coupon>>() {
+        ApiClient.getServices().getUserCoupons(new Callback<CouponResponse>() {
             @Override
-            public void success(ResponseArray<Coupon> cuponResponseArray, Response response) {
+            public void success(CouponResponse couponResponse, Response response) {
                 placeHolderJ.hideLoading();
-                if (cuponResponseArray.result.size() != 0) {
-                    recyclerView.setAdapter(new MainAdapter(MainActivity.this, cuponResponseArray.result));
+                if (couponResponse.result != null && couponResponse.result.size() >0) {
+                    recyclerView.setAdapter(new MainAdapter(MainActivity.this, couponResponse.result));
                 } else {
                     placeHolderJ.showEmpty(R.string.activity_redeem_empty, null, null);
                 }

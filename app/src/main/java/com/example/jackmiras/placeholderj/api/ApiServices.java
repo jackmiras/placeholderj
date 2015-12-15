@@ -1,7 +1,6 @@
 package com.example.jackmiras.placeholderj.api;
 
-import com.example.jackmiras.placeholderj.models.Coupon;
-import com.example.jackmiras.placeholderj.models.ResponseArray;
+import com.example.jackmiras.placeholderj.models.CouponResponse;
 
 import retrofit.Callback;
 import retrofit.http.GET;
@@ -12,5 +11,5 @@ import retrofit.http.GET;
 public interface ApiServices {
 
     @GET("/coupon")
-    void getUserCoupons(Callback<ResponseArray<Coupon>> callback);
+    void getUserCoupons(Callback<CouponResponse> callback);
 }

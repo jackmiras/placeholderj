@@ -49,7 +49,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             Picasso.with(context).load(cupon.imgUrl).into(holder.imageViewCoupon);
         }
         holder.textViewCode.setText(cupon.code != null ? cupon.code : unavailable);
-        holder.textViewExpirationDate.setText(cupon.exprirationDate != null ? res.getString(R.string.activity_redeem_expiration_date, getDateFormated(cupon.exprirationDate)) : unavailable);
+//        holder.textViewExpirationDate.setText(cupon.exprirationDate != null ? res.getString(R.string.activity_redeem_expiration_date, getDateFormated(cupon.exprirationDate)) : unavailable);
     }
 
     @Override
