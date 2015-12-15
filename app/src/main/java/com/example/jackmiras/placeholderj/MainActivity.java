@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.jackmiras.placeholderj.adapter.MainAdapter;
 import com.example.jackmiras.placeholderj.api.ApiClient;
@@ -34,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        TextView textView = (TextView) toolbar.findViewById(R.id.textview_toolbar_title);
+        textView.setText(R.string.app_name);
         placeHolderJ = new PlaceHolderJ();
+        placeHolderJ.init(this, R.id.recyclerview_cupon, R.id.view_loading, R.id.view_empty, R.id.view_error);
+        setupViews();
     }
 
     public void setupViews() {

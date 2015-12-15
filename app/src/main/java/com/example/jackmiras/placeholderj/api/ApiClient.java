@@ -29,8 +29,8 @@ public class ApiClient {
         RequestInterceptor interceptor = new RequestInterceptor() {
             @Override
             public void intercept(RequestFacade request) {
-                request.addHeader("JsonStub-User-Key", "1e348fec-b7b0-46ea-a98c-07dd8a8f267d");
-                request.addHeader("JsonStub-Project-Key", "985cd2ef-fc2e-4608-a927-8bbe6c4327c4");
+                request.addHeader("JsonStub-User-Key", "8bb1a40b-0ca4-4165-a36a-793683b46b62");
+                request.addHeader("JsonStub-Project-Key", "f895ce6b-5f79-45e8-ac33-4a614ac9ba28");
             }
         };
 
