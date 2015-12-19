@@ -7,12 +7,20 @@ import com.example.jackmiras.placeholderj.library.PlaceHolderManager;
 /**
  * Created by jackson on 14/12/15.
  */
-public class SampleApplication extends Application{
+public class SampleApplication extends Application {
 
-    PlaceHolderManager.Configurator configurator;
+    private static PlaceHolderManager placeHolderManager;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        placeHolderManager = new PlaceHolderManager.Configurator()
+                .loadingBackground(android.R.color.holo_green_light)
+                .config();
+    }
+
+    public static PlaceHolderManager getPlaceHolderManager() {
+        return placeHolderManager;
     }
 }

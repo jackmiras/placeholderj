@@ -5,6 +5,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,13 +13,14 @@ import android.widget.TextView;
  * Created by jackson on 13/12/15.
  */
 public class CustomizeViews {
+
     private final PlaceHolderManager placeHolderManager;
 
     public CustomizeViews(PlaceHolderManager placeHolderManager) {
         this.placeHolderManager = placeHolderManager;
     }
 
-    public void customize(Context context, View viewLoading, ViewGroup viewEmpty, ImageView viewEmptyImage, TextView viewEmptyMessage, TextView viewEmptyTryAgainButton, ViewGroup viewError, ImageView viewErrorImage, TextView viewErrorMessage, TextView viewErrorTryAgainButton) {
+    public void customize(Context context, View viewLoading, ViewGroup viewEmpty, ImageView viewEmptyImage, TextView viewEmptyMessage, Button viewEmptyTryAgainButton, ViewGroup viewError, ImageView viewErrorImage, TextView viewErrorMessage, Button viewErrorTryAgainButton) {
         if (placeHolderManager.viewErrorBackgroundColor > 0) {
             viewError.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewErrorBackgroundColor));
         } else if (placeHolderManager.viewErrorBackgroundResource > 0) {
@@ -37,7 +39,7 @@ public class CustomizeViews {
             viewErrorTryAgainButton.setText(placeHolderManager.viewErrorTryAgainButtonText);
         }
         if (placeHolderManager.viewErrorTryAgainButtonBackgroundResource > 0) {
-            viewErrorTryAgainButton.setBackgroundResource(placeHolderManager.viewErrorTryAgainButtonBackgroundResource);
+            viewErrorTryAgainButton.setBackgroundColor(placeHolderManager.viewErrorTryAgainButtonBackgroundResource);
         }
         if (placeHolderManager.viewErrorImage > 0) {
             viewErrorImage.setImageDrawable(ContextCompat.getDrawable(context, placeHolderManager.viewErrorImage));

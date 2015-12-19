@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,11 +24,11 @@ public class PlaceHolderJ {
     public ViewGroup viewEmpty = null;
     public ImageView viewEmptyImage = null;
     public TextView viewEmptyMessage;
-    public TextView viewEmptyTryAgainButton = null;
+    public Button viewEmptyTryAgainButton = null;
     public ViewGroup viewError = null;
     public ImageView viewErrorImage = null;
     public TextView viewErrorMessage = null;
-    public TextView viewErrorTryAgainButton = null;
+    public Button viewErrorTryAgainButton = null;
     private boolean isLoadingViewBeingShown;
     private boolean isErrorViewBeingShown;
     private boolean isEmptyViewBeingShown;
@@ -68,12 +69,12 @@ public class PlaceHolderJ {
                 viewEmpty = (ViewGroup) view.findViewById(R.id.view_empty);
                 viewEmptyImage = (ImageView) view.findViewById(R.id.imageview_empty_icon);
                 viewEmptyMessage = (TextView) view.findViewById(R.id.textview_empty_message);
-                viewEmptyTryAgainButton = (TextView) view.findViewById(R.id.button_try_again);
+                viewEmptyTryAgainButton = (Button) view.findViewById(R.id.button_empty_try_again);
             } else if (aViewsId == R.id.view_error) {
                 viewError = (ViewGroup) view.findViewById(R.id.view_error);
                 viewErrorImage = (ImageView) view.findViewById(R.id.imageview_error_icon);
                 viewErrorMessage = (TextView) view.findViewById(R.id.textview_error_message);
-                viewErrorTryAgainButton = (TextView) view.findViewById(R.id.button_try_again);
+                viewErrorTryAgainButton = (Button) view.findViewById(R.id.button_error_try_again);
             } else {
                 viewContainer = view.findViewById(aViewsId);
                 if (viewContainer == null) {
@@ -82,7 +83,7 @@ public class PlaceHolderJ {
             }
         }
         if (viewEmpty == null && viewError == null && viewLoading == null) {
-            throw new IllegalArgumentException("You should pass at least one placeholder views to init PlaceHolderJ");
+            throw new IllegalArgumentException("You should pass at least one placeholder view to init PlaceHolderJ");
         }
         customizeViews();
     }
@@ -90,6 +91,7 @@ public class PlaceHolderJ {
     private void customizeViews() {
         if (placeHolderManager != null && !viewsAreCustomized) {
             customizeViews.customize(context, viewLoading, viewEmpty, viewEmptyImage, viewEmptyMessage, viewEmptyTryAgainButton, viewError, viewErrorImage, viewErrorMessage, viewErrorTryAgainButton);
+            viewsAreCustomized = true;
         }
     }
 
@@ -106,6 +108,7 @@ public class PlaceHolderJ {
         isLoadingViewBeingShown = true;
         changeViewsVisibility();
         setViewVisibility(viewLoading, View.VISIBLE);
+        //TODO Lançar exceção se essa view for nula
     }
 
     /**
@@ -136,6 +139,7 @@ public class PlaceHolderJ {
             viewEmptyTryAgainButton.setOnClickListener(onClickListener);
         }
         setViewVisibility(viewEmpty, View.VISIBLE);
+        //TODO Lançar exceção se essa view for nula
     }
 
     /**
@@ -147,15 +151,14 @@ public class PlaceHolderJ {
     public void showError(RetrofitError error, View.OnClickListener onClickListener) {
         isErrorViewBeingShown = true;
         changeViewsVisibility();
-        if (error != null && error.getKind() == RetrofitError.Kind.NETWORK) {
-            viewErrorImage.setImageResource(R.drawable.icon_error_network);
-            viewErrorMessage.setText(R.string.global_network_error);
-        } else {
-            viewErrorImage.setImageResource(R.drawable.icon_error_unknown);
-            viewErrorMessage.setText(R.string.global_unknown_error);
+        if (!viewsAreCustomized) {
+            boolean isNetworkError = (error != null && error.getKind() == RetrofitError.Kind.NETWORK);
+            viewErrorImage.setImageResource(isNetworkError ? R.drawable.icon_error_network : R.drawable.icon_error_unknown);
+            viewErrorMessage.setText(isNetworkError ? R.string.global_network_error : R.string.global_unknown_error);
         }
         viewErrorTryAgainButton.setOnClickListener(onClickListener);
         setViewVisibility(viewError, View.VISIBLE);
+        //TODO Lançar exceção se essa view for nula
     }
 
     /**
@@ -201,5 +204,7 @@ public class PlaceHolderJ {
         if (!isLoadingViewBeingShown && !isEmptyViewBeingShown && !isErrorViewBeingShown) {
             setViewVisibility(viewContainer, View.VISIBLE);
         }
+
+        //TODO Quando a checagem de view nula for feita nos metodos que pedem para as view serem mostradas os null checks desse metodo não serão mais necessários
     }
 }

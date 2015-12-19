@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         TextView textView = (TextView) toolbar.findViewById(R.id.textview_toolbar_title);
         textView.setText(R.string.app_name);
-        placeHolderJ = new PlaceHolderJ();
+        placeHolderJ = new PlaceHolderJ(SampleApplication.getPlaceHolderManager());
         placeHolderJ.init(this, R.id.recyclerview_cupon, R.id.view_loading, R.id.view_empty, R.id.view_error);
         setupViews();
     }
