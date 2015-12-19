@@ -10,6 +10,6 @@ import retrofit.http.GET;
  */
 public interface ApiServices {
 
-    @GET("/cooupon")
+    @GET("/placeholder/coupon")
     void getUserCoupons(Callback<CouponResponse> callback);
 }
