@@ -39,7 +39,7 @@ public class CustomizeViews {
             viewErrorTryAgainButton.setText(placeHolderManager.viewErrorTryAgainButtonText);
         }
         if (placeHolderManager.viewErrorTryAgainButtonBackgroundResource > 0) {
-            viewErrorTryAgainButton.setBackgroundColor(placeHolderManager.viewErrorTryAgainButtonBackgroundResource);
+            viewErrorTryAgainButton.setBackgroundResource(placeHolderManager.viewErrorTryAgainButtonBackgroundResource);
         }
         if (placeHolderManager.viewErrorImage > 0) {
             viewErrorImage.setImageDrawable(ContextCompat.getDrawable(context, placeHolderManager.viewErrorImage));
@@ -52,7 +52,7 @@ public class CustomizeViews {
         if (placeHolderManager.viewEmptyBackgroundColor > 0) {
             viewEmpty.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewEmptyBackgroundColor));
         } else if (placeHolderManager.viewEmptyBackgroundResource > 0) {
-            viewEmpty.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewEmptyBackgroundColor));
+            viewEmpty.setBackgroundResource(placeHolderManager.viewEmptyBackgroundResource);
         }
         if (placeHolderManager.viewEmptyText > 0) {
             viewEmptyMessage.setText(placeHolderManager.viewEmptyText);

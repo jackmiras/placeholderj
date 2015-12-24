@@ -30,6 +30,7 @@
         android:id="@+id/button_empty_try_again"
         android:layout_width="268dp"
         android:layout_height="44dp"
+        android:visibility="gone"
         android:gravity="center"
         android:text="@string/global_try_again"
         android:textAllCaps="true"

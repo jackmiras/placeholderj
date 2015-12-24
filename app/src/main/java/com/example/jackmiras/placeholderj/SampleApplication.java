@@ -16,7 +16,6 @@ public class SampleApplication extends Application {
         super.onCreate();
 
         placeHolderManager = new PlaceHolderManager.Configurator()
-                .loadingBackground(android.R.color.holo_green_light)
                 .config();
     }
 

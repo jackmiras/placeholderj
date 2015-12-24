@@ -23,7 +23,7 @@ public class PlaceHolderJ {
     public View viewLoading = null;
     public ViewGroup viewEmpty = null;
     public ImageView viewEmptyImage = null;
-    public TextView viewEmptyMessage;
+    public TextView viewEmptyMessage = null;
     public Button viewEmptyTryAgainButton = null;
     public ViewGroup viewError = null;
     public ImageView viewErrorImage = null;
@@ -43,7 +43,7 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Called when a new instance of this class is create. The constructor will get all views passed
+     * Called when a instance of this class was create and need to be initialized. The init method will get all views passed
      * in viewsId using the Activity passed together whit viewsId.
      *
      * @param activity The activity used to find the views that will be passeds in viewsId.
@@ -54,11 +54,11 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Called when a new instance of this class is create. The constructor will get all views passed
+     * Called when a instance of this class was create and need to be initialized. The init method will get all views passed
      * in viewsId using the Activity passed together whit viewsId.
      *
-     * @param view    The view used to find the views that will be passeds in viewsId.
-     * @param viewsId A set of view that will interact between himself.
+     * @param view The view used to find the views that will be passeds in viewsId.
+     * @param viewsId  A set of view that will interact between himself.
      */
     public void init(View view, int... viewsId) {
         context = view.getContext();
@@ -78,12 +78,12 @@ public class PlaceHolderJ {
             } else {
                 viewContainer = view.findViewById(aViewsId);
                 if (viewContainer == null) {
-                    throw new IllegalArgumentException("You should pass the view that will change the visibility with PlaceHolderJ views");
+                    throw new NullPointerException("Unable to acess Container View. You should pass the view that will change the visibility with PlaceHolderJ views");
                 }
             }
         }
         if (viewEmpty == null && viewError == null && viewLoading == null) {
-            throw new IllegalArgumentException("You should pass at least one placeholder view to init PlaceHolderJ");
+            throw new NullPointerException("Unable to acess Empty View, Error View or Loading View. You should pass at least one placeholder view to init PlaceHolderJ");
         }
         customizeViews();
     }
@@ -105,10 +105,13 @@ public class PlaceHolderJ {
      * Makes the loading view visible if the loaing view is added in your layout.
      */
     public void showLoading() {
-        isLoadingViewBeingShown = true;
-        changeViewsVisibility();
-        setViewVisibility(viewLoading, View.VISIBLE);
-        //TODO Lançar exceção se essa view for nula
+        if (viewLoading == null) {
+            throw new NullPointerException("Unable to acess Loading View, check if loading view was initialized");
+        } else {
+            isLoadingViewBeingShown = true;
+            changeViewsVisibility();
+            setViewVisibility(viewLoading, View.VISIBLE);
+        }
     }
 
     /**
@@ -119,8 +122,14 @@ public class PlaceHolderJ {
      * @param onClickListener The action that will be performed by the try again button present in empty view layout.
      */
     public void showEmpty(int messageRes, RetrofitError error, View.OnClickListener onClickListener) {
-        viewEmptyMessage.setText(messageRes);
-        showEmpty(error, onClickListener);
+        if (viewLoading == null) {
+            throw new NullPointerException("Unable to acess Empty View, check if empty view was initialized.");
+        } else {
+            if (!viewsAreCustomized) {
+                viewEmptyMessage.setText(messageRes);
+            }
+            showEmpty(error, onClickListener);
+        }
     }
 
     /**
@@ -139,7 +148,6 @@ public class PlaceHolderJ {
             viewEmptyTryAgainButton.setOnClickListener(onClickListener);
         }
         setViewVisibility(viewEmpty, View.VISIBLE);
-        //TODO Lançar exceção se essa view for nula
     }
 
     /**
@@ -149,53 +157,68 @@ public class PlaceHolderJ {
      * @param onClickListener The action that will be performed by the try again button present in error view layout.
      */
     public void showError(RetrofitError error, View.OnClickListener onClickListener) {
-        isErrorViewBeingShown = true;
-        changeViewsVisibility();
-        if (!viewsAreCustomized) {
-            boolean isNetworkError = (error != null && error.getKind() == RetrofitError.Kind.NETWORK);
-            viewErrorImage.setImageResource(isNetworkError ? R.drawable.icon_error_network : R.drawable.icon_error_unknown);
-            viewErrorMessage.setText(isNetworkError ? R.string.global_network_error : R.string.global_unknown_error);
+        if (viewLoading == null) {
+            throw new NullPointerException("Unable to acess Error View, check if error view was initialized.");
+        } else {
+            isErrorViewBeingShown = true;
+            changeViewsVisibility();
+            if (!viewsAreCustomized) {
+                boolean isNetworkError = (error != null && error.getKind() == RetrofitError.Kind.NETWORK);
+                viewErrorImage.setImageResource(isNetworkError ? R.drawable.icon_error_network : R.drawable.icon_error_unknown);
+                viewErrorMessage.setText(isNetworkError ? R.string.global_network_error : R.string.global_unknown_error);
+            }
+            viewErrorTryAgainButton.setOnClickListener(onClickListener);
+            setViewVisibility(viewError, View.VISIBLE);
         }
-        viewErrorTryAgainButton.setOnClickListener(onClickListener);
-        setViewVisibility(viewError, View.VISIBLE);
-        //TODO Lançar exceção se essa view for nula
     }
 
     /**
      * Makes the loading view invisible if the loaing view is added in your layout.
      */
     public void hideLoading() {
-        isLoadingViewBeingShown = false;
-        changeViewsVisibility();
-        setViewVisibility(viewLoading, View.GONE);
+        if (viewLoading == null) {
+            throw new NullPointerException("Unable to acess Loading View, check if loading view was initialized");
+        } else {
+            isLoadingViewBeingShown = false;
+            changeViewsVisibility();
+            setViewVisibility(viewLoading, View.GONE);
+        }
     }
 
     /**
      * Makes the empty view invisible if the loaing view is added in your layout.
      */
     public void hideEmpty() {
-        isEmptyViewBeingShown = false;
-        changeViewsVisibility();
-        setViewVisibility(viewEmpty, View.GONE);
+        if (viewLoading == null) {
+            throw new NullPointerException("Unable to acess Empty View, check if empty view was initialized.");
+        } else {
+            isEmptyViewBeingShown = false;
+            changeViewsVisibility();
+            setViewVisibility(viewEmpty, View.GONE);
+        }
     }
 
     /**
      * Makes the empty view invisible if the loaing view is added in your layout.
      */
     public void hideError() {
-        isErrorViewBeingShown = false;
-        changeViewsVisibility();
-        setViewVisibility(viewError, View.GONE);
+        if (viewLoading == null) {
+            throw new NullPointerException("Unable to acess Error View, check if error view was initialized.");
+        } else {
+            isErrorViewBeingShown = false;
+            changeViewsVisibility();
+            setViewVisibility(viewError, View.GONE);
+        }
     }
 
     private void changeViewsVisibility() {
-        if (!isLoadingViewBeingShown && viewLoading != null && viewLoading.getVisibility() == View.VISIBLE) {
+        if (!isLoadingViewBeingShown && viewLoading.getVisibility() == View.VISIBLE) {
             setViewVisibility(viewLoading, View.GONE);
         }
-        if (!isEmptyViewBeingShown && viewEmpty != null && viewEmpty.getVisibility() == View.VISIBLE) {
+        if (!isEmptyViewBeingShown && viewEmpty.getVisibility() == View.VISIBLE) {
             setViewVisibility(viewEmpty, View.GONE);
         }
-        if (!isEmptyViewBeingShown && viewError != null && viewError.getVisibility() == View.VISIBLE) {
+        if (!isEmptyViewBeingShown && viewError.getVisibility() == View.VISIBLE) {
             setViewVisibility(viewError, View.GONE);
         }
         if (isLoadingViewBeingShown || isEmptyViewBeingShown || isErrorViewBeingShown) {
@@ -204,7 +227,5 @@ public class PlaceHolderJ {
         if (!isLoadingViewBeingShown && !isEmptyViewBeingShown && !isErrorViewBeingShown) {
             setViewVisibility(viewContainer, View.VISIBLE);
         }
-
-        //TODO Quando a checagem de view nula for feita nos metodos que pedem para as view serem mostradas os null checks desse metodo não serão mais necessários
     }
 }
