@@ -67,18 +67,32 @@ public class PlaceHolderManager {
         private static int viewEmptyImage;
 
         /**
-         * Error view configurations
+         * Customize the error view background.
+         *
+         * @param color The id of the color to be applied at background.
          */
         public Configurator errorBackgroundColor(int color) {
             viewErrorBackgroundColor = color;
             return this;
         }
 
+        /**
+         * Customize the error view background.
+         *
+         * @param backgroundRes The id of the resource to be applied at background.
+         */
         public Configurator errorBackgroundResource(int backgroundRes) {
             viewErrorBackgroundResource = backgroundRes;
             return this;
         }
 
+        /**
+         * Customize the error view text.
+         *
+         * @param text      Id of the text to be applied.
+         * @param textSize  Text size to be applied (in dp).
+         * @param textColor The id of the color to be applied at the text.
+         */
         public Configurator errorText(int text, int textSize, int textColor) {
             viewErrorText = text;
             viewErrorTextSize = textSize;
@@ -86,43 +100,75 @@ public class PlaceHolderManager {
             return this;
         }
 
-        public Configurator errorButton(int text, int resource) {
+        /**
+         * Customize the error view button.
+         *
+         * @param text          Id of the text to be applied.
+         * @param backgroundRes Id of the resource to be applied at background
+         */
+        public Configurator errorButton(int text, int backgroundRes) {
             viewErrorTryAgainButtonText = text;
-            viewErrorTryAgainButtonBackgroundResource = resource;
+            viewErrorTryAgainButtonBackgroundResource = backgroundRes;
             return this;
         }
 
+        /**
+         * Customize the error view image.
+         *
+         * @param imageRes Id of the image to be applied on error view.
+         */
         public Configurator errorImage(int imageRes) {
             viewErrorImage = imageRes;
             return this;
         }
 
         /**
-         * Loading view configurations
+         * Customize the loading view background.
+         *
+         * @param color The id of the color to be applied at background.
          */
         public Configurator loadingBackground(int color) {
             viewLoadingBackgroundColor = color;
             return this;
         }
 
+        /**
+         * Customize the loading view background.
+         *
+         * @param backgroundRes The id of the resource to be applied at background.
+         */
         public Configurator loadingBackgroundResource(int backgroundRes) {
             viewLoadingBackgroundResource = backgroundRes;
             return this;
         }
 
         /**
-         * Empty view configurations
+         * Customize the empty view background.
+         *
+         * @param color The id of the color to be applied at background.
          */
         public Configurator emptyBackground(int color) {
             viewEmptyBackgroundColor = color;
             return this;
         }
 
-        public Configurator emptyBackgroundResource(int backgroundResource) {
-            viewEmptyBackgroundResource = backgroundResource;
+        /**
+         * Customize the empty view background.
+         *
+         * @param backgroundRes The id of the resource to be applied at background.
+         */
+        public Configurator emptyBackgroundResource(int backgroundRes) {
+            viewEmptyBackgroundResource = backgroundRes;
             return this;
         }
 
+        /**
+         * Customize the error view text.
+         *
+         * @param text      Id of the text to be applied.
+         * @param textSize  Text size to be applied (in dp).
+         * @param textColor The id of the color to be applied at the text.
+         */
         public Configurator emptyText(int text, int textSize, int textColor) {
             viewEmptyText = text;
             viewEmptyTextSize = textSize;
@@ -130,12 +176,23 @@ public class PlaceHolderManager {
             return this;
         }
 
-        public Configurator emptyButton(int text, int resource) {
+        /**
+         * Customize the empty view button.
+         *
+         * @param text          Id of the text to be applied.
+         * @param backgroundRes Id of the resource to be applied at background
+         */
+        public Configurator emptyButton(int text, int backgroundRes) {
             viewEmptyTryAgainButtonText = text;
-            viewEmptyTryAgainButtonBackgroundResource = resource;
+            viewEmptyTryAgainButtonBackgroundResource = backgroundRes;
             return this;
         }
 
+        /**
+         * Customize the empty view image.
+         *
+         * @param imageRes Id of the image to be applied on empty view.
+         */
         public Configurator emptyImage(int imageRes) {
             viewEmptyImage = imageRes;
             return this;
