@@ -144,32 +144,30 @@ public class PlaceHolderJ {
      * Makes the empty view visible if the empty view is added in your layout.
      *
      * @param messageRes      The message that will be show in the empty view.
-     * @param error           The retrofit error get of some of your application requests.
      * @param onClickListener The action that will be performed by the try again button present in empty view layout.
      */
-    public void showEmpty(int messageRes, RetrofitError error, View.OnClickListener onClickListener) {
+    public void showEmpty(int messageRes, View.OnClickListener onClickListener) {
         if (viewLoading == null) {
             throw new NullPointerException("Unable to acess Empty View, check if empty view was initialized.");
         } else {
             if (!viewsAreCustomized) {
                 viewEmptyMessage.setText(messageRes);
             }
-            showEmpty(error, onClickListener);
+            showEmpty(onClickListener);
         }
     }
 
     /**
      * Makes the empty view visible if the empty view is added in your layout.
      *
-     * @param error           The retrofit error get of some of your application requests.
      * @param onClickListener The action that will be performed by the try again button present in empty view layout.
      */
-    public void showEmpty(RetrofitError error, View.OnClickListener onClickListener) {
+    public void showEmpty(View.OnClickListener onClickListener) {
         isEmptyViewBeingShown = true;
         changeViewsVisibility();
-        if (error == null && viewEmptyTryAgainButton.getVisibility() == View.VISIBLE) {
+        if (onClickListener == null) {
             viewEmptyTryAgainButton.setVisibility(View.GONE);
-        } else if (onClickListener != null) {
+        } else {
             viewEmptyTryAgainButton.setVisibility(View.VISIBLE);
             viewEmptyTryAgainButton.setOnClickListener(onClickListener);
         }
