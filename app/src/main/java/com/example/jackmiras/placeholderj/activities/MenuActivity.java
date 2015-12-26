@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.jackmiras.placeholderj.Constants;
 import com.example.jackmiras.placeholderj.R;
 
 import butterknife.ButterKnife;
@@ -26,13 +27,13 @@ public class MenuActivity extends AppCompatActivity {
     public void onMenuOptionsSelected(View v) {
         switch (v.getId()) {
             case R.id.button_loading:
-                    startActivity(new Intent(this, CouponsActivity.class).putExtra("SAMPLE_LOADING", "SAMPLE_LOADING").addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    startActivity(new Intent(this, CouponsActivity.class).putExtra(Constants.SAMPLE_LOADING, Constants.SAMPLE_LOADING).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;
             case R.id.button_empty:
-                    startActivity(new Intent(this, CouponsActivity.class).putExtra("SAMPLE_EMPTY", "SAMPLE_EMPTY").addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    startActivity(new Intent(this, CouponsActivity.class).putExtra(Constants.SAMPLE_EMPTY, Constants.SAMPLE_EMPTY).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;
             case R.id.button_error:
-                    startActivity(new Intent(this, CouponsActivity.class).putExtra("SAMPLE_ERROR", "SAMPLE_ERROR").addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    startActivity(new Intent(this, CouponsActivity.class).putExtra(Constants.SAMPLE_ERROR, Constants.SAMPLE_ERROR).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;
         }
     }
