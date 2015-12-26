@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -21,10 +20,9 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class MainActivity extends AppCompatActivity {
+
     private final static int NUM_COLUNS = 2;
 
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
     @Bind(R.id.textview_toolbar_title)
     TextView textViewToolbarTitle;
     @Bind(R.id.recyclerview_cupon)
