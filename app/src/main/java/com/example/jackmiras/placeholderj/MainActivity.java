@@ -1,52 +1,82 @@
 package com.example.jackmiras.placeholderj;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.example.jackmiras.placeholderj.adapter.MainAdapter;
+import com.example.jackmiras.placeholderj.api.ApiClient;
+import com.example.jackmiras.placeholderj.library.PlaceHolderJ;
+import com.example.jackmiras.placeholderj.models.CouponResponse;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class MainActivity extends AppCompatActivity {
+    private final static int NUM_COLUNS = 2;
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+    @Bind(R.id.recyclerview_cupon)
+    RecyclerView recyclerView;
+
+    private PlaceHolderJ placeHolderJ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        ButterKnife.bind(this);
+        TextView textView = (TextView) toolbar.findViewById(R.id.textview_toolbar_title);
+        textView.setText(R.string.app_name);
+        placeHolderJ = new PlaceHolderJ(SampleApplication.getPlaceHolderManager());
+        placeHolderJ.init(this, R.id.recyclerview_cupon, R.id.view_loading, R.id.view_empty, R.id.view_error);
+        setupViews();
+    }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+    public void setupViews() {
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, NUM_COLUNS));
+        requestUserCoupons();
+
+    }
+
+    public void showErrorView(RetrofitError error) {
+        placeHolderJ.hideLoading();
+        placeHolderJ.showError(error, new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                placeHolderJ.hideError();
+                placeHolderJ.showLoading();
+                requestUserCoupons();
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+    private void requestUserCoupons() {
+        placeHolderJ.showLoading();
+        ApiClient.getServices().getUserCoupons(new Callback<CouponResponse>() {
+            @Override
+            public void success(CouponResponse couponResponse, Response response) {
+                placeHolderJ.hideLoading();
+                if (couponResponse.result != null && couponResponse.result.size() >0) {
+                    recyclerView.setAdapter(new MainAdapter(MainActivity.this, couponResponse.result));
+                } else {
+                    placeHolderJ.showEmpty(R.string.activity_redeem_empty, null, null);
+                }
+            }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+            @Override
+            public void failure(RetrofitError error) {
+                showErrorView(error);
+            }
+        });
     }
 }
