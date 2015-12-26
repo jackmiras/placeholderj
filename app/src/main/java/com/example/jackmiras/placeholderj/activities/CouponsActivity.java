@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.jackmiras.placeholderj.R;
 import com.example.jackmiras.placeholderj.SampleApplication;
-import com.example.jackmiras.placeholderj.adapter.MainAdapter;
+import com.example.jackmiras.placeholderj.adapter.MenuAdapter;
 import com.example.jackmiras.placeholderj.api.ApiClient;
 import com.example.jackmiras.placeholderj.library.PlaceHolderJ;
 import com.example.jackmiras.placeholderj.library.PlaceHolderManager;
@@ -72,7 +72,7 @@ public class CouponsActivity extends AppCompatActivity {
             public void success(CouponResponse couponResponse, Response response) {
                 placeHolderJ.hideLoading();
                 if (couponResponse.result != null && couponResponse.result.size() > 0) {
-                    recyclerView.setAdapter(new MainAdapter(CouponsActivity.this, couponResponse.result));
+                    recyclerView.setAdapter(new MenuAdapter(CouponsActivity.this, couponResponse.result));
                 } else {
                     placeHolderJ.showEmpty(R.string.activity_coupons_empty, null, null);
                 }
