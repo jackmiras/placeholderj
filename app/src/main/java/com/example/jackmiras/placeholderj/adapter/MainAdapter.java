@@ -42,7 +42,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String unavailable = context.getResources().getString(R.string.activity_redeem_unavaliable);
+        String unavailable = context.getResources().getString(R.string.activity_coupons_unavaliable);
         Resources res = context.getResources();
         final Coupon cupon = cupons.get(position);
         if (cupon.imgUrl != null) {

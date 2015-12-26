@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj;
+package com.example.jackmiras.placeholderj.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.jackmiras.placeholderj.R;
+import com.example.jackmiras.placeholderj.SampleApplication;
 import com.example.jackmiras.placeholderj.adapter.MainAdapter;
 import com.example.jackmiras.placeholderj.api.ApiClient;
 import com.example.jackmiras.placeholderj.library.PlaceHolderJ;
@@ -19,7 +21,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class CouponsActivity extends AppCompatActivity {
 
     private final static int NUM_COLUNS = 2;
 
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_coupons);
         ButterKnife.bind(this);
         textViewToolbarTitle.setText(R.string.app_name);
 
@@ -70,9 +72,9 @@ public class MainActivity extends AppCompatActivity {
             public void success(CouponResponse couponResponse, Response response) {
                 placeHolderJ.hideLoading();
                 if (couponResponse.result != null && couponResponse.result.size() > 0) {
-                    recyclerView.setAdapter(new MainAdapter(MainActivity.this, couponResponse.result));
+                    recyclerView.setAdapter(new MainAdapter(CouponsActivity.this, couponResponse.result));
                 } else {
-                    placeHolderJ.showEmpty(R.string.activity_redeem_empty, null, null);
+                    placeHolderJ.showEmpty(R.string.activity_coupons_empty, null, null);
                 }
             }
 

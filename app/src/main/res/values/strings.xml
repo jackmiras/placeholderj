@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">PlaceholderJ Sample</string>
-    <string name="activity_redeem_empty">Você não possui resgates</string>
-    <string name="activity_redeem_unavaliable">indisponível</string>
-    <string name="activity_redeem_expiration_date">Validade: %s</string>
+
+    <string name="activity_coupons_label">Cupons</string>
+    <string name="activity_coupons_empty">Você não possui resgates</string>
+    <string name="activity_coupons_unavaliable">indisponível</string>
+    <string name="activity_coupons_expiration_date">Validade: %s</string>
+
+    <string name="activity_main_label">Sample</string>
+    <string name="activity_main_button_loading">View Loading</string>
+    <string name="activity_main_button_empty">View Empty</string>
+    <string name="activity_main_button_error">View Error</string>
+
 </resources>

@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <include layout="@layout/item_toolbar" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_cupon"
-        android:scrollbars="vertical"
+    <Button
+        android:id="@+id/button_loading"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:padding="8dp" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_primary_white"
+        android:text="@string/activity_main_button_loading"
+        android:textAllCaps="true"
+        android:textColor="@color/bg_primary" />
 
-    <include layout="@layout/view_empty" />
+    <Button
+        android:id="@+id/button_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/selector_bg_primary_white"
+        android:text="@string/activity_main_button_empty"
+        android:textAllCaps="true"
+        android:textColor="@color/bg_primary" />
 
-    <include layout="@layout/view_loading" />
+    <Button
+        android:id="@+id/button_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/selector_bg_primary_white"
+        android:text="@string/activity_main_button_error"
+        android:textAllCaps="true"
+        android:textColor="@color/bg_primary" />
 
-    <include layout="@layout/view_error" />
 
-</FrameLayout>
+</LinearLayout>

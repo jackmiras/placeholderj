@@ -31,7 +31,7 @@
             android:id="@+id/textView_expiration_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_redeem_expiration_date"
+            android:text="@string/activity_coupons_expiration_date"
             android:textColor="@color/text_secondary_black"
             android:layout_below="@+id/textview_code"
             android:layout_centerHorizontal="true"
