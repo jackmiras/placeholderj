@@ -15,6 +15,8 @@ import retrofit.RetrofitError;
  */
 public class PlaceHolderJ {
 
+    private final View view;
+
     private PlaceHolderManager placeHolderManager;
     private CustomizeViews customizeViews;
     private Context context;
@@ -34,12 +36,29 @@ public class PlaceHolderJ {
     private boolean isEmptyViewBeingShown;
     private boolean viewsAreCustomized;
 
-    public PlaceHolderJ() {
+    /**
+     * Called when a instance of this class was create and need to be initialized. The init method will get all views passed
+     * in viewsId using the Activity passed together whit viewsId.
+     *
+     * @param activity           The activity used to find the views that will be passeds in viewsId.
+     * @param viewId             A set of view that will interact between himself.
+     * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views
+     */
+    public PlaceHolderJ(Activity activity, int viewId, PlaceHolderManager placeHolderManager) {
+        this(activity.getWindow().getDecorView(), viewId, placeHolderManager);
     }
 
-    public PlaceHolderJ(PlaceHolderManager placeHolderManager) {
+    /**
+     * Called when a instance of this class was create and need to be initialized. The init method will get all views passed
+     * in viewsId using the Activity passed together whit viewsId.
+     *
+     * @param view               The view used to find the views that will be passeds in viewsId.
+     * @param viewId             A set of view that will interact between himself.
+     * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views
+     */
+    public PlaceHolderJ(View view, int viewId, PlaceHolderManager placeHolderManager) {
+        this(view, viewId);
         this.placeHolderManager = placeHolderManager;
-        customizeViews = new CustomizeViews(placeHolderManager);
     }
 
     /**
@@ -47,20 +66,32 @@ public class PlaceHolderJ {
      * in viewsId using the Activity passed together whit viewsId.
      *
      * @param activity The activity used to find the views that will be passeds in viewsId.
-     * @param viewsId  A set of view that will interact between himself.
+     * @param viewId   A set of view that will interact between himself.
      */
-    public void init(Activity activity, int... viewsId) {
-        init(activity.getWindow().getDecorView(), viewsId);
+    public PlaceHolderJ(Activity activity, int viewId) {
+        this(activity.getWindow().getDecorView(), viewId);
     }
 
     /**
      * Called when a instance of this class was create and need to be initialized. The init method will get all views passed
      * in viewsId using the Activity passed together whit viewsId.
      *
-     * @param view The view used to find the views that will be passeds in viewsId.
-     * @param viewsId  A set of view that will interact between himself.
+     * @param view   The view used to find the views that will be passeds in viewsId.
+     * @param viewId A set of view that will interact between himself.
      */
-    public void init(View view, int... viewsId) {
+    public PlaceHolderJ(View view, int viewId) {
+        this.view = view;
+        findContainerView(viewId);
+    }
+
+    private void findContainerView(int viewId) {
+        viewContainer = view.findViewById(viewId);
+        if (viewContainer == null) {
+            throw new NullPointerException("Unable to acess Container View. You should pass the view that will change the visibility with PlaceHolderJ views");
+        }
+    }
+
+    public void init(int... viewsId) {
         context = view.getContext();
         for (int aViewsId : viewsId) {
             if (aViewsId == R.id.view_loading) {
@@ -75,11 +106,6 @@ public class PlaceHolderJ {
                 viewErrorImage = (ImageView) view.findViewById(R.id.imageview_error_icon);
                 viewErrorMessage = (TextView) view.findViewById(R.id.textview_error_message);
                 viewErrorTryAgainButton = (Button) view.findViewById(R.id.button_error_try_again);
-            } else {
-                viewContainer = view.findViewById(aViewsId);
-                if (viewContainer == null) {
-                    throw new NullPointerException("Unable to acess Container View. You should pass the view that will change the visibility with PlaceHolderJ views");
-                }
             }
         }
         if (viewEmpty == null && viewError == null && viewLoading == null) {
@@ -90,6 +116,7 @@ public class PlaceHolderJ {
 
     private void customizeViews() {
         if (placeHolderManager != null && !viewsAreCustomized) {
+            customizeViews = new CustomizeViews(placeHolderManager);
             customizeViews.customize(context, viewLoading, viewEmpty, viewEmptyImage, viewEmptyMessage, viewEmptyTryAgainButton, viewError, viewErrorImage, viewErrorMessage, viewErrorTryAgainButton);
             viewsAreCustomized = true;
         }

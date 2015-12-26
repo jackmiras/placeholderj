@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.jackmiras.placeholderj.adapter.MainAdapter;
 import com.example.jackmiras.placeholderj.api.ApiClient;
 import com.example.jackmiras.placeholderj.library.PlaceHolderJ;
+import com.example.jackmiras.placeholderj.library.PlaceHolderManager;
 import com.example.jackmiras.placeholderj.models.CouponResponse;
 
 import butterknife.Bind;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+    @Bind(R.id.textview_toolbar_title)
+    TextView textViewToolbarTitle;
     @Bind(R.id.recyclerview_cupon)
     RecyclerView recyclerView;
 
@@ -34,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        TextView textView = (TextView) toolbar.findViewById(R.id.textview_toolbar_title);
-        textView.setText(R.string.app_name);
-        placeHolderJ = new PlaceHolderJ(SampleApplication.getPlaceHolderManager());
-        placeHolderJ.init(this, R.id.recyclerview_cupon, R.id.view_loading, R.id.view_empty, R.id.view_error);
+        textViewToolbarTitle.setText(R.string.app_name);
+
+        PlaceHolderManager placeHolderManager = SampleApplication.getPlaceHolderManager();
+        placeHolderJ = new PlaceHolderJ(this, R.id.recyclerview_cupon, placeHolderManager);
+        placeHolderJ.init(R.id.view_loading, R.id.view_empty, R.id.view_error);
+
         setupViews();
     }
 
@@ -66,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void success(CouponResponse couponResponse, Response response) {
                 placeHolderJ.hideLoading();
-                if (couponResponse.result != null && couponResponse.result.size() >0) {
+                if (couponResponse.result != null && couponResponse.result.size() > 0) {
                     recyclerView.setAdapter(new MainAdapter(MainActivity.this, couponResponse.result));
                 } else {
                     placeHolderJ.showEmpty(R.string.activity_redeem_empty, null, null);
