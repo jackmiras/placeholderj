@@ -11,14 +11,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/SampleTheme" >
+
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:name=".activities.MenuActivity"
+            android:label="@string/activity_main_label" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.CouponsActivity"
+            android:label="@string/activity_coupons_label" >
         </activity>
     </application>
 
