@@ -36,11 +36,8 @@ public class PlaceHolderJ {
     private boolean viewsAreCustomized;
 
     /**
-     * Called when a instance of this class was create and need to be initialized. The init method will get all views passed
-     * in viewsId using the Activity passed together whit viewsId.
-     *
-     * @param activity           The activity used to find the views that will be passeds in viewsId.
-     * @param viewId             A set of view that will interact between himself.
+     * @param activity           The activity used to find the view with the viewId and the placeholders in the init method
+     * @param viewId             The view that will have the placeholders
      * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views
      */
     public PlaceHolderJ(Activity activity, int viewId, PlaceHolderManager placeHolderManager) {
@@ -48,11 +45,8 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Called when a instance of this class was create and need to be initialized. The init method will get all views passed
-     * in viewsId using the Activity passed together whit viewsId.
-     *
-     * @param view               The view used to find the views that will be passeds in viewsId.
-     * @param viewId             A set of view that will interact between himself.
+     * @param view               The view used to find the view with the viewId and the placeholders in the init method
+     * @param viewId             The view that will have the placeholders
      * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views
      */
     public PlaceHolderJ(View view, int viewId, PlaceHolderManager placeHolderManager) {
@@ -61,22 +55,16 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Called when a instance of this class was create and need to be initialized. The init method will get all views passed
-     * in viewsId using the Activity passed together whit viewsId.
-     *
-     * @param activity The activity used to find the views that will be passeds in viewsId.
-     * @param viewId   A set of view that will interact between himself.
+     * @param activity The activity used to find the view with the viewId and the placeholders in the init method
+     * @param viewId   The view that will have the placeholders
      */
     public PlaceHolderJ(Activity activity, int viewId) {
         this(activity.getWindow().getDecorView(), viewId);
     }
 
     /**
-     * Called when a instance of this class was create and need to be initialized. The init method will get all views passed
-     * in viewsId using the Activity passed together whit viewsId.
-     *
-     * @param view   The view used to find the views that will be passeds in viewsId.
-     * @param viewId A set of view that will interact between himself.
+     * @param view   The view used to find the view with the viewId and the placeholders in the init method
+     * @param viewId The view that will have the placeholders
      */
     public PlaceHolderJ(View view, int viewId) {
         this.view = view;
@@ -86,10 +74,16 @@ public class PlaceHolderJ {
     private void findContainerView(int viewId) {
         viewContainer = view.findViewById(viewId);
         if (viewContainer == null) {
-            throw new NullPointerException("Unable to acess Container View. You should pass the view that will change the visibility with PlaceHolderJ views");
+            throw new NullPointerException("Unable to access Container View. You should pass the view that will be replaced by PlaceHolderJ views");
         }
     }
 
+
+    /**
+     * Called when a instance of this class is created and needs to be initialized. The init method will get all views with
+     * ids in viewsId using the Activity/View passed in the constructor
+     * @param viewsId ids of the placeholder views
+     */
     public void init(int... viewsId) {
         context = view.getContext();
         for (int aViewsId : viewsId) {
@@ -108,7 +102,7 @@ public class PlaceHolderJ {
             }
         }
         if (viewEmpty == null && viewError == null && viewLoading == null) {
-            throw new NullPointerException("Unable to acess Empty View, Error View or Loading View. You should pass at least one placeholder view to init PlaceHolderJ");
+            throw new NullPointerException("Unable to access Empty View, Error View or Loading View. You should pass at least one placeholder view to init PlaceHolderJ");
         }
         customizeViews();
     }
@@ -128,11 +122,11 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Makes the loading view visible if the loaing view is added in your layout.
+     * Makes the loading view visible if the loading view was added to your layout.
      */
     public void showLoading() {
         if (viewLoading == null) {
-            throw new NullPointerException("Unable to acess Loading View, check if loading view was initialized");
+            throw new NullPointerException("Unable to access Loading View, check if the loading view was initialized");
         } else {
             isLoadingViewBeingShown = true;
             changeViewsVisibility();
@@ -141,14 +135,14 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Makes the empty view visible if the empty view is added in your layout.
+     * Makes the empty view visible if the empty view was added to your layout.
      *
-     * @param messageRes      The message that will be show in the empty view.
+     * @param messageRes      The message that will be shown in the empty view.
      * @param onClickListener The action that will be performed by the try again button present in empty view layout.
      */
     public void showEmpty(int messageRes, View.OnClickListener onClickListener) {
         if (viewLoading == null) {
-            throw new NullPointerException("Unable to acess Empty View, check if empty view was initialized.");
+            throw new NullPointerException("Unable to access Empty View, check if the empty view was initialized.");
         } else {
             if (!viewsAreCustomized) {
                 viewEmptyMessage.setText(messageRes);
@@ -158,7 +152,7 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Makes the empty view visible if the empty view is added in your layout.
+     * Makes the empty view visible if the empty view was added to your layout.
      *
      * @param onClickListener The action that will be performed by the try again button present in empty view layout.
      */
@@ -175,14 +169,14 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Makes the error view visible if the error view is added in your layout.
+     * Makes the error view visible if the error view was added to your layout.
      *
-     * @param error           The retrofit error get of some of your application requests.
+     * @param error           The retrofit error from one of your application requests.
      * @param onClickListener The action that will be performed by the try again button present in error view layout.
      */
     public void showError(RetrofitError error, View.OnClickListener onClickListener) {
         if (viewLoading == null) {
-            throw new NullPointerException("Unable to acess Error View, check if error view was initialized.");
+            throw new NullPointerException("Unable to access Error View, check if the error view was initialized.");
         } else {
             isErrorViewBeingShown = true;
             changeViewsVisibility();
@@ -197,11 +191,11 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Makes the loading view invisible if the loaing view is added in your layout.
+     * Makes the loading view invisible if the loading view was added to your layout.
      */
     public void hideLoading() {
         if (viewLoading == null) {
-            throw new NullPointerException("Unable to acess Loading View, check if loading view was initialized");
+            throw new NullPointerException("Unable to access Loading View, check if the loading view was initialized");
         } else {
             isLoadingViewBeingShown = false;
             changeViewsVisibility();
@@ -210,11 +204,11 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Makes the empty view invisible if the loaing view is added in your layout.
+     * Makes the empty view invisible if the loading view was added to your layout.
      */
     public void hideEmpty() {
         if (viewLoading == null) {
-            throw new NullPointerException("Unable to acess Empty View, check if empty view was initialized.");
+            throw new NullPointerException("Unable to access Empty View, check if the empty view was initialized.");
         } else {
             isEmptyViewBeingShown = false;
             changeViewsVisibility();
@@ -223,11 +217,11 @@ public class PlaceHolderJ {
     }
 
     /**
-     * Makes the empty view invisible if the loaing view is added in your layout.
+     * Makes the empty view invisible if the loading view was added to your layout.
      */
     public void hideError() {
         if (viewLoading == null) {
-            throw new NullPointerException("Unable to acess Error View, check if error view was initialized.");
+            throw new NullPointerException("Unable to access Error View, check if the error view was initialized.");
         } else {
             isErrorViewBeingShown = false;
             changeViewsVisibility();

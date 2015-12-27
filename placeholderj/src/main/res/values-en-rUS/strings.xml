@@ -1,7 +1,7 @@
 <resources>
-    <string name="global_empty_list">Could\'\ t load the content.</string>
+    <string name="global_empty_list">Could not load the content.</string>
     <string name="global_try_again">Try again</string>
     <string name="global_unknown_error">Oops! Something didn\'\ t happen as planned.</string>
-    <string name="global_network_error">Check your internet conection</string>
+    <string name="global_network_error">Check your internet connection.</string>
     <string name="app_name">PlaceHolderJ</string>
 </resources>

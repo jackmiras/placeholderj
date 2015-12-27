@@ -16,7 +16,7 @@ public class SampleApplication extends Application {
         super.onCreate();
 
         /**
-         *  Sample of how customize PlaceHolderJ Views (Uncomment the code below)
+         *  Sample of how to customize PlaceHolderJ Views (Uncomment the code below)
          */
         /*placeHolderManager = new PlaceHolderManager.Configurator()
                 .loadingBackground(android.R.color.holo_green_light)
