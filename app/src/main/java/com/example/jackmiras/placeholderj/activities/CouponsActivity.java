@@ -26,11 +26,11 @@ import retrofit.client.Response;
 
 public class CouponsActivity extends BaseActivity implements Callback<CouponResponse> {
 
-    private final static int NUM_COLUNS = 2;
+    private final static int NUM_COLUMNS = 2;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.recyclerview_cupon)
+    @Bind(R.id.recyclerview_coupon)
     RecyclerView recyclerView;
 
     private PlaceHolderJ placeHolderJ;
@@ -44,7 +44,7 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
         ButterKnife.bind(this);
         setActionBar(toolbar, R.string.activity_coupons_label, true);
 
-        placeHolderJ = new PlaceHolderJ(this, R.id.recyclerview_cupon);
+        placeHolderJ = new PlaceHolderJ(this, R.id.recyclerview_coupon);
         placeHolderJ.init(R.id.view_loading, R.id.view_empty, R.id.view_error);
 
         setupViews();
@@ -52,7 +52,7 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
 
     public void setupViews() {
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, NUM_COLUNS));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, NUM_COLUMNS));
         requestUserCoupons();
     }
 
@@ -82,19 +82,19 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
     private void requestUserCoupons() {
         placeHolderJ.showLoading();
         if (getIntent().getExtras().containsKey(Constants.SAMPLE_LOADING)) {
-            //Used to take extra some time to make loading view visible for a while.
+            //Used to make some delay to make the loading view visible for a while.
             waitToRequest();
         } else if (getIntent().getExtras().containsKey(Constants.SAMPLE_EMPTY)) {
-            //Used to make empty view visible.
+            //Used to make the empty view visible.
             isListEmpty = true;
             ApiClient.getServices().getUserCoupons(this);
         } else if (getIntent().getExtras().containsKey(Constants.SAMPLE_EMPTY_WITH_TRY_AGAIN)) {
-            //Used to make empty view with try again button visible.
+            //Used to make the empty view with try again button visible.
             isListEmpty = true;
             isListEmptyTryAgainEnabled = true;
             ApiClient.getServices().getUserCoupons(this);
         } else {
-            //Used to make error view visible.
+            //Used to make the error view visible.
             ApiClient.getServices().getUserCouponsWithError(this);
         }
     }
@@ -111,12 +111,12 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
     @Override
     public void success(CouponResponse couponResponse, Response response) {
         placeHolderJ.hideLoading();
-        //If isListEmpty value is true than couponResponse.result receive an empty array to make view empty visible.
+        //If isListEmpty is true than couponResponse.result receives an empty array to make the view empty visible.
         couponResponse.result = isListEmpty ? new ArrayList<Coupon>() : couponResponse.result;
         if (couponResponse.result != null && couponResponse.result.size() > 0) {
             recyclerView.setAdapter(new MenuAdapter(CouponsActivity.this, couponResponse.result));
         } else if (isListEmptyTryAgainEnabled) {
-            //If isListEmptyTryAgainEnabled value is true, than empty view with try again button will be shown.
+            //If isListEmptyTryAgainEnabled is true, than the empty view with try again button will be shown.
             placeHolderJ.showEmpty(R.string.activity_coupons_empty, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -125,7 +125,7 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
                 }
             });
         } else {
-            //If isListEmptyTryAgainEnabled value is false, than empty view without try again button will be shown.
+            //If isListEmptyTryAgainEnabled is false, than the empty view without try again button will be shown.
             placeHolderJ.showEmpty(R.string.activity_coupons_empty, null);
         }
     }

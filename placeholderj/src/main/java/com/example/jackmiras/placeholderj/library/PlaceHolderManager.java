@@ -67,9 +67,9 @@ public class PlaceHolderManager {
         private static int viewEmptyImage;
 
         /**
-         * Customize the error view background.
+         * Customize the error view background color.
          *
-         * @param color The id of the color to be applied at background.
+         * @param color The id of the color to be applied to the background.
          */
         public Configurator errorBackgroundColor(int color) {
             viewErrorBackgroundColor = color;
@@ -79,7 +79,7 @@ public class PlaceHolderManager {
         /**
          * Customize the error view background.
          *
-         * @param backgroundRes The id of the resource to be applied at background.
+         * @param backgroundRes The id of the resource to be applied to the background.
          */
         public Configurator errorBackgroundResource(int backgroundRes) {
             viewErrorBackgroundResource = backgroundRes;
@@ -90,8 +90,8 @@ public class PlaceHolderManager {
          * Customize the error view text.
          *
          * @param text      Id of the text to be applied.
-         * @param textSize  Text size to be applied (in dp).
-         * @param textColor The id of the color to be applied at the text.
+         * @param textSize  Text size to be applied (in sp).
+         * @param textColor The id of the color to be applied to the text.
          */
         public Configurator errorText(int text, int textSize, int textColor) {
             viewErrorText = text;
@@ -104,7 +104,7 @@ public class PlaceHolderManager {
          * Customize the error view button.
          *
          * @param text          Id of the text to be applied.
-         * @param backgroundRes Id of the resource to be applied at background
+         * @param backgroundRes Id of the resource to be applied to the background
          */
         public Configurator errorButton(int text, int backgroundRes) {
             viewErrorTryAgainButtonText = text;
@@ -115,7 +115,7 @@ public class PlaceHolderManager {
         /**
          * Customize the error view image.
          *
-         * @param imageRes Id of the image to be applied on error view.
+         * @param imageRes Id of the image to be applied on the error view.
          */
         public Configurator errorImage(int imageRes) {
             viewErrorImage = imageRes;
@@ -125,7 +125,7 @@ public class PlaceHolderManager {
         /**
          * Customize the loading view background.
          *
-         * @param color The id of the color to be applied at background.
+         * @param color The id of the color to be applied to the background.
          */
         public Configurator loadingBackground(int color) {
             viewLoadingBackgroundColor = color;
@@ -135,7 +135,7 @@ public class PlaceHolderManager {
         /**
          * Customize the loading view background.
          *
-         * @param backgroundRes The id of the resource to be applied at background.
+         * @param backgroundRes The id of the resource to be applied to the background.
          */
         public Configurator loadingBackgroundResource(int backgroundRes) {
             viewLoadingBackgroundResource = backgroundRes;
@@ -145,7 +145,7 @@ public class PlaceHolderManager {
         /**
          * Customize the empty view background.
          *
-         * @param color The id of the color to be applied at background.
+         * @param color The id of the color to be applied to the background.
          */
         public Configurator emptyBackground(int color) {
             viewEmptyBackgroundColor = color;
@@ -155,7 +155,7 @@ public class PlaceHolderManager {
         /**
          * Customize the empty view background.
          *
-         * @param backgroundRes The id of the resource to be applied at background.
+         * @param backgroundRes The id of the resource to be applied to the background.
          */
         public Configurator emptyBackgroundResource(int backgroundRes) {
             viewEmptyBackgroundResource = backgroundRes;
@@ -166,8 +166,8 @@ public class PlaceHolderManager {
          * Customize the error view text.
          *
          * @param text      Id of the text to be applied.
-         * @param textSize  Text size to be applied (in dp).
-         * @param textColor The id of the color to be applied at the text.
+         * @param textSize  Text size to be applied (in sp).
+         * @param textColor The id of the color to be applied to the text.
          */
         public Configurator emptyText(int text, int textSize, int textColor) {
             viewEmptyText = text;
@@ -180,7 +180,7 @@ public class PlaceHolderManager {
          * Customize the empty view button.
          *
          * @param text          Id of the text to be applied.
-         * @param backgroundRes Id of the resource to be applied at background
+         * @param backgroundRes Id of the resource to be applied to the background
          */
         public Configurator emptyButton(int text, int backgroundRes) {
             viewEmptyTryAgainButtonText = text;
@@ -191,7 +191,7 @@ public class PlaceHolderManager {
         /**
          * Customize the empty view image.
          *
-         * @param imageRes Id of the image to be applied on empty view.
+         * @param imageRes Id of the image to be applied on the empty view.
          */
         public Configurator emptyImage(int imageRes) {
             viewEmptyImage = imageRes;
