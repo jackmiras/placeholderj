@@ -1,6 +1,11 @@
 # PlaceholderJ
 PaceholderJ is a simple Android library created to help you handle easily with screens of empty list, no itens found, loading and error.
 
+##Screenshots
+-----------
+
+![Demo screenshot](https://github.com/jackmiras/placeholderj/blob/master/art/sample.gif)
+
 ##Observations
 Before you start is important you keep in mind that PlaceholderJ views are projected to handle with errors 
 received from failures of some request submited to an API and this request must be made by Retrofit becouse the errors expected in this library are retrofit errors.
@@ -65,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        placeHolderJ = new PlaceHolderJ();
-        placeHolderJ.init(this, R.id.recyclerview_cupon, R.id.view_loading, R.id.view_empty, R.id.view_error);
+        placeHolderJ = new PlaceHolderJ(this, R.id.recyclerview_cupon);
+        placeHolderJ.init(R.id.view_loading, R.id.view_empty, R.id.view_error);
     }
 }
 ```
@@ -81,14 +86,14 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         container = (ViewGroup) inflater.inflate(R.layout.fragment_main, null);
         
-        placeHolderJ = new PlaceHolderJ();
-        placeHolderJ.init(container, R.id.recyclerview_cupon, R.id.view_loading, R.id.view_empty, R.id.view_error);
+        placeHolderJ = new PlaceHolderJ(container, R.id.recyclerview_cupon);
+        placeHolderJ.init(R.id.view_loading, R.id.view_empty, R.id.view_error);
         
         return container;
     }
 }
 ```
-Note that in placeHolderJ.init() you can pass five parameters but just the Activity or View, first view id and second view id are obligatory. This three parameters are obligatory because you always has to pass the Activity or View that will be used to find the views passed on placeHolderJ.init(). Activity or View also is used to find child view from views like R.id.view_error.
+Note that in PlaceHolderJ() constructor you always need to pass the Activity or ViewGroup that contains the views that will be manage by PlaceHolderJ. You also can pass three parameters at placeHolderJ.init(), they aren't obligatory but you need include in your layout and pass at least one of the three views available from PlaceHolderJ.
 
 ####Step 3 - If you need customize something of PlaceHolderJ views, you can use PlaceHolderManager to manage this changes. So the usage of this class should be made on your application class to keep a single instance of PlaceHolderManager while your app is running. So the usage of PlaceHolderManager looks like the code below:
 
@@ -103,6 +108,8 @@ public class SampleApplication extends Application {
         super.onCreate();
 
         placeHolderManager = new PlaceHolderManager.Configurator()
+                .loadingBackground(android.R.color.holo_green_light)
+                .errorText(R.string.global_custom_error, 0, 0)
                 .config();
     }
 
@@ -135,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         placeHolderManager  = SampleApplication.getPlaceHolderManager();
-        placeHolderJ = new PlaceHolderJ(placeHolderManager);
-        placeHolderJ.init(this, R.id.recyclerview_cupon, R.id.view_loading, R.id.view_empty, R.id.view_error);
+        placeHolderJ = new PlaceHolderJ(this, R.id.recyclerview_cupon, placeHolderManager);
+        placeHolderJ.init(R.id.view_loading, R.id.view_empty, R.id.view_error);
     }
 }
 ```
