@@ -2,15 +2,15 @@
     <string name="app_name">PlaceholderJ Sample</string>
 
     <string name="activity_coupons_label">Cupons</string>
-    <string name="activity_coupons_empty">Você não possui resgates</string>
-    <string name="activity_coupons_unavaliable">indisponível</string>
+    <string name="activity_coupons_empty">Você não possui cupons</string>
+    <string name="activity_coupons_unavaliable">Inválido</string>
     <string name="activity_coupons_expiration_date">Validade: %s</string>
 
     <string name="activity_main_label">Sample</string>
-    <string name="activity_main_button_loading">View Loading</string>
-    <string name="activity_main_button_empty">View Empty</string>
-    <string name="activity_main_button_empty_try_again">View Empty with try again</string>
-    <string name="activity_main_button_error">View Error</string>
-    <string name="global_custom_error">\"This error text is a exemplification of how customize PlaceHolderJ views\"</string>
+    <string name="activity_main_button_loading">View Carregando</string>
+    <string name="activity_main_button_empty">View Vazia</string>
+    <string name="activity_main_button_empty_try_again">View vazia com botão tentar novamente</string>
+    <string name="activity_main_button_error">View erro</string>
+    <string name="global_custom_error">"Esse texto de erro é um exemplo de como customizar as views do PlaceHolderJ"</string>
 
 </resources>

@@ -16,11 +16,6 @@ public class SampleApplication extends Application {
         super.onCreate();
 
         /**
-         *  If you don't pass any value to the configurator than PlaceHolderJ will use the default interface
-         */
-        placeHolderManager = new PlaceHolderManager.Configurator().config();
-
-        /**
          *  Sample of how customize PlaceHolderJ Views (Uncomment the code below)
          */
         /*placeHolderManager = new PlaceHolderManager.Configurator()

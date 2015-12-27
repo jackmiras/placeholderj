@@ -10,11 +10,9 @@ import android.view.View;
 
 import com.example.jackmiras.placeholderj.Constants;
 import com.example.jackmiras.placeholderj.R;
-import com.example.jackmiras.placeholderj.SampleApplication;
 import com.example.jackmiras.placeholderj.adapter.MenuAdapter;
 import com.example.jackmiras.placeholderj.api.ApiClient;
 import com.example.jackmiras.placeholderj.library.PlaceHolderJ;
-import com.example.jackmiras.placeholderj.library.PlaceHolderManager;
 import com.example.jackmiras.placeholderj.models.Coupon;
 import com.example.jackmiras.placeholderj.models.CouponResponse;
 
@@ -46,8 +44,7 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
         ButterKnife.bind(this);
         setActionBar(toolbar, R.string.activity_coupons_label, true);
 
-        PlaceHolderManager placeHolderManager = SampleApplication.getPlaceHolderManager();
-        placeHolderJ = new PlaceHolderJ(this, R.id.recyclerview_cupon, placeHolderManager);
+        placeHolderJ = new PlaceHolderJ(this, R.id.recyclerview_cupon);
         placeHolderJ.init(R.id.view_loading, R.id.view_empty, R.id.view_error);
 
         setupViews();
@@ -108,7 +105,7 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
             public void run() {
                 ApiClient.getServices().getUserCoupons(CouponsActivity.this);
             }
-        }, 3000);
+        }, 2000);
     }
 
     @Override
