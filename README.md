@@ -168,4 +168,4 @@ I welcome and encourage all pull requests. It usually takes me around 48 hours t
 
 [Daivid Silverio](https://github.com/daividssilverio) ([@daividssilverio](https://www.twitter.com/@daividssilverio))
 
-[Analira Scalabrini](https://github.com/daividssilverio) ([@analiras2](https://www.twitter.com/@analiras2))
+[Analira Scalabrini](https://github.com/analiras2) ([@analiras2](https://www.twitter.com/@analiras2))
