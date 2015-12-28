@@ -147,6 +147,19 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+If you want check a sample app to get a more realistic idea of how use PlaceHolderJ click [here](https://github.com/jackmiras/placeholderj/tree/master/app/src/main).
+
+If you want download the sample app click [here](https://drive.google.com/file/d/0B0Tf80UFMc0WZTFIb1dUbGdSLUk/view?usp=sharing).
+
+## Pull Requests
+
+I welcome and encourage all pull requests. It usually takes me around 48 hours to respond to any issue or request. Here are some basic rules to follow to ensure the fastest reviewing and addition of your request:
+  1. Match coding style (braces, spacing, etc.) This is best achieved using CRTL+ALT+L (Reformat code) on Linux and CMD+Option+L on Mac (not sure for Windows) with Android Studio defaults.
+  2. If it's a feature, bugfix, or anything else, please only change code where strictly necessary.
+   **DO NOT** do this: Ex: Title "Fixes Crash Related to Bug" but includes other files that were changed without explanation or that weren't related to the bug you fixed. Another example is a non-descriptive title "Fixes Stuff".
+  3. Pull requests must be made against ```develop``` branch.
+  4. Have fun!
+
 ## Maintainers
 
 [Jack Miras](https://github.com/jackmiras) ([@jackmiras](https://www.twitter.com/@jackmiras))
