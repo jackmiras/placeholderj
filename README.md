@@ -147,3 +147,12 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+## Maintainers
+
+[Jack Miras](https://github.com/jackmiras) ([@jackmiras](https://www.twitter.com/@jackmiras))
+
+### Contributors
+
+[Daivid Silverio](https://github.com/daividssilverio) ([@daividssilverio](https://www.twitter.com/@daividssilverio))
+
+[Analira Scalabrini](https://github.com/daividssilverio) ([@analiras2](https://www.twitter.com/@analiras2))
