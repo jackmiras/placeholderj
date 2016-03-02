@@ -7,7 +7,7 @@
     android:background="@color/bg_primary_withe"
     android:gravity="center"
     android:orientation="vertical"
-    android:visibility="visible">
+    android:visibility="gone">
 
     <ImageView
         android:id="@+id/imageview_error_icon"
