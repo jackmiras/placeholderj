@@ -72,7 +72,11 @@ public class PlaceHolderManager {
          * @param color The id of the color to be applied to the background.
          */
         public Configurator errorBackground(int color) {
-            viewErrorBackgroundColor = color;
+            if (color > 0) {
+                viewErrorBackgroundColor = color;
+            } else {
+                throw new IllegalArgumentException("Unable to assign color, the color value should be bigger than 0");
+            }
             return this;
         }
 
@@ -82,33 +86,57 @@ public class PlaceHolderManager {
          * @param backgroundRes The id of the resource to be applied to the background.
          */
         public Configurator errorBackgroundResource(int backgroundRes) {
-            viewErrorBackgroundResource = backgroundRes;
+            if (backgroundRes > 0) {
+                viewErrorBackgroundResource = backgroundRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign backgroundRes, the backgroundRes value should be bigger than 0");
+            }
             return this;
         }
 
         /**
          * Customize the error view text.
          *
-         * @param text      Id of the text to be applied.
+         * @param textRes      Id of the text to be applied.
          * @param textSize  Text size to be applied (in sp).
          * @param textColor The id of the color to be applied to the text.
          */
-        public Configurator errorText(int text, int textSize, int textColor) {
-            viewErrorText = text;
-            viewErrorTextSize = textSize;
-            viewErrorTextColor = textColor;
+        public Configurator errorText(int textRes, int textSize, int textColor) {
+            if (textRes > 0) {
+                viewErrorText = textRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign textRes, the textRes value should be bigger than 0");
+            }
+            if (textSize > 0) {
+                viewErrorTextSize = textSize;
+            } else {
+                throw new IllegalArgumentException("Unable to assign textSize, the textSize value should be bigger than 0");
+            }
+            if (textColor > 0) {
+                viewErrorTextColor = textColor;
+            } else {
+                throw new IllegalArgumentException("Unable to assign textColor, the textColor value should be bigger than 0");
+            }
             return this;
         }
 
         /**
          * Customize the error view button.
          *
-         * @param text          Id of the text to be applied.
+         * @param textRes          Id of the text to be applied.
          * @param backgroundRes Id of the resource to be applied to the background
          */
-        public Configurator errorButton(int text, int backgroundRes) {
-            viewErrorTryAgainButtonText = text;
-            viewErrorTryAgainButtonBackgroundResource = backgroundRes;
+        public Configurator errorButton(int textRes, int backgroundRes) {
+            if (textRes > 0) {
+                viewErrorTryAgainButtonText = textRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign textRes, the textRes value should be bigger than 0");
+            }
+            if (backgroundRes > 0) {
+                viewErrorTryAgainButtonBackgroundResource = backgroundRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign backgroundRes, the backgroundRes value should be bigger than 0");
+            }
             return this;
         }
 
@@ -118,7 +146,11 @@ public class PlaceHolderManager {
          * @param imageRes Id of the image to be applied on the error view.
          */
         public Configurator errorImage(int imageRes) {
-            viewErrorImage = imageRes;
+            if (imageRes > 0) {
+                viewErrorImage = imageRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign imageRes, the imageRes value should be bigger than 0");
+            }
             return this;
         }
 
@@ -128,7 +160,11 @@ public class PlaceHolderManager {
          * @param color The id of the color to be applied to the background.
          */
         public Configurator loadingBackground(int color) {
-            viewLoadingBackgroundColor = color;
+            if (color > 0) {
+                viewLoadingBackgroundColor = color;
+            } else {
+                throw new IllegalArgumentException("Unable to assign color, the color value should be bigger than 0");
+            }
             return this;
         }
 
@@ -138,7 +174,11 @@ public class PlaceHolderManager {
          * @param backgroundRes The id of the resource to be applied to the background.
          */
         public Configurator loadingBackgroundResource(int backgroundRes) {
-            viewLoadingBackgroundResource = backgroundRes;
+            if (backgroundRes > 0) {
+                viewLoadingBackgroundResource = backgroundRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign backgroundRes, the backgroundRes value should be bigger than 0");
+            }
             return this;
         }
 
@@ -148,7 +188,11 @@ public class PlaceHolderManager {
          * @param color The id of the color to be applied to the background.
          */
         public Configurator emptyBackground(int color) {
-            viewEmptyBackgroundColor = color;
+            if (color > 0) {
+                viewEmptyBackgroundColor = color;
+            } else {
+                throw new IllegalArgumentException("Unable to assign color, the color value should be bigger than 0");
+            }
             return this;
         }
 
@@ -158,33 +202,57 @@ public class PlaceHolderManager {
          * @param backgroundRes The id of the resource to be applied to the background.
          */
         public Configurator emptyBackgroundResource(int backgroundRes) {
-            viewEmptyBackgroundResource = backgroundRes;
+            if (backgroundRes > 0) {
+                viewEmptyBackgroundResource = backgroundRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign backgroundRes, the backgroundRes value should be bigger than 0");
+            }
             return this;
         }
 
         /**
          * Customize the error view text.
          *
-         * @param text      Id of the text to be applied.
+         * @param textRes      Id of the text to be applied.
          * @param textSize  Text size to be applied (in sp).
          * @param textColor The id of the color to be applied to the text.
          */
-        public Configurator emptyText(int text, int textSize, int textColor) {
-            viewEmptyText = text;
-            viewEmptyTextSize = textSize;
-            viewEmptyTextColor = textColor;
+        public Configurator emptyText(int textRes, int textSize, int textColor) {
+            if (textRes > 0) {
+                viewEmptyText = textRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign textRes, the textRes value should be bigger than 0");
+            }
+            if (textSize > 0) {
+                viewEmptyTextSize = textSize;
+            } else {
+                throw new IllegalArgumentException("Unable to assign textSize, the textSize value should be bigger than 0");
+            }
+            if (textColor > 0) {
+                viewEmptyTextColor = textColor;
+            } else {
+                throw new IllegalArgumentException("Unable to assign textColor, the textColor value should be bigger than 0");
+            }
             return this;
         }
 
         /**
          * Customize the empty view button.
          *
-         * @param text          Id of the text to be applied.
+         * @param textRes          Id of the text to be applied.
          * @param backgroundRes Id of the resource to be applied to the background
          */
-        public Configurator emptyButton(int text, int backgroundRes) {
-            viewEmptyTryAgainButtonText = text;
-            viewEmptyTryAgainButtonBackgroundResource = backgroundRes;
+        public Configurator emptyButton(int textRes, int backgroundRes) {
+            if (textRes > 0) {
+                viewEmptyTryAgainButtonText = textRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign textRes, the textRes value should be bigger than 0");
+            }
+            if (backgroundRes > 0) {
+                viewEmptyTryAgainButtonBackgroundResource = backgroundRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign backgroundRes, the backgroundRes value should be bigger than 0");
+            }
             return this;
         }
 
@@ -194,7 +262,11 @@ public class PlaceHolderManager {
          * @param imageRes Id of the image to be applied on the empty view.
          */
         public Configurator emptyImage(int imageRes) {
-            viewEmptyImage = imageRes;
+            if (imageRes > 0) {
+                viewEmptyImage = imageRes;
+            } else {
+                throw new IllegalArgumentException("Unable to assign imageRes, the imageRes value should be bigger than 0");
+            }
             return this;
         }
 
