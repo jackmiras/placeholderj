@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 /**
@@ -48,6 +49,9 @@ public class CustomizeViews {
             viewLoading.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewLoadingBackgroundColor));
         } else if (placeHolderManager.viewLoadingBackgroundResource > 0) {
             viewLoading.setBackgroundResource(placeHolderManager.viewLoadingBackgroundResource);
+        } else if (placeHolderManager.viewProgressBarBackground > 0) {
+            ProgressBar progressBar = (ProgressBar) viewLoading.findViewById(R.id.view_loading_progress);
+            progressBar.setBackgroundResource(placeHolderManager.viewProgressBarBackground);
         }
         if (placeHolderManager.viewEmptyBackgroundColor > 0) {
             viewEmpty.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewEmptyBackgroundColor));

@@ -15,6 +15,7 @@ public class PlaceHolderManager {
     public int viewErrorImage;
     public int viewLoadingBackgroundColor;
     public int viewLoadingBackgroundResource;
+    public int viewProgressBarBackground;
     public int viewEmptyBackgroundColor;
     public int viewEmptyBackgroundResource;
     public int viewEmptyText;
@@ -24,7 +25,7 @@ public class PlaceHolderManager {
     public int viewEmptyTryAgainButtonBackgroundResource;
     public int viewEmptyImage;
 
-    public PlaceHolderManager(int viewErrorBackgroundColor, int viewErrorBackgroundResource, int viewErrorText, int viewErrorTextSize, int viewErrorTextColor, int viewErrorTryAgainButtonText, int viewErrorTryAgainButtonBackgroundResource, int viewErrorImage, int viewLoadingBackgroundColor, int viewLoadingBackgroundResource, int viewEmptyBackgroundColor, int viewEmptyBackgroundResource, int viewEmptyText, int viewEmptyTextSize, int viewEmptyTextColor, int viewEmptyTryAgainButtonText, int viewEmptyTryAgainButtonBackgroundResource, int viewEmptyImage) {
+    public PlaceHolderManager(int viewErrorBackgroundColor, int viewErrorBackgroundResource, int viewErrorText, int viewErrorTextSize, int viewErrorTextColor, int viewErrorTryAgainButtonText, int viewErrorTryAgainButtonBackgroundResource, int viewErrorImage, int viewLoadingBackgroundColor, int viewLoadingBackgroundResource, int viewProgressBarBackground, int viewEmptyBackgroundColor, int viewEmptyBackgroundResource, int viewEmptyText, int viewEmptyTextSize, int viewEmptyTextColor, int viewEmptyTryAgainButtonText, int viewEmptyTryAgainButtonBackgroundResource, int viewEmptyImage) {
         this.viewErrorBackgroundColor = viewErrorBackgroundColor;
         this.viewErrorBackgroundResource = viewErrorBackgroundResource;
         this.viewErrorText = viewErrorText;
@@ -35,6 +36,7 @@ public class PlaceHolderManager {
         this.viewErrorImage = viewErrorImage;
         this.viewLoadingBackgroundColor = viewLoadingBackgroundColor;
         this.viewLoadingBackgroundResource = viewLoadingBackgroundResource;
+        this.viewProgressBarBackground = viewProgressBarBackground;
         this.viewEmptyBackgroundColor = viewEmptyBackgroundColor;
         this.viewEmptyBackgroundResource = viewEmptyBackgroundResource;
         this.viewEmptyText = viewEmptyText;
@@ -57,6 +59,7 @@ public class PlaceHolderManager {
         private static int viewErrorImage;
         private static int viewLoadingBackgroundColor;
         private static int viewLoadingBackgroundResource;
+        private static int viewProgressBarBackgroundResource;
         private static int viewEmptyBackgroundColor;
         private static int viewEmptyBackgroundResource;
         private static int viewEmptyText;
@@ -93,7 +96,7 @@ public class PlaceHolderManager {
         /**
          * Customize the error view text.
          *
-         * @param textRes      Id of the text to be applied.
+         * @param textRes   Id of the text to be applied.
          * @param textSize  Text size to be applied (in sp).
          * @param textColor The id of the color to be applied to the text.
          */
@@ -113,7 +116,7 @@ public class PlaceHolderManager {
         /**
          * Customize the error view button.
          *
-         * @param textRes          Id of the text to be applied.
+         * @param textRes       Id of the text to be applied.
          * @param backgroundRes Id of the resource to be applied to the background
          */
         public Configurator errorButton(int textRes, int backgroundRes) {
@@ -162,6 +165,13 @@ public class PlaceHolderManager {
             return this;
         }
 
+        public Configurator progressBarBackgroundResource(int backgroundRes) {
+            if (backgroundRes > 0) {
+                viewProgressBarBackgroundResource = backgroundRes;
+            }
+            return this;
+        }
+
         /**
          * Customize the empty view background.
          *
@@ -189,7 +199,7 @@ public class PlaceHolderManager {
         /**
          * Customize the error view text.
          *
-         * @param textRes      Id of the text to be applied.
+         * @param textRes   Id of the text to be applied.
          * @param textSize  Text size to be applied (in sp).
          * @param textColor The id of the color to be applied to the text.
          */
@@ -209,7 +219,7 @@ public class PlaceHolderManager {
         /**
          * Customize the empty view button.
          *
-         * @param textRes          Id of the text to be applied.
+         * @param textRes       Id of the text to be applied.
          * @param backgroundRes Id of the resource to be applied to the background
          */
         public Configurator emptyButton(int textRes, int backgroundRes) {
@@ -235,7 +245,7 @@ public class PlaceHolderManager {
         }
 
         public PlaceHolderManager config() {
-            return new PlaceHolderManager(viewErrorBackgroundColor, viewErrorBackgroundResource, viewErrorText, viewErrorTextSize, viewErrorTextColor, viewErrorTryAgainButtonText, viewErrorTryAgainButtonBackgroundResource, viewErrorImage, viewLoadingBackgroundColor, viewLoadingBackgroundResource, viewEmptyBackgroundColor, viewEmptyBackgroundResource, viewEmptyText, viewEmptyTextSize, viewEmptyTextColor, viewEmptyTryAgainButtonText, viewEmptyTryAgainButtonBackgroundResource, viewEmptyImage);
+            return new PlaceHolderManager(viewErrorBackgroundColor, viewErrorBackgroundResource, viewErrorText, viewErrorTextSize, viewErrorTextColor, viewErrorTryAgainButtonText, viewErrorTryAgainButtonBackgroundResource, viewErrorImage, viewLoadingBackgroundColor, viewLoadingBackgroundResource, viewProgressBarBackgroundResource, viewEmptyBackgroundColor, viewEmptyBackgroundResource, viewEmptyText, viewEmptyTextSize, viewEmptyTextColor, viewEmptyTryAgainButtonText, viewEmptyTryAgainButtonBackgroundResource, viewEmptyImage);
         }
     }
 }
