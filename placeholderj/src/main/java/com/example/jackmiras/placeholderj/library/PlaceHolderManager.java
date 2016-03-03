@@ -74,8 +74,6 @@ public class PlaceHolderManager {
         public Configurator errorBackground(int color) {
             if (color > 0) {
                 viewErrorBackgroundColor = color;
-            } else {
-                throw new IllegalArgumentException("Unable to assign color, the color value should be bigger than 0");
             }
             return this;
         }
@@ -88,8 +86,6 @@ public class PlaceHolderManager {
         public Configurator errorBackgroundResource(int backgroundRes) {
             if (backgroundRes > 0) {
                 viewErrorBackgroundResource = backgroundRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign backgroundRes, the backgroundRes value should be bigger than 0");
             }
             return this;
         }
@@ -104,18 +100,12 @@ public class PlaceHolderManager {
         public Configurator errorText(int textRes, int textSize, int textColor) {
             if (textRes > 0) {
                 viewErrorText = textRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign textRes, the textRes value should be bigger than 0");
             }
             if (textSize > 0) {
                 viewErrorTextSize = textSize;
-            } else {
-                throw new IllegalArgumentException("Unable to assign textSize, the textSize value should be bigger than 0");
             }
             if (textColor > 0) {
                 viewErrorTextColor = textColor;
-            } else {
-                throw new IllegalArgumentException("Unable to assign textColor, the textColor value should be bigger than 0");
             }
             return this;
         }
@@ -129,13 +119,9 @@ public class PlaceHolderManager {
         public Configurator errorButton(int textRes, int backgroundRes) {
             if (textRes > 0) {
                 viewErrorTryAgainButtonText = textRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign textRes, the textRes value should be bigger than 0");
             }
             if (backgroundRes > 0) {
                 viewErrorTryAgainButtonBackgroundResource = backgroundRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign backgroundRes, the backgroundRes value should be bigger than 0");
             }
             return this;
         }
@@ -148,8 +134,6 @@ public class PlaceHolderManager {
         public Configurator errorImage(int imageRes) {
             if (imageRes > 0) {
                 viewErrorImage = imageRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign imageRes, the imageRes value should be bigger than 0");
             }
             return this;
         }
@@ -162,8 +146,6 @@ public class PlaceHolderManager {
         public Configurator loadingBackground(int color) {
             if (color > 0) {
                 viewLoadingBackgroundColor = color;
-            } else {
-                throw new IllegalArgumentException("Unable to assign color, the color value should be bigger than 0");
             }
             return this;
         }
@@ -176,8 +158,6 @@ public class PlaceHolderManager {
         public Configurator loadingBackgroundResource(int backgroundRes) {
             if (backgroundRes > 0) {
                 viewLoadingBackgroundResource = backgroundRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign backgroundRes, the backgroundRes value should be bigger than 0");
             }
             return this;
         }
@@ -190,8 +170,6 @@ public class PlaceHolderManager {
         public Configurator emptyBackground(int color) {
             if (color > 0) {
                 viewEmptyBackgroundColor = color;
-            } else {
-                throw new IllegalArgumentException("Unable to assign color, the color value should be bigger than 0");
             }
             return this;
         }
@@ -204,8 +182,6 @@ public class PlaceHolderManager {
         public Configurator emptyBackgroundResource(int backgroundRes) {
             if (backgroundRes > 0) {
                 viewEmptyBackgroundResource = backgroundRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign backgroundRes, the backgroundRes value should be bigger than 0");
             }
             return this;
         }
@@ -220,18 +196,12 @@ public class PlaceHolderManager {
         public Configurator emptyText(int textRes, int textSize, int textColor) {
             if (textRes > 0) {
                 viewEmptyText = textRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign textRes, the textRes value should be bigger than 0");
             }
             if (textSize > 0) {
                 viewEmptyTextSize = textSize;
-            } else {
-                throw new IllegalArgumentException("Unable to assign textSize, the textSize value should be bigger than 0");
             }
             if (textColor > 0) {
                 viewEmptyTextColor = textColor;
-            } else {
-                throw new IllegalArgumentException("Unable to assign textColor, the textColor value should be bigger than 0");
             }
             return this;
         }
@@ -245,13 +215,9 @@ public class PlaceHolderManager {
         public Configurator emptyButton(int textRes, int backgroundRes) {
             if (textRes > 0) {
                 viewEmptyTryAgainButtonText = textRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign textRes, the textRes value should be bigger than 0");
             }
             if (backgroundRes > 0) {
                 viewEmptyTryAgainButtonBackgroundResource = backgroundRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign backgroundRes, the backgroundRes value should be bigger than 0");
             }
             return this;
         }
@@ -264,8 +230,6 @@ public class PlaceHolderManager {
         public Configurator emptyImage(int imageRes) {
             if (imageRes > 0) {
                 viewEmptyImage = imageRes;
-            } else {
-                throw new IllegalArgumentException("Unable to assign imageRes, the imageRes value should be bigger than 0");
             }
             return this;
         }
