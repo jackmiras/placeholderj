@@ -71,7 +71,7 @@ public class PlaceHolderManager {
          *
          * @param color The id of the color to be applied to the background.
          */
-        public Configurator errorBackgroundColor(int color) {
+        public Configurator errorBackground(int color) {
             viewErrorBackgroundColor = color;
             return this;
         }

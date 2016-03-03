@@ -82,6 +82,7 @@ public class PlaceHolderJ {
     /**
      * Called when a instance of this class is created and needs to be initialized. The init method will get all views with
      * ids in viewsId using the Activity/View passed in the constructor
+     *
      * @param viewsId ids of the placeholder views
      */
     public void init(int... viewsId) {
@@ -230,13 +231,13 @@ public class PlaceHolderJ {
     }
 
     private void changeViewsVisibility() {
-        if (!isLoadingViewBeingShown && viewLoading.getVisibility() == View.VISIBLE) {
+        if (!isLoadingViewBeingShown && viewLoading != null && viewLoading.getVisibility() == View.VISIBLE) {
             setViewVisibility(viewLoading, View.GONE);
         }
-        if (!isEmptyViewBeingShown && viewEmpty.getVisibility() == View.VISIBLE) {
+        if (!isEmptyViewBeingShown && viewEmpty != null && viewEmpty.getVisibility() == View.VISIBLE) {
             setViewVisibility(viewEmpty, View.GONE);
         }
-        if (!isEmptyViewBeingShown && viewError.getVisibility() == View.VISIBLE) {
+        if (!isEmptyViewBeingShown && viewError != null && viewError.getVisibility() == View.VISIBLE) {
             setViewVisibility(viewError, View.GONE);
         }
         if (isLoadingViewBeingShown || isEmptyViewBeingShown || isErrorViewBeingShown) {
