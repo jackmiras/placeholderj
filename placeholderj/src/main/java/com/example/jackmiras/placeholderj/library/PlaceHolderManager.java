@@ -165,6 +165,11 @@ public class PlaceHolderManager {
             return this;
         }
 
+        /**
+         * Customize the progress bar background inside loading view.
+         *
+         * @param backgroundRes The id of the resource to be applied to the background.
+         */
         public Configurator progressBarBackgroundResource(int backgroundRes) {
             if (backgroundRes > 0) {
                 viewProgressBarBackgroundResource = backgroundRes;
