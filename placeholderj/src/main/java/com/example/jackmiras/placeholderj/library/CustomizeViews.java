@@ -23,7 +23,7 @@ public class CustomizeViews {
     }
 
     public void customize(Context context, View viewLoading, ViewGroup viewEmpty, ImageView viewEmptyImage, TextView viewEmptyMessage, Button viewEmptyTryAgainButton, ViewGroup viewError, ImageView viewErrorImage, TextView viewErrorMessage, Button viewErrorTryAgainButton) {
-        if (placeHolderManager.viewErrorBackgroundColor > 0) {
+        if (placeHolderManager.viewErrorBackgroundColor != 0) {
             viewError.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewErrorBackgroundColor));
         } else if (placeHolderManager.viewErrorBackgroundResource > 0) {
             viewError.setBackgroundResource(placeHolderManager.viewErrorBackgroundResource);
@@ -34,7 +34,7 @@ public class CustomizeViews {
         if (placeHolderManager.viewErrorTextSize > 0) {
             viewErrorMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, placeHolderManager.viewErrorTextSize);
         }
-        if (placeHolderManager.viewErrorTextColor > 0) {
+        if (placeHolderManager.viewErrorTextColor != 0) {
             viewErrorMessage.setTextColor(ContextCompat.getColor(context, placeHolderManager.viewErrorTextColor));
         }
         if (placeHolderManager.viewErrorTryAgainButtonText > 0) {
@@ -46,15 +46,16 @@ public class CustomizeViews {
         if (placeHolderManager.viewErrorImage > 0) {
             viewErrorImage.setImageDrawable(ContextCompat.getDrawable(context, placeHolderManager.viewErrorImage));
         }
-        if (placeHolderManager.viewLoadingBackgroundColor > 0) {
+        if (placeHolderManager.viewLoadingBackgroundColor != 0) {
             viewLoading.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewLoadingBackgroundColor));
         } else if (placeHolderManager.viewLoadingBackgroundResource > 0) {
             viewLoading.setBackgroundResource(placeHolderManager.viewLoadingBackgroundResource);
-        } else if (placeHolderManager.viewProgressBarColor > 0) {
-            ProgressBar progressBar = (ProgressBar) viewLoading.findViewById(R.id.view_loading_progress);
-            progressBar.getProgressDrawable().setColorFilter(placeHolderManager.viewProgressBarColor, PorterDuff.Mode.SRC_IN);
         }
-        if (placeHolderManager.viewEmptyBackgroundColor > 0) {
+        if (placeHolderManager.viewProgressBarColor != 0) {
+            ProgressBar progressBar = (ProgressBar) viewLoading.findViewById(R.id.view_loading_progress);
+            progressBar.getIndeterminateDrawable().setColorFilter(placeHolderManager.viewProgressBarColor, PorterDuff.Mode.SRC_IN);
+        }
+        if (placeHolderManager.viewEmptyBackgroundColor != 0) {
             viewEmpty.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewEmptyBackgroundColor));
         } else if (placeHolderManager.viewEmptyBackgroundResource > 0) {
             viewEmpty.setBackgroundResource(placeHolderManager.viewEmptyBackgroundResource);
@@ -65,7 +66,7 @@ public class CustomizeViews {
         if (placeHolderManager.viewEmptyTextSize > 0) {
             viewEmptyMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, placeHolderManager.viewEmptyTextSize);
         }
-        if (placeHolderManager.viewEmptyTextColor > 0) {
+        if (placeHolderManager.viewEmptyTextColor != 0) {
             viewEmptyMessage.setTextColor(ContextCompat.getColor(context, placeHolderManager.viewEmptyTextColor));
         }
         if (placeHolderManager.viewEmptyTryAgainButtonText > 0) {

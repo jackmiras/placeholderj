@@ -75,7 +75,7 @@ public class PlaceHolderManager {
          * @param color The id of the color to be applied to the background.
          */
         public Configurator errorBackground(int color) {
-            if (color > 0) {
+            if (color != 0) {
                 viewErrorBackgroundColor = color;
             }
             return this;
@@ -147,7 +147,7 @@ public class PlaceHolderManager {
          * @param color The id of the color to be applied to the background.
          */
         public Configurator loadingBackground(int color) {
-            if (color > 0) {
+            if (color != 0) {
                 viewLoadingBackgroundColor = color;
             }
             return this;
@@ -171,7 +171,7 @@ public class PlaceHolderManager {
          * @param color The id of the color to be applied to the progress bar.
          */
         public Configurator progressBarColor(int color) {
-            if (color > 0) {
+            if (color != 0) {
                 viewProgressBarColor = color;
             }
             return this;
@@ -183,7 +183,7 @@ public class PlaceHolderManager {
          * @param color The id of the color to be applied to the background.
          */
         public Configurator emptyBackground(int color) {
-            if (color > 0) {
+            if (color != 0) {
                 viewEmptyBackgroundColor = color;
             }
             return this;
