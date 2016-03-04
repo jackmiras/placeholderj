@@ -15,7 +15,7 @@ public class PlaceHolderManager {
     public int viewErrorImage;
     public int viewLoadingBackgroundColor;
     public int viewLoadingBackgroundResource;
-    public int viewProgressBarBackground;
+    public int viewProgressBarColor;
     public int viewEmptyBackgroundColor;
     public int viewEmptyBackgroundResource;
     public int viewEmptyText;
@@ -25,7 +25,7 @@ public class PlaceHolderManager {
     public int viewEmptyTryAgainButtonBackgroundResource;
     public int viewEmptyImage;
 
-    public PlaceHolderManager(int viewErrorBackgroundColor, int viewErrorBackgroundResource, int viewErrorText, int viewErrorTextSize, int viewErrorTextColor, int viewErrorTryAgainButtonText, int viewErrorTryAgainButtonBackgroundResource, int viewErrorImage, int viewLoadingBackgroundColor, int viewLoadingBackgroundResource, int viewProgressBarBackground, int viewEmptyBackgroundColor, int viewEmptyBackgroundResource, int viewEmptyText, int viewEmptyTextSize, int viewEmptyTextColor, int viewEmptyTryAgainButtonText, int viewEmptyTryAgainButtonBackgroundResource, int viewEmptyImage) {
+    public PlaceHolderManager(int viewErrorBackgroundColor, int viewErrorBackgroundResource, int viewErrorText, int viewErrorTextSize, int viewErrorTextColor, int viewErrorTryAgainButtonText, int viewErrorTryAgainButtonBackgroundResource, int viewErrorImage, int viewLoadingBackgroundColor, int viewLoadingBackgroundResource, int viewProgressBarColor, int viewEmptyBackgroundColor, int viewEmptyBackgroundResource, int viewEmptyText, int viewEmptyTextSize, int viewEmptyTextColor, int viewEmptyTryAgainButtonText, int viewEmptyTryAgainButtonBackgroundResource, int viewEmptyImage) {
         this.viewErrorBackgroundColor = viewErrorBackgroundColor;
         this.viewErrorBackgroundResource = viewErrorBackgroundResource;
         this.viewErrorText = viewErrorText;
@@ -36,7 +36,7 @@ public class PlaceHolderManager {
         this.viewErrorImage = viewErrorImage;
         this.viewLoadingBackgroundColor = viewLoadingBackgroundColor;
         this.viewLoadingBackgroundResource = viewLoadingBackgroundResource;
-        this.viewProgressBarBackground = viewProgressBarBackground;
+        this.viewProgressBarColor = viewProgressBarColor;
         this.viewEmptyBackgroundColor = viewEmptyBackgroundColor;
         this.viewEmptyBackgroundResource = viewEmptyBackgroundResource;
         this.viewEmptyText = viewEmptyText;
@@ -59,7 +59,7 @@ public class PlaceHolderManager {
         private static int viewErrorImage;
         private static int viewLoadingBackgroundColor;
         private static int viewLoadingBackgroundResource;
-        private static int viewProgressBarBackgroundResource;
+        private static int viewProgressBarColor;
         private static int viewEmptyBackgroundColor;
         private static int viewEmptyBackgroundResource;
         private static int viewEmptyText;
@@ -166,13 +166,13 @@ public class PlaceHolderManager {
         }
 
         /**
-         * Customize the progress bar background inside loading view.
+         * Customize the progress bar color inside loading view.
          *
-         * @param backgroundRes The id of the resource to be applied to the background.
+         * @param color The id of the color to be applied to the progress bar.
          */
-        public Configurator progressBarBackgroundResource(int backgroundRes) {
-            if (backgroundRes > 0) {
-                viewProgressBarBackgroundResource = backgroundRes;
+        public Configurator progressBarColor(int color) {
+            if (color > 0) {
+                viewProgressBarColor = color;
             }
             return this;
         }
@@ -250,7 +250,7 @@ public class PlaceHolderManager {
         }
 
         public PlaceHolderManager config() {
-            return new PlaceHolderManager(viewErrorBackgroundColor, viewErrorBackgroundResource, viewErrorText, viewErrorTextSize, viewErrorTextColor, viewErrorTryAgainButtonText, viewErrorTryAgainButtonBackgroundResource, viewErrorImage, viewLoadingBackgroundColor, viewLoadingBackgroundResource, viewProgressBarBackgroundResource, viewEmptyBackgroundColor, viewEmptyBackgroundResource, viewEmptyText, viewEmptyTextSize, viewEmptyTextColor, viewEmptyTryAgainButtonText, viewEmptyTryAgainButtonBackgroundResource, viewEmptyImage);
+            return new PlaceHolderManager(viewErrorBackgroundColor, viewErrorBackgroundResource, viewErrorText, viewErrorTextSize, viewErrorTextColor, viewErrorTryAgainButtonText, viewErrorTryAgainButtonBackgroundResource, viewErrorImage, viewLoadingBackgroundColor, viewLoadingBackgroundResource, viewProgressBarColor, viewEmptyBackgroundColor, viewEmptyBackgroundResource, viewEmptyText, viewEmptyTextSize, viewEmptyTextColor, viewEmptyTryAgainButtonText, viewEmptyTryAgainButtonBackgroundResource, viewEmptyImage);
         }
     }
 }

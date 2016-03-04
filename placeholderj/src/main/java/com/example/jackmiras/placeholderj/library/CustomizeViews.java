@@ -1,6 +1,7 @@
 package com.example.jackmiras.placeholderj.library;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.View;
@@ -49,9 +50,9 @@ public class CustomizeViews {
             viewLoading.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewLoadingBackgroundColor));
         } else if (placeHolderManager.viewLoadingBackgroundResource > 0) {
             viewLoading.setBackgroundResource(placeHolderManager.viewLoadingBackgroundResource);
-        } else if (placeHolderManager.viewProgressBarBackground > 0) {
+        } else if (placeHolderManager.viewProgressBarColor > 0) {
             ProgressBar progressBar = (ProgressBar) viewLoading.findViewById(R.id.view_loading_progress);
-            progressBar.setBackgroundResource(placeHolderManager.viewProgressBarBackground);
+            progressBar.getProgressDrawable().setColorFilter(placeHolderManager.viewProgressBarColor, PorterDuff.Mode.SRC_IN);
         }
         if (placeHolderManager.viewEmptyBackgroundColor > 0) {
             viewEmpty.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewEmptyBackgroundColor));
