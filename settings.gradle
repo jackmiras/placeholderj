@@ -1,1 +1,1 @@
-include ':app', ':placeholderj'
+include ':app', ':placeholderj-core'

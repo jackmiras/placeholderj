@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/placeholderj.iml" filepath="$PROJECT_DIR$/placeholderj.iml" />
-      <module fileurl="file://$PROJECT_DIR$/placeholderj/placeholderj-placeholderj.iml" filepath="$PROJECT_DIR$/placeholderj/placeholderj-placeholderj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/placeholderj-core/placeholderj-placeholderj.iml" filepath="$PROJECT_DIR$/placeholderj-core/placeholderj-placeholderj.iml" />
     </modules>
   </component>
 </project>

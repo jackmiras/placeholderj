@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PlaceholderJ Sample</string>
+    <string name="placeholderj_app_name">PlaceholderJ Sample</string>
 
     <string name="activity_coupons_label">Cupons</string>
     <string name="activity_coupons_empty">Você não possui cupons</string>
