@@ -24,7 +24,7 @@ allprojects {
 
 ``` groovy
 dependencies {
-    compile 'com.github.jackmiras:placeholderj:2.1.2'
+    compile 'com.github.jackmiras:placeholderj:2.1.3'
 }
 ```
 ###Quick Start
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         placeHolderJ = new PlaceHolderJ(this, R.id.recyclerview_cupon);
         placeHolderJ.init(R.id.view_loading, R.id.view_empty, R.id.view_error);
     }
@@ -83,18 +83,18 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         container = (ViewGroup) inflater.inflate(R.layout.fragment_main, null);
-        
+
         placeHolderJ = new PlaceHolderJ(container, R.id.recyclerview_cupon);
         placeHolderJ.init(R.id.view_loading, R.id.view_empty, R.id.view_error);
-        
+
         return container;
     }
 }
 ```
 Note the PlaceHolderJ() constructor takes two parameters, the Activity/ViewGroup that contains the views that will be managed by PlaceHolderJ, and the view that will contain the placeholders.
-You have to call the init method of your placeHolderJ instance and it takes up to three parameters, corresponding to the ids of the placeholder views for "loading", "error" and "empty", but you only have to include which ones that you need. 
+You have to call the init method of your placeHolderJ instance and it takes up to three parameters, corresponding to the ids of the placeholder views for "loading", "error" and "empty", but you only have to include which ones that you need.
 
-####Step 3 - If you need customize something in the PlaceHolderJ views, you can use PlaceHolderManager for that. 
+####Step 3 - If you need customize something in the PlaceHolderJ views, you can use PlaceHolderManager for that.
 You should keep a singleton of the PlaceHolderManager in your application. The usage of PlaceHolderManager is exemplified below:
 
 #####Application
@@ -135,12 +135,12 @@ public class MainActivity extends AppCompatActivity {
 
     private PlaceHolderJ placeHolderJ;
     private PlaceHolderManager placeHolderManager;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         placeHolderManager  = SampleApplication.getPlaceHolderManager();
         placeHolderJ = new PlaceHolderJ(this, R.id.recyclerview_cupon, placeHolderManager);
         placeHolderJ.init(R.id.view_loading, R.id.view_empty, R.id.view_error);
