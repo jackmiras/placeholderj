@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import retrofit.RetrofitError;
+import java.io.IOException;
 
 /**
  * Created by jackmiras on 03/10/15.
@@ -175,14 +175,14 @@ public class PlaceHolderJ {
      * @param error           The retrofit error from one of your application requests.
      * @param onClickListener The action that will be performed by the try again button present in error view layout.
      */
-    public void showError(RetrofitError error, View.OnClickListener onClickListener) {
+    public void showError(Throwable error, View.OnClickListener onClickListener) {
         if (viewLoading == null) {
             throw new NullPointerException("Unable to access Error View, check if the error view was initialized.");
         } else {
             isErrorViewBeingShown = true;
             changeViewsVisibility();
             if (!viewsAreCustomized) {
-                boolean isNetworkError = (error != null && error.getKind() == RetrofitError.Kind.NETWORK);
+                boolean isNetworkError = error != null && error instanceof IOException;
                 viewErrorImage.setImageResource(isNetworkError ? R.drawable.icon_error_network : R.drawable.icon_error_unknown);
                 viewErrorMessage.setText(isNetworkError ? R.string.global_network_error : R.string.global_unknown_error);
             }
@@ -247,4 +247,5 @@ public class PlaceHolderJ {
             setViewVisibility(viewContainer, View.VISIBLE);
         }
     }
+
 }
