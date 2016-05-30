@@ -20,9 +20,9 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CouponsActivity extends BaseActivity implements Callback<CouponResponse> {
 
@@ -67,9 +67,9 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
         }
     }
 
-    public void showErrorView(RetrofitError error) {
+    public void showErrorView(Throwable t) {
         placeHolderJ.hideLoading();
-        placeHolderJ.showError(error, new View.OnClickListener() {
+        placeHolderJ.showError(t, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 placeHolderJ.hideError();
@@ -87,15 +87,15 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
         } else if (getIntent().getExtras().containsKey(Constants.SAMPLE_EMPTY)) {
             //Used to make the empty view visible.
             isListEmpty = true;
-            ApiClient.getServices().getUserCoupons(this);
+            ApiClient.getService().getUserCoupons().enqueue(this);
         } else if (getIntent().getExtras().containsKey(Constants.SAMPLE_EMPTY_WITH_TRY_AGAIN)) {
             //Used to make the empty view with try again button visible.
             isListEmpty = true;
             isListEmptyTryAgainEnabled = true;
-            ApiClient.getServices().getUserCoupons(this);
+            ApiClient.getService().getUserCoupons().enqueue(this);
         } else {
             //Used to make the error view visible.
-            ApiClient.getServices().getUserCouponsWithError(this);
+            ApiClient.getService().getUserCouponsWithError().enqueue(this);
         }
     }
 
@@ -103,35 +103,39 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                ApiClient.getServices().getUserCoupons(CouponsActivity.this);
+                ApiClient.getService().getUserCoupons().enqueue(CouponsActivity.this);
             }
         }, 2000);
     }
 
     @Override
-    public void success(CouponResponse couponResponse, Response response) {
+    public void onResponse(Call<CouponResponse> call, Response<CouponResponse> response) {
         placeHolderJ.hideLoading();
-        //If isListEmpty is true, so the couponResponse.result receives an empty array to make the view empty visible.
-        couponResponse.result = isListEmpty ? new ArrayList<Coupon>() : couponResponse.result;
-        if (couponResponse.result != null && couponResponse.result.size() > 0) {
-            recyclerView.setAdapter(new MenuAdapter(CouponsActivity.this, couponResponse.result));
-        } else if (isListEmptyTryAgainEnabled) {
-            //If isListEmptyTryAgainEnabled is true, so the empty view with try again button will be shown.
-            placeHolderJ.showEmpty(R.string.activity_coupons_empty, new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    placeHolderJ.hideEmpty();
-                    requestUserCoupons();
-                }
-            });
+        if (response.isSuccessful() && response.body() != null) {
+            //If isListEmpty is true, so the couponResponse.result receives an empty array to make the view empty visible.
+            response.body().result = isListEmpty ? new ArrayList<Coupon>() : response.body().result;
+            if (response.body().result != null && response.body().result.size() > 0) {
+                recyclerView.setAdapter(new MenuAdapter(CouponsActivity.this, response.body().result));
+            } else if (isListEmptyTryAgainEnabled) {
+                //If isListEmptyTryAgainEnabled is true, so the empty view with try again button will be shown.
+                placeHolderJ.showEmpty(R.string.activity_coupons_empty, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        placeHolderJ.hideEmpty();
+                        requestUserCoupons();
+                    }
+                });
+            } else {
+                //If isListEmptyTryAgainEnabled is false, so the empty view without try again button will be shown.
+                placeHolderJ.showEmpty(R.string.activity_coupons_empty, null);
+            }
         } else {
-            //If isListEmptyTryAgainEnabled is false, so the empty view without try again button will be shown.
-            placeHolderJ.showEmpty(R.string.activity_coupons_empty, null);
+            onFailure(null, null);
         }
     }
 
     @Override
-    public void failure(RetrofitError error) {
-        showErrorView(error);
+    public void onFailure(Call<CouponResponse> call, Throwable t) {
+        showErrorView(t);
     }
 }

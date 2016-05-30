@@ -1,6 +1,6 @@
 package com.example.jackmiras.placeholderj.models;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,27 +10,28 @@ import java.util.Date;
  */
 public class Coupon implements Serializable {
 
-    @SerializedName("id")
+    @JsonProperty("id")
     public long id;
-    @SerializedName("user_id")
+    @JsonProperty("user_id")
     public long userId;
-    @SerializedName("company_name")
+    @JsonProperty("company_name")
     public String companyName;
-    @SerializedName("title")
+    @JsonProperty("title")
     public String title;
-    @SerializedName("description")
+    @JsonProperty("description")
     public String description;
-    @SerializedName("logo_url")
+    @JsonProperty("logo_url")
     public String logoUrl;
-    @SerializedName("img_url")
+    @JsonProperty("img_url")
     public String imgUrl;
-    @SerializedName("code")
+    @JsonProperty("code")
     public String code;
-    @SerializedName("expiration_date")
+    @JsonProperty("expiration_date")
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     public Date exprirationDate;
-    @SerializedName("redeem_phone")
+    @JsonProperty("redeem_phone")
     public String redeemPhone;
-    @SerializedName("type")
+    @JsonProperty("type")
     public Type type;
 
 }

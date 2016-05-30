@@ -1,6 +1,6 @@
 package com.example.jackmiras.placeholderj.models;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
@@ -9,10 +9,10 @@ import java.io.Serializable;
  */
 public class Type implements Serializable {
 
-    @SerializedName("type_code")
+    @JsonProperty("type_code")
     public int typeCode;
-    @SerializedName("status")
+    @JsonProperty("status")
     public int status;
-    @SerializedName("description")
+    @JsonProperty("description")
     public String description;
 }

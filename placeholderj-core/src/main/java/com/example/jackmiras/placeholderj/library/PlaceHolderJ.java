@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.IOException;
+import java.net.UnknownHostException;
 
 /**
  * Created by jackmiras on 03/10/15.
@@ -182,7 +182,7 @@ public class PlaceHolderJ {
             isErrorViewBeingShown = true;
             changeViewsVisibility();
             if (!viewsAreCustomized) {
-                boolean isNetworkError = error != null && error instanceof IOException;
+                boolean isNetworkError = error != null && error instanceof UnknownHostException;
                 viewErrorImage.setImageResource(isNetworkError ? R.drawable.icon_error_network : R.drawable.icon_error_unknown);
                 viewErrorMessage.setText(isNetworkError ? R.string.global_network_error : R.string.global_unknown_error);
             }

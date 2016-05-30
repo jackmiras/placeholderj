@@ -1,6 +1,6 @@
 package com.example.jackmiras.placeholderj.models;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,6 +9,7 @@ import java.util.List;
  * Created by jackson on 15/12/15.
  */
 public class CouponResponse implements Serializable {
-    @SerializedName("result")
+
+    @JsonProperty("result")
     public List<Coupon> result;
 }
