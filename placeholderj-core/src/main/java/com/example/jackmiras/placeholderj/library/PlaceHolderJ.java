@@ -112,8 +112,8 @@ public class PlaceHolderJ {
 
     private void customizeViews() {
         if (placeHolderManager != null && !viewsAreCustomized) {
-            CustomizeViews customizeViews = new CustomizeViews(placeHolderManager);
-            customizeViews.customize(context, viewLoading, viewLoadingMessage, viewEmpty, viewEmptyImage, viewEmptyMessage, viewEmptyTryAgainButton, viewError, viewErrorImage, viewErrorMessage, viewErrorTryAgainButton);
+            CustomizeViews customizeViews = new CustomizeViews(placeHolderManager, context);
+            customizeViews.customize(viewLoading, viewLoadingMessage, viewEmpty, viewEmptyImage, viewEmptyMessage, viewEmptyTryAgainButton, viewError, viewErrorImage, viewErrorMessage, viewErrorTryAgainButton);
             viewsAreCustomized = true;
         }
     }
