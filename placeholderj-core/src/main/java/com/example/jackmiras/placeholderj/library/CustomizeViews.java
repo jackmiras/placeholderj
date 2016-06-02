@@ -51,9 +51,18 @@ public class CustomizeViews {
         } else if (placeHolderManager.viewLoadingBackgroundResource > 0) {
             viewLoading.setBackgroundResource(placeHolderManager.viewLoadingBackgroundResource);
         }
-        if (placeHolderManager.viewProgressBarColor != 0) {
+        if (placeHolderManager.viewLoadingProgressBarColor != 0) {
             ProgressBar progressBar = (ProgressBar) viewLoading.findViewById(R.id.view_loading_progress);
-            progressBar.getIndeterminateDrawable().setColorFilter(placeHolderManager.viewProgressBarColor, PorterDuff.Mode.SRC_IN);
+            progressBar.getIndeterminateDrawable().setColorFilter(placeHolderManager.viewLoadingProgressBarColor, PorterDuff.Mode.SRC_IN);
+        }
+        if (placeHolderManager.viewLoadingText > 0) {
+            viewErrorMessage.setText(placeHolderManager.viewLoadingText);
+        }
+        if (placeHolderManager.viewLoadingTextSize > 0) {
+            viewErrorMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, placeHolderManager.viewLoadingTextSize);
+        }
+        if (placeHolderManager.viewLoadingTextColor != 0) {
+            viewErrorMessage.setTextColor(ContextCompat.getColor(context, placeHolderManager.viewLoadingTextColor));
         }
         if (placeHolderManager.viewEmptyBackgroundColor != 0) {
             viewEmpty.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewEmptyBackgroundColor));
