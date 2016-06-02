@@ -3,4 +3,5 @@
     <string name="global_try_again">Tentar novamente</string>
     <string name="global_unknown_error">Oops! Algo não ocorreu como planejamos.</string>
     <string name="global_network_error">Verifique sua conexão com a internet.</string>
+    <string name="global_loading">Carregando…</string>
 </resources>

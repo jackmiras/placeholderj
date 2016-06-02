@@ -21,7 +21,8 @@ public class PlaceHolderJ {
     private Context context;
 
     private View viewContainer = null;
-    public View viewLoading = null;
+    public ViewGroup viewLoading = null;
+    public TextView viewLoadingMessage = null;
     public ViewGroup viewEmpty = null;
     public ImageView viewEmptyImage = null;
     public TextView viewEmptyMessage = null;
@@ -89,7 +90,8 @@ public class PlaceHolderJ {
         context = view.getContext();
         for (int aViewsId : viewsId) {
             if (aViewsId == R.id.view_loading) {
-                viewLoading = view.findViewById(R.id.view_loading);
+                viewLoading = (ViewGroup) view.findViewById(R.id.view_loading);
+                viewLoadingMessage = (TextView) viewLoading.findViewById(R.id.view_loading_text);
             } else if (aViewsId == R.id.view_empty) {
                 viewEmpty = (ViewGroup) view.findViewById(R.id.view_empty);
                 viewEmptyImage = (ImageView) view.findViewById(R.id.imageview_empty_icon);
@@ -125,14 +127,22 @@ public class PlaceHolderJ {
     /**
      * Makes the loading view visible if the loading view was added to your layout.
      */
-    public void showLoading() {
+    public void showLoading(int textRes) {
         if (viewLoading == null) {
             throw new NullPointerException("Unable to access Loading View, check if the loading view was initialized");
         } else {
-            isLoadingViewBeingShown = true;
-            changeViewsVisibility();
-            setViewVisibility(viewLoading, View.VISIBLE);
+            viewLoadingMessage.setText(textRes);
+            showLoading();
         }
+    }
+
+    /**
+     * Makes the loading view visible if the loading view was added to your layout.
+     */
+    public void showLoading() {
+        isLoadingViewBeingShown = true;
+        changeViewsVisibility();
+        setViewVisibility(viewLoading, View.VISIBLE);
     }
 
     /**
@@ -145,9 +155,8 @@ public class PlaceHolderJ {
         if (viewLoading == null) {
             throw new NullPointerException("Unable to access Empty View, check if the empty view was initialized.");
         } else {
-            if (!viewsAreCustomized) {
-                viewEmptyMessage.setText(messageRes);
-            }
+            messageRes = messageRes == 0 ? R.string.global_empty_list : messageRes;
+            viewEmptyMessage.setText(messageRes);
             showEmpty(onClickListener);
         }
     }
