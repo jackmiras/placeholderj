@@ -22,7 +22,7 @@ public class CustomizeViews {
         this.placeHolderManager = placeHolderManager;
     }
 
-    public void customize(Context context, View viewLoading, ViewGroup viewEmpty, ImageView viewEmptyImage, TextView viewEmptyMessage, Button viewEmptyTryAgainButton, ViewGroup viewError, ImageView viewErrorImage, TextView viewErrorMessage, Button viewErrorTryAgainButton) {
+    public void customize(Context context, View viewLoading, TextView viewLoadingMessage, ViewGroup viewEmpty, ImageView viewEmptyImage, TextView viewEmptyMessage, Button viewEmptyTryAgainButton, ViewGroup viewError, ImageView viewErrorImage, TextView viewErrorMessage, Button viewErrorTryAgainButton) {
         if (placeHolderManager.viewErrorBackgroundColor != 0) {
             viewError.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewErrorBackgroundColor));
         } else if (placeHolderManager.viewErrorBackgroundResource > 0) {
@@ -56,13 +56,13 @@ public class CustomizeViews {
             progressBar.getIndeterminateDrawable().setColorFilter(placeHolderManager.viewLoadingProgressBarColor, PorterDuff.Mode.SRC_IN);
         }
         if (placeHolderManager.viewLoadingText > 0) {
-            viewErrorMessage.setText(placeHolderManager.viewLoadingText);
+            viewLoadingMessage.setText(placeHolderManager.viewLoadingText);
         }
         if (placeHolderManager.viewLoadingTextSize > 0) {
-            viewErrorMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, placeHolderManager.viewLoadingTextSize);
+            viewLoadingMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, placeHolderManager.viewLoadingTextSize);
         }
         if (placeHolderManager.viewLoadingTextColor != 0) {
-            viewErrorMessage.setTextColor(ContextCompat.getColor(context, placeHolderManager.viewLoadingTextColor));
+            viewLoadingMessage.setTextColor(ContextCompat.getColor(context, placeHolderManager.viewLoadingTextColor));
         }
         if (placeHolderManager.viewEmptyBackgroundColor != 0) {
             viewEmpty.setBackgroundColor(ContextCompat.getColor(context, placeHolderManager.viewEmptyBackgroundColor));
