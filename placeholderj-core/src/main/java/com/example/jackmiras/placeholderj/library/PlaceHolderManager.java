@@ -77,6 +77,11 @@ public class PlaceHolderManager {
         private static int viewEmptyTryAgainButtonText;
         private static int viewEmptyTryAgainButtonBackgroundResource;
         private static int viewEmptyImage;
+        private static Configurator configurator;
+
+        public Configurator() {
+            configurator = new Configurator();
+        }
 
         /**
          * Customize the error view background color.
@@ -88,7 +93,7 @@ public class PlaceHolderManager {
             if (color != 0) {
                 viewErrorBackgroundColor = color;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -101,7 +106,7 @@ public class PlaceHolderManager {
             if (backgroundRes > 0) {
                 viewErrorBackgroundResource = backgroundRes;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -122,7 +127,7 @@ public class PlaceHolderManager {
             if (textColor > 0) {
                 viewErrorTextColor = textColor;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -139,7 +144,7 @@ public class PlaceHolderManager {
             if (backgroundRes > 0) {
                 viewErrorTryAgainButtonBackgroundResource = backgroundRes;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -152,7 +157,7 @@ public class PlaceHolderManager {
             if (imageRes > 0) {
                 viewErrorImage = imageRes;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -173,7 +178,7 @@ public class PlaceHolderManager {
             if (textColor > 0) {
                 viewLoadingTextColor = textColor;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -186,7 +191,7 @@ public class PlaceHolderManager {
             if (color != 0) {
                 viewLoadingBackgroundColor = color;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -199,7 +204,7 @@ public class PlaceHolderManager {
             if (backgroundRes > 0) {
                 viewLoadingBackgroundResource = backgroundRes;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -212,7 +217,7 @@ public class PlaceHolderManager {
             if (color != 0) {
                 viewLoadingProgressBarColor = color;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -225,7 +230,7 @@ public class PlaceHolderManager {
             if (color != 0) {
                 viewEmptyBackgroundColor = color;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -238,7 +243,7 @@ public class PlaceHolderManager {
             if (backgroundRes > 0) {
                 viewEmptyBackgroundResource = backgroundRes;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -259,7 +264,7 @@ public class PlaceHolderManager {
             if (textColor > 0) {
                 viewEmptyTextColor = textColor;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -276,7 +281,7 @@ public class PlaceHolderManager {
             if (backgroundRes > 0) {
                 viewEmptyTryAgainButtonBackgroundResource = backgroundRes;
             }
-            return this;
+            return configurator;
         }
 
         /**
@@ -289,7 +294,7 @@ public class PlaceHolderManager {
             if (imageRes > 0) {
                 viewEmptyImage = imageRes;
             }
-            return this;
+            return configurator;
         }
 
         public PlaceHolderManager config() {
