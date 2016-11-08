@@ -1,11 +1,12 @@
 package com.example.jackmiras.placeholderj.library;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by jackson on 12/12/15.
  */
-public class PlaceHolderManager implements Serializable {
+public class PlaceHolderManager implements Parcelable {
 
     public int viewErrorBackgroundColor;
     public int viewErrorBackgroundResource;
@@ -56,7 +57,7 @@ public class PlaceHolderManager implements Serializable {
     }
 
 
-    public static class Configurator {
+    public static class Configurator implements Parcelable {
         private static int viewErrorBackgroundColor;
         private static int viewErrorBackgroundResource;
         private static int viewErrorText;
@@ -342,5 +343,87 @@ public class PlaceHolderManager implements Serializable {
                     viewEmptyTryAgainButtonBackgroundResource,
                     viewEmptyImage);
         }
+
+        /************************************* Parceable code *****************************************/
+
+        @Override
+        public int describeContents() { return 0; }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {}
+
+        protected Configurator(Parcel in) {}
+
+        public static final Creator<Configurator> CREATOR = new Creator<Configurator>() {
+            @Override
+            public Configurator createFromParcel(Parcel source) {return new Configurator(source);}
+
+            @Override
+            public Configurator[] newArray(int size) {return new Configurator[size];}
+        };
     }
+
+    /************************************* Parceable code *****************************************/
+
+    @Override
+    public int describeContents() { return 0; }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.viewErrorBackgroundColor);
+        dest.writeInt(this.viewErrorBackgroundResource);
+        dest.writeInt(this.viewErrorText);
+        dest.writeInt(this.viewErrorTextSize);
+        dest.writeInt(this.viewErrorTextColor);
+        dest.writeInt(this.viewErrorTryAgainButtonText);
+        dest.writeInt(this.viewErrorTryAgainButtonBackgroundResource);
+        dest.writeInt(this.viewErrorImage);
+        dest.writeInt(this.viewLoadingBackgroundColor);
+        dest.writeInt(this.viewLoadingBackgroundResource);
+        dest.writeInt(this.viewLoadingProgressBarColor);
+        dest.writeInt(this.viewLoadingText);
+        dest.writeInt(this.viewLoadingTextSize);
+        dest.writeInt(this.viewLoadingTextColor);
+        dest.writeInt(this.viewEmptyBackgroundColor);
+        dest.writeInt(this.viewEmptyBackgroundResource);
+        dest.writeInt(this.viewEmptyText);
+        dest.writeInt(this.viewEmptyTextSize);
+        dest.writeInt(this.viewEmptyTextColor);
+        dest.writeInt(this.viewEmptyTryAgainButtonText);
+        dest.writeInt(this.viewEmptyTryAgainButtonBackgroundResource);
+        dest.writeInt(this.viewEmptyImage);
+    }
+
+    protected PlaceHolderManager(Parcel in) {
+        this.viewErrorBackgroundColor = in.readInt();
+        this.viewErrorBackgroundResource = in.readInt();
+        this.viewErrorText = in.readInt();
+        this.viewErrorTextSize = in.readInt();
+        this.viewErrorTextColor = in.readInt();
+        this.viewErrorTryAgainButtonText = in.readInt();
+        this.viewErrorTryAgainButtonBackgroundResource = in.readInt();
+        this.viewErrorImage = in.readInt();
+        this.viewLoadingBackgroundColor = in.readInt();
+        this.viewLoadingBackgroundResource = in.readInt();
+        this.viewLoadingProgressBarColor = in.readInt();
+        this.viewLoadingText = in.readInt();
+        this.viewLoadingTextSize = in.readInt();
+        this.viewLoadingTextColor = in.readInt();
+        this.viewEmptyBackgroundColor = in.readInt();
+        this.viewEmptyBackgroundResource = in.readInt();
+        this.viewEmptyText = in.readInt();
+        this.viewEmptyTextSize = in.readInt();
+        this.viewEmptyTextColor = in.readInt();
+        this.viewEmptyTryAgainButtonText = in.readInt();
+        this.viewEmptyTryAgainButtonBackgroundResource = in.readInt();
+        this.viewEmptyImage = in.readInt();
+    }
+
+    public static final Parcelable.Creator<PlaceHolderManager> CREATOR = new Parcelable.Creator<PlaceHolderManager>() {
+        @Override
+        public PlaceHolderManager createFromParcel(Parcel source) {return new PlaceHolderManager(source);}
+
+        @Override
+        public PlaceHolderManager[] newArray(int size) {return new PlaceHolderManager[size];}
+    };
 }

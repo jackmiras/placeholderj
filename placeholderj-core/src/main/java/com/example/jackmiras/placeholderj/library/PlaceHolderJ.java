@@ -2,6 +2,8 @@ package com.example.jackmiras.placeholderj.library;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.net.UnknownHostException;
 
 import static android.view.View.GONE;
@@ -19,7 +20,7 @@ import static android.view.View.VISIBLE;
 /**
  * Created by jackmiras on 03/10/15.
  */
-public class PlaceHolderJ implements Serializable {
+public class PlaceHolderJ implements Parcelable {
 
     private final View view;
 
@@ -271,4 +272,45 @@ public class PlaceHolderJ implements Serializable {
         }
     }
 
+    /************************************* Parceable code *****************************************/
+
+    @Override
+    public int describeContents() { return 0; }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte(this.isLoadingViewBeingShown ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.isErrorViewBeingShown ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.isEmptyViewBeingShown ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.viewsAreCustomized ? (byte) 1 : (byte) 0);
+    }
+
+    protected PlaceHolderJ(Parcel in) {
+        this.view = in.readParcelable(View.class.getClassLoader());
+        this.placeHolderManager = in.readParcelable(PlaceHolderManager.class.getClassLoader());
+        this.context = in.readParcelable(Context.class.getClassLoader());
+        this.viewContainer = in.readParcelable(View.class.getClassLoader());
+        this.viewLoading = in.readParcelable(ViewGroup.class.getClassLoader());
+        this.viewLoadingMessage = in.readParcelable(TextView.class.getClassLoader());
+        this.viewEmpty = in.readParcelable(ViewGroup.class.getClassLoader());
+        this.viewEmptyImage = in.readParcelable(ImageView.class.getClassLoader());
+        this.viewEmptyMessage = in.readParcelable(TextView.class.getClassLoader());
+        this.viewEmptyTryAgainButton = in.readParcelable(Button.class.getClassLoader());
+        this.viewError = in.readParcelable(ViewGroup.class.getClassLoader());
+        this.viewErrorImage = in.readParcelable(ImageView.class.getClassLoader());
+        this.viewErrorMessage = in.readParcelable(TextView.class.getClassLoader());
+        this.viewErrorTryAgainButton = in.readParcelable(Button.class.getClassLoader());
+        this.isLoadingViewBeingShown = in.readByte() != 0;
+        this.isErrorViewBeingShown = in.readByte() != 0;
+        this.isEmptyViewBeingShown = in.readByte() != 0;
+        this.viewsAreCustomized = in.readByte() != 0;
+    }
+
+    public static final Parcelable.Creator<PlaceHolderJ> CREATOR = new Parcelable.Creator<PlaceHolderJ>() {
+        @Override
+        public PlaceHolderJ createFromParcel(Parcel source) {return new PlaceHolderJ(source);}
+
+        @Override
+        public PlaceHolderJ[] newArray(int size) {return new PlaceHolderJ[size];}
+    };
 }

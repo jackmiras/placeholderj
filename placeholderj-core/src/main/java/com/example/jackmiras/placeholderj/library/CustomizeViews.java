@@ -2,6 +2,8 @@ package com.example.jackmiras.placeholderj.library;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.View;
@@ -11,12 +13,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
 /**
  * Created by jackson on 13/12/15.
  */
-public class CustomizeViews implements Serializable {
+public class CustomizeViews implements Parcelable {
 
     private final PlaceHolderManager placeHolderManager;
     private final Context context;
@@ -110,4 +110,25 @@ public class CustomizeViews implements Serializable {
             }
         }
     }
+
+    @Override
+    public int describeContents() { return 0; }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.placeHolderManager, flags);
+    }
+
+    protected CustomizeViews(Parcel in) {
+        this.placeHolderManager = in.readParcelable(PlaceHolderManager.class.getClassLoader());
+        this.context = in.readParcelable(Context.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<CustomizeViews> CREATOR = new Parcelable.Creator<CustomizeViews>() {
+        @Override
+        public CustomizeViews createFromParcel(Parcel source) {return new CustomizeViews(source);}
+
+        @Override
+        public CustomizeViews[] newArray(int size) {return new CustomizeViews[size];}
+    };
 }
