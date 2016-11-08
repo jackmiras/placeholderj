@@ -24,7 +24,7 @@ allprojects {
 
 ``` groovy
 dependencies {
-    compile 'com.github.jackmiras:placeholderj:2.2.5'
+    compile 'com.github.jackmiras:placeholderj:2.2.6'
 }
 ```
 ###Quick Start
