@@ -1,9 +1,11 @@
 package com.example.jackmiras.placeholderj.library;
 
+import java.io.Serializable;
+
 /**
  * Created by jackson on 12/12/15.
  */
-public class PlaceHolderManager {
+public class PlaceHolderManager implements Serializable {
 
     public int viewErrorBackgroundColor;
     public int viewErrorBackgroundResource;

@@ -11,10 +11,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.io.Serializable;
+
 /**
  * Created by jackson on 13/12/15.
  */
-public class CustomizeViews {
+public class CustomizeViews implements Serializable {
 
     private final PlaceHolderManager placeHolderManager;
     private final Context context;

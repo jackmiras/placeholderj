@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.net.UnknownHostException;
 
 import static android.view.View.GONE;
@@ -18,7 +19,7 @@ import static android.view.View.VISIBLE;
 /**
  * Created by jackmiras on 03/10/15.
  */
-public class PlaceHolderJ {
+public class PlaceHolderJ implements Serializable {
 
     private final View view;
 
