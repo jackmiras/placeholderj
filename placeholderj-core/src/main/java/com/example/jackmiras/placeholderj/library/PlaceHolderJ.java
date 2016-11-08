@@ -2,6 +2,7 @@ package com.example.jackmiras.placeholderj.library;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -9,6 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.net.UnknownHostException;
+
+import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
 
 /**
  * Created by jackmiras on 03/10/15.
@@ -142,7 +147,7 @@ public class PlaceHolderJ {
     public void showLoading() {
         isLoadingViewBeingShown = true;
         changeViewsVisibility();
-        setViewVisibility(viewLoading, View.VISIBLE);
+        setViewVisibility(viewLoading, VISIBLE);
     }
 
     /**
@@ -170,12 +175,12 @@ public class PlaceHolderJ {
         isEmptyViewBeingShown = true;
         changeViewsVisibility();
         if (onClickListener == null) {
-            viewEmptyTryAgainButton.setVisibility(View.GONE);
+            viewEmptyTryAgainButton.setVisibility(GONE);
         } else {
-            viewEmptyTryAgainButton.setVisibility(View.VISIBLE);
+            viewEmptyTryAgainButton.setVisibility(VISIBLE);
             viewEmptyTryAgainButton.setOnClickListener(onClickListener);
         }
-        setViewVisibility(viewEmpty, View.VISIBLE);
+        setViewVisibility(viewEmpty, VISIBLE);
     }
 
     /**
@@ -196,7 +201,7 @@ public class PlaceHolderJ {
                 viewErrorMessage.setText(isNetworkError ? R.string.global_network_error : R.string.global_unknown_error);
             }
             viewErrorTryAgainButton.setOnClickListener(onClickListener);
-            setViewVisibility(viewError, View.VISIBLE);
+            setViewVisibility(viewError, VISIBLE);
         }
     }
 
@@ -209,7 +214,7 @@ public class PlaceHolderJ {
         } else {
             isLoadingViewBeingShown = false;
             changeViewsVisibility();
-            setViewVisibility(viewLoading, View.GONE);
+            setViewVisibility(viewLoading, GONE);
         }
     }
 
@@ -222,7 +227,7 @@ public class PlaceHolderJ {
         } else {
             isEmptyViewBeingShown = false;
             changeViewsVisibility();
-            setViewVisibility(viewEmpty, View.GONE);
+            setViewVisibility(viewEmpty, GONE);
         }
     }
 
@@ -235,25 +240,33 @@ public class PlaceHolderJ {
         } else {
             isErrorViewBeingShown = false;
             changeViewsVisibility();
-            setViewVisibility(viewError, View.GONE);
+            setViewVisibility(viewError, GONE);
         }
     }
 
     private void changeViewsVisibility() {
-        if (!isLoadingViewBeingShown && viewLoading != null && viewLoading.getVisibility() == View.VISIBLE) {
-            setViewVisibility(viewLoading, View.GONE);
-        }
-        if (!isEmptyViewBeingShown && viewEmpty != null && viewEmpty.getVisibility() == View.VISIBLE) {
-            setViewVisibility(viewEmpty, View.GONE);
-        }
-        if (!isEmptyViewBeingShown && viewError != null && viewError.getVisibility() == View.VISIBLE) {
-            setViewVisibility(viewError, View.GONE);
+        if (isLoadingViewBeingShown) {
+            viewLoading.setVisibility(VISIBLE);
+            viewEmpty.setVisibility(GONE);
+            viewError.setVisibility(GONE);
+        } else if (isEmptyViewBeingShown) {
+            viewEmpty.setVisibility(VISIBLE);
+            viewLoading.setVisibility(GONE);
+            viewError.setVisibility(GONE);
+        } else if (isErrorViewBeingShown) {
+            viewError.setVisibility(VISIBLE);
+            viewEmpty.setVisibility(GONE);
+            viewLoading.setVisibility(GONE);
         }
         if (isLoadingViewBeingShown || isEmptyViewBeingShown || isErrorViewBeingShown) {
-            setViewVisibility(viewContainer, View.GONE);
+            int visibility = viewContainer instanceof RecyclerView ? INVISIBLE : GONE;
+            setViewVisibility(viewContainer, visibility);
         }
         if (!isLoadingViewBeingShown && !isEmptyViewBeingShown && !isErrorViewBeingShown) {
-            setViewVisibility(viewContainer, View.VISIBLE);
+            setViewVisibility(viewContainer, VISIBLE);
+            viewLoading.setVisibility(GONE);
+            viewEmpty.setVisibility(GONE);
+            viewError.setVisibility(GONE);
         }
     }
 

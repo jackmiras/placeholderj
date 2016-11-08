@@ -1,5 +1,5 @@
 # PlaceholderJ
-PaceholderJ is a simple Android library created to help you to handle screens with empty lists, no itens found, loading and errors.
+PlaceholderJ is a simple Android library created to help you to handle screens with empty lists, no items found, loading and errors.
 
 ##Screenshots
 -----------
@@ -91,10 +91,10 @@ public class MainFragment extends Fragment {
     }
 }
 ```
-Note the PlaceHolderJ() constructor takes two parameters, the Activity/ViewGroup that contains the views that will be managed by PlaceHolderJ, and the view that will contain the placeholders.
-You have to call the init method of your placeHolderJ instance and it takes up to three parameters, corresponding to the ids of the placeholder views for "loading", "error" and "empty", but you only have to include which ones that you need.
+Note that PlaceHolderJ() constructor takes two parameters, the Activity/ViewGroup that contains the views that will be managed by PlaceHolderJ, and the view that will contain the placeholders.
+You have to call the init method of your PlaceHolderJ instance and it takes up to three parameters, corresponding to the ids of the placeholder views for "loading", "error" and "empty", but you only have to include which ones that you need.
 
-####Step 3 - If you need customize something in the PlaceHolderJ views, you can use PlaceHolderManager for that.
+####Step 3 - If you need to customize something in the PlaceHolderJ views, you can use PlaceHolderManager for that.
 You should keep a singleton of the PlaceHolderManager in your application. The usage of PlaceHolderManager is exemplified below:
 
 #####Application
@@ -128,7 +128,7 @@ public class SampleApplication extends Application {
         android:supportsRtl="true"
         android:theme="@style/SampleTheme" >
 ```
-#####And after that you only need to pass your PlaceHolderManager instance to the constructor of PlaceHolderJ in your Activity or Fragment. The implementation looks like the code below:
+And after that you only need to pass your PlaceHolderManager instance to the constructor of PlaceHolderJ in your Activity or Fragment. The implementation looks like the code below:
 
 ``` java
 public class MainActivity extends AppCompatActivity {
@@ -147,9 +147,9 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
-If you want check a sample app to get a more realistic idea of how use PlaceHolderJ click [here](https://github.com/jackmiras/placeholderj/tree/master/app/src/main).
+If you want to check a sample app to get a more realistic idea of how use PlaceHolderJ click [here](https://github.com/jackmiras/placeholderj/tree/master/app/src/main).
 
-If you want download the sample app click [here](https://drive.google.com/file/d/0B0Tf80UFMc0WZTFIb1dUbGdSLUk/view?usp=sharing).
+If you want to download the sample app click [here](https://drive.google.com/file/d/0B0Tf80UFMc0WZTFIb1dUbGdSLUk/view?usp=sharing).
 
 ## Pull Requests
 
