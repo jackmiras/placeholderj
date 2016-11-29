@@ -18,7 +18,7 @@ import com.example.jackmiras.placeholderj.models.CouponResponse;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,9 +28,9 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
 
     private final static int NUM_COLUMNS = 2;
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.recyclerview_coupon)
+    @BindView(R.id.recyclerview_coupon)
     RecyclerView recyclerView;
 
     private PlaceHolderJ placeHolderJ;

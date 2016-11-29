@@ -8,7 +8,7 @@ import android.view.View;
 import com.example.jackmiras.placeholderj.Constants;
 import com.example.jackmiras.placeholderj.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -17,7 +17,7 @@ import butterknife.OnClick;
  */
 public class MenuActivity extends BaseActivity {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @Override

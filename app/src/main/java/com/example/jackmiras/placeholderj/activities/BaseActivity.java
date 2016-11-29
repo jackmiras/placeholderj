@@ -9,9 +9,9 @@ import com.example.jackmiras.placeholderj.R;
 /**
  * Created by jackson on 26/12/15.
  */
-public class BaseActivity extends AppCompatActivity{
+public class BaseActivity extends AppCompatActivity {
 
-    public void setActionBar(Toolbar toolbar, int titleRes,boolean isDisplayHomeAsUp) {
+    public void setActionBar(Toolbar toolbar, int titleRes, boolean isDisplayHomeAsUp) {
         toolbar.setTitle("");
         ((TextView) toolbar.findViewById(R.id.textview_toolbar_title)).setText(titleRes);
         setSupportActionBar(toolbar);
