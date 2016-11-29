@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         applicationId "com.example.jackmiras.placeholderj"
@@ -17,9 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
 }
 
-def android_support_version = "25.0.0"
+def android_support_version = "25.0.1"
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
