@@ -27,15 +27,13 @@ public class PlaceHolderJ implements Parcelable {
     private PlaceHolderManager placeHolderManager;
     private Context context;
 
-    private View viewContainer = null;
+    private View viewContent = null;
     public ViewGroup viewLoading = null;
     public TextView viewLoadingMessage = null;
     public ViewGroup viewEmpty = null;
     public ImageView viewEmptyImage = null;
     public TextView viewEmptyMessage = null;
     public Button viewEmptyTryAgainButton = null;
-    public ViewGroup viewError = null;
-    public ImageView viewErrorImage = null;
     public TextView viewErrorMessage = null;
     public Button viewErrorTryAgainButton = null;
     private boolean isLoadingViewBeingShown;
@@ -80,8 +78,8 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     private void findContainerView(int viewContentId) {
-        viewContainer = view.findViewById(viewContentId);
-        if (viewContainer == null) {
+        viewContent = view.findViewById(viewContentId);
+        if (viewContent == null) {
             throw new NullPointerException("Unable to access Container View. You should pass the view that will be replaced by PlaceHolderJ views");
         }
     }
@@ -260,11 +258,11 @@ public class PlaceHolderJ implements Parcelable {
             viewLoading.setVisibility(GONE);
         }
         if (isLoadingViewBeingShown || isEmptyViewBeingShown || isErrorViewBeingShown) {
-            int visibility = viewContainer instanceof RecyclerView ? INVISIBLE : GONE;
-            setViewVisibility(viewContainer, visibility);
+            int visibility = viewContent instanceof RecyclerView ? INVISIBLE : GONE;
+            setViewVisibility(viewContent, visibility);
         }
         if (!isLoadingViewBeingShown && !isEmptyViewBeingShown && !isErrorViewBeingShown) {
-            setViewVisibility(viewContainer, VISIBLE);
+            setViewVisibility(viewContent, VISIBLE);
             viewLoading.setVisibility(GONE);
             viewEmpty.setVisibility(GONE);
             viewError.setVisibility(GONE);
@@ -288,7 +286,7 @@ public class PlaceHolderJ implements Parcelable {
         this.view = in.readParcelable(View.class.getClassLoader());
         this.placeHolderManager = in.readParcelable(PlaceHolderManager.class.getClassLoader());
         this.context = in.readParcelable(Context.class.getClassLoader());
-        this.viewContainer = in.readParcelable(View.class.getClassLoader());
+        this.viewContent = in.readParcelable(View.class.getClassLoader());
         this.viewLoading = in.readParcelable(ViewGroup.class.getClassLoader());
         this.viewLoadingMessage = in.readParcelable(TextView.class.getClassLoader());
         this.viewEmpty = in.readParcelable(ViewGroup.class.getClassLoader());
