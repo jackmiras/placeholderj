@@ -44,48 +44,47 @@ public class PlaceHolderJ implements Parcelable {
     private boolean viewsAreCustomized;
 
     /**
-     * @param activity           The activity used to find the view with the viewId and the placeholders in the init method
-     * @param viewId             The view that will have the placeholders
+     * @param activity           The activity used to find the view with the viewContentId and the placeholders in the init method
+     * @param viewContentId      The view that will have the placeholders
      * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views
      */
-    public PlaceHolderJ(Activity activity, int viewId, PlaceHolderManager placeHolderManager) {
-        this(activity.getWindow().getDecorView(), viewId, placeHolderManager);
+    public PlaceHolderJ(Activity activity, int viewContentId, PlaceHolderManager placeHolderManager) {
+        this(activity.getWindow().getDecorView(), viewContentId, placeHolderManager);
     }
 
     /**
-     * @param view               The view used to find the view with the viewId and the placeholders in the init method
-     * @param viewId             The view that will have the placeholders
+     * @param view               The view used to find the view with the viewContentId and the placeholders in the init method
+     * @param viewContentId      The view that will have the placeholders
      * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views
      */
-    public PlaceHolderJ(View view, int viewId, PlaceHolderManager placeHolderManager) {
-        this(view, viewId);
+    public PlaceHolderJ(View view, int viewContentId, PlaceHolderManager placeHolderManager) {
+        this(view, viewContentId);
         this.placeHolderManager = placeHolderManager;
     }
 
     /**
-     * @param activity The activity used to find the view with the viewId and the placeholders in the init method
-     * @param viewId   The view that will have the placeholders
+     * @param activity        The activity used to find the view with the viewContentId and the placeholders in the init method
+     * @param viewContentId   The view that will have the placeholders
      */
-    public PlaceHolderJ(Activity activity, int viewId) {
-        this(activity.getWindow().getDecorView(), viewId);
+    public PlaceHolderJ(Activity activity, int viewContentId) {
+        this(activity.getWindow().getDecorView(), viewContentId);
     }
 
     /**
-     * @param view   The view used to find the view with the viewId and the placeholders in the init method
-     * @param viewId The view that will have the placeholders
+     * @param view          The view used to find the view with the viewContentId and the placeholders in the init method
+     * @param viewContentId The view that will have the placeholders
      */
-    public PlaceHolderJ(View view, int viewId) {
+    public PlaceHolderJ(View view, int viewContentId) {
         this.view = view;
-        findContainerView(viewId);
+        findContainerView(viewContentId);
     }
 
-    private void findContainerView(int viewId) {
-        viewContainer = view.findViewById(viewId);
+    private void findContainerView(int viewContentId) {
+        viewContainer = view.findViewById(viewContentId);
         if (viewContainer == null) {
             throw new NullPointerException("Unable to access Container View. You should pass the view that will be replaced by PlaceHolderJ views");
         }
     }
-
 
     /**
      * Called when a instance of this class is created and needs to be initialized. The init method will get all views with
