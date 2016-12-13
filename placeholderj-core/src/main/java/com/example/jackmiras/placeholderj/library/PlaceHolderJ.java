@@ -34,6 +34,8 @@ public class PlaceHolderJ implements Parcelable {
     public ImageView viewEmptyImage = null;
     public TextView viewEmptyMessage = null;
     public Button viewEmptyTryAgainButton = null;
+    public ViewGroup viewError = null;
+    public ImageView viewErrorImage = null;
     public TextView viewErrorMessage = null;
     public Button viewErrorTryAgainButton = null;
     private boolean isLoadingViewBeingShown;
@@ -42,18 +44,18 @@ public class PlaceHolderJ implements Parcelable {
     private boolean viewsAreCustomized;
 
     /**
-     * @param activity           The activity used to find the view with the viewContentId and the placeholders in the init method
-     * @param viewContentId      The view that will have the placeholders
-     * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views
+     * @param activity           The activity used to find the view with the viewContentId and the placeholders in the init method.
+     * @param viewContentId      The view that represent your content and will be replaced by PlaceHolderJ views.
+     * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views.
      */
     public PlaceHolderJ(Activity activity, int viewContentId, PlaceHolderManager placeHolderManager) {
         this(activity.getWindow().getDecorView(), viewContentId, placeHolderManager);
     }
 
     /**
-     * @param view               The view used to find the view with the viewContentId and the placeholders in the init method
-     * @param viewContentId      The view that will have the placeholders
-     * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views
+     * @param view               The view used to find the view with the viewContentId and the placeholders in the init method.
+     * @param viewContentId      The view that represent your content and will be replaced by PlaceHolderJ views.
+     * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views.
      */
     public PlaceHolderJ(View view, int viewContentId, PlaceHolderManager placeHolderManager) {
         this(view, viewContentId);
@@ -61,16 +63,16 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * @param activity        The activity used to find the view with the viewContentId and the placeholders in the init method
-     * @param viewContentId   The view that will have the placeholders
+     * @param activity      The activity used to find the view with the viewContentId and the placeholders in the init method.
+     * @param viewContentId The view that represent your content and will be replaced by PlaceHolderJ views.
      */
     public PlaceHolderJ(Activity activity, int viewContentId) {
         this(activity.getWindow().getDecorView(), viewContentId);
     }
 
     /**
-     * @param view          The view used to find the view with the viewContentId and the placeholders in the init method
-     * @param viewContentId The view that will have the placeholders
+     * @param view          The view used to find the view with the viewContentId and the placeholders in the init method.
+     * @param viewContentId The view that represent your content and will be replaced by PlaceHolderJ views.
      */
     public PlaceHolderJ(View view, int viewContentId) {
         this.view = view;
@@ -85,8 +87,9 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * Called when a instance of this class is created and needs to be initialized. The init method will get all views with
-     * ids in viewsId using the Activity/View passed in the constructor
+     * Called when a instance of this class is created and needs to be initialized.
+     * The init method will get all views with ids in viewsId using the Activity/View passed
+     * in the constructor.
      *
      * @param viewsId ids of the placeholder views
      */
@@ -269,7 +272,9 @@ public class PlaceHolderJ implements Parcelable {
         }
     }
 
-    /************************************* Parceable code *****************************************/
+    /*************************************
+     * Parceable code
+     *****************************************/
 
     @Override
     public int describeContents() { return 0; }
