@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import java.net.UnknownHostException;
 
 import static android.view.View.GONE;
-import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 /**
@@ -28,6 +26,7 @@ public class PlaceHolderJ implements Parcelable {
     private Context context;
 
     private View viewContent = null;
+    private int viewContentId = 0;
     public ViewGroup viewLoading = null;
     public TextView viewLoadingMessage = null;
     public ViewGroup viewEmpty = null;
@@ -80,6 +79,7 @@ public class PlaceHolderJ implements Parcelable {
      */
     public PlaceHolderJ(View view, int viewContentId) {
         this.view = view;
+        this.viewContentId = viewContentId;
         findContainerView(viewContentId);
     }
 
@@ -152,7 +152,7 @@ public class PlaceHolderJ implements Parcelable {
      */
     public void showLoading() {
         isLoadingViewBeingShown = true;
-        changeViewsVisibility();
+        hideUnlessViewEquals(viewLoading.getId());
         setViewVisibility(viewLoading, VISIBLE);
     }
 
@@ -179,7 +179,7 @@ public class PlaceHolderJ implements Parcelable {
      */
     public void showEmpty(View.OnClickListener onClickListener) {
         isEmptyViewBeingShown = true;
-        changeViewsVisibility();
+        hideUnlessViewEquals(viewEmpty.getId());
         if (onClickListener == null) {
             viewEmptyTryAgainButton.setVisibility(GONE);
         } else {
@@ -200,7 +200,7 @@ public class PlaceHolderJ implements Parcelable {
             throw new NullPointerException("Unable to access Error View, check if the error view was initialized.");
         } else {
             isErrorViewBeingShown = true;
-            changeViewsVisibility();
+            hideUnlessViewEquals(viewError.getId());
             if (!viewsAreCustomized) {
                 boolean isNetworkError = error != null && error instanceof UnknownHostException;
                 viewErrorImage.setImageResource(isNetworkError ? R.drawable.icon_error_network : R.drawable.icon_error_unknown);
@@ -211,70 +211,13 @@ public class PlaceHolderJ implements Parcelable {
         }
     }
 
-    /**
-     * Makes the loading view invisible if the loading view was added to your layout.
-     */
-    public void hideLoading() {
-        if (viewLoading == null) {
-            throw new NullPointerException("Unable to access Loading View, check if the loading view was initialized");
-        } else {
-            isLoadingViewBeingShown = false;
-            changeViewsVisibility();
-            setViewVisibility(viewLoading, GONE);
-        }
+    private void hideUnlessViewEquals(int viewId) {
+        if (R.id.view_loading != viewId) setViewVisibility(viewLoading, GONE);
+        if (R.id.view_empty != viewId) setViewVisibility(viewEmpty, GONE);
+        if (R.id.view_error != viewId) setViewVisibility(viewError, GONE);
+        if (viewContentId != viewId) setViewVisibility(viewContent, GONE);
     }
 
-    /**
-     * Makes the empty view invisible if the loading view was added to your layout.
-     */
-    public void hideEmpty() {
-        if (viewLoading == null) {
-            throw new NullPointerException("Unable to access Empty View, check if the empty view was initialized.");
-        } else {
-            isEmptyViewBeingShown = false;
-            changeViewsVisibility();
-            setViewVisibility(viewEmpty, GONE);
-        }
-    }
-
-    /**
-     * Makes the empty view invisible if the loading view was added to your layout.
-     */
-    public void hideError() {
-        if (viewLoading == null) {
-            throw new NullPointerException("Unable to access Error View, check if the error view was initialized.");
-        } else {
-            isErrorViewBeingShown = false;
-            changeViewsVisibility();
-            setViewVisibility(viewError, GONE);
-        }
-    }
-
-    private void changeViewsVisibility() {
-        if (isLoadingViewBeingShown) {
-            viewLoading.setVisibility(VISIBLE);
-            viewEmpty.setVisibility(GONE);
-            viewError.setVisibility(GONE);
-        } else if (isEmptyViewBeingShown) {
-            viewEmpty.setVisibility(VISIBLE);
-            viewLoading.setVisibility(GONE);
-            viewError.setVisibility(GONE);
-        } else if (isErrorViewBeingShown) {
-            viewError.setVisibility(VISIBLE);
-            viewEmpty.setVisibility(GONE);
-            viewLoading.setVisibility(GONE);
-        }
-        if (isLoadingViewBeingShown || isEmptyViewBeingShown || isErrorViewBeingShown) {
-            int visibility = viewContent instanceof RecyclerView ? INVISIBLE : GONE;
-            setViewVisibility(viewContent, visibility);
-        }
-        if (!isLoadingViewBeingShown && !isEmptyViewBeingShown && !isErrorViewBeingShown) {
-            setViewVisibility(viewContent, VISIBLE);
-            viewLoading.setVisibility(GONE);
-            viewEmpty.setVisibility(GONE);
-            viewError.setVisibility(GONE);
-        }
-    }
 
     /***********************************************************************************************
      *                             Parcelable methods implementation.                              *
