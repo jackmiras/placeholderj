@@ -205,6 +205,19 @@ public class PlaceHolderJ implements Parcelable {
         }
     }
 
+    /**
+     * Makes the content view visible if the content view was added to your layout.
+     */
+    public void showContent() {
+        if (viewContent == null) {
+            throw new NullPointerException("Unable to access Content View, check if the content view " +
+                    "was initialized.");
+        } else {
+            hideUnlessViewEquals(viewContentId);
+            setViewVisibility(viewContent, VISIBLE);
+        }
+    }
+    
     private void hideUnlessViewEquals(int viewId) {
         if (R.id.view_loading != viewId) setViewVisibility(viewLoading, GONE);
         if (R.id.view_empty != viewId) setViewVisibility(viewEmpty, GONE);
