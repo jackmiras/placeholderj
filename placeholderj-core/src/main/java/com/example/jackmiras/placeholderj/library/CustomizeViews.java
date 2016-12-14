@@ -19,7 +19,11 @@ import android.widget.TextView;
 public class CustomizeViews implements Parcelable {
 
     private final PlaceHolderManager placeHolderManager;
-    private final Context context;
+    private Context context;
+
+    protected CustomizeViews(Parcel in) {
+        this.placeHolderManager = in.readParcelable(PlaceHolderManager.class.getClassLoader());
+    }
 
     public CustomizeViews(PlaceHolderManager placeHolderManager, Context context) {
         this.placeHolderManager = placeHolderManager;
@@ -111,6 +115,9 @@ public class CustomizeViews implements Parcelable {
         }
     }
 
+    /***********************************************************************************************
+     *                              Parcelable methods implementation.                             *
+     **********************************************************************************************/
     @Override
     public int describeContents() { return 0; }
 
@@ -119,12 +126,7 @@ public class CustomizeViews implements Parcelable {
         dest.writeParcelable(this.placeHolderManager, flags);
     }
 
-    protected CustomizeViews(Parcel in) {
-        this.placeHolderManager = in.readParcelable(PlaceHolderManager.class.getClassLoader());
-        this.context = in.readParcelable(Context.class.getClassLoader());
-    }
-
-    public static final Parcelable.Creator<CustomizeViews> CREATOR = new Parcelable.Creator<CustomizeViews>() {
+    public static final Creator<CustomizeViews> CREATOR = new Creator<CustomizeViews>() {
         @Override
         public CustomizeViews createFromParcel(Parcel source) {return new CustomizeViews(source);}
 

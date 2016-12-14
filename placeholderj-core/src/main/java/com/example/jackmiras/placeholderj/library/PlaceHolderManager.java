@@ -31,6 +31,31 @@ public class PlaceHolderManager implements Parcelable {
     public int viewEmptyTryAgainButtonBackgroundResource;
     public int viewEmptyImage;
 
+    protected PlaceHolderManager(Parcel in) {
+        this.viewErrorBackgroundColor = in.readInt();
+        this.viewErrorBackgroundResource = in.readInt();
+        this.viewErrorText = in.readInt();
+        this.viewErrorTextSize = in.readInt();
+        this.viewErrorTextColor = in.readInt();
+        this.viewErrorTryAgainButtonText = in.readInt();
+        this.viewErrorTryAgainButtonBackgroundResource = in.readInt();
+        this.viewErrorImage = in.readInt();
+        this.viewLoadingBackgroundColor = in.readInt();
+        this.viewLoadingBackgroundResource = in.readInt();
+        this.viewLoadingProgressBarColor = in.readInt();
+        this.viewLoadingText = in.readInt();
+        this.viewLoadingTextSize = in.readInt();
+        this.viewLoadingTextColor = in.readInt();
+        this.viewEmptyBackgroundColor = in.readInt();
+        this.viewEmptyBackgroundResource = in.readInt();
+        this.viewEmptyText = in.readInt();
+        this.viewEmptyTextSize = in.readInt();
+        this.viewEmptyTextColor = in.readInt();
+        this.viewEmptyTryAgainButtonText = in.readInt();
+        this.viewEmptyTryAgainButtonBackgroundResource = in.readInt();
+        this.viewEmptyImage = in.readInt();
+    }
+
     public PlaceHolderManager(int viewErrorBackgroundColor, int viewErrorBackgroundResource, int viewErrorText, int viewErrorTextSize, int viewErrorTextColor, int viewErrorTryAgainButtonText, int viewErrorTryAgainButtonBackgroundResource, int viewErrorImage, int viewLoadingBackgroundColor, int viewLoadingBackgroundResource, int viewLoadingProgressBarColor, int viewLoadingText, int viewLoadingTextSize, int viewLoadingTextColor, int viewEmptyBackgroundColor, int viewEmptyBackgroundResource, int viewEmptyText, int viewEmptyTextSize, int viewEmptyTextColor, int viewEmptyTryAgainButtonText, int viewEmptyTryAgainButtonBackgroundResource, int viewEmptyImage) {
         this.viewErrorBackgroundColor = viewErrorBackgroundColor;
         this.viewErrorBackgroundResource = viewErrorBackgroundResource;
@@ -57,7 +82,7 @@ public class PlaceHolderManager implements Parcelable {
     }
 
 
-    public static class Configurator implements Parcelable {
+    public static class Configurator {
         private static int viewErrorBackgroundColor;
         private static int viewErrorBackgroundResource;
         private static int viewErrorText;
@@ -343,28 +368,11 @@ public class PlaceHolderManager implements Parcelable {
                     viewEmptyTryAgainButtonBackgroundResource,
                     viewEmptyImage);
         }
-
-        /************************************* Parceable code *****************************************/
-
-        @Override
-        public int describeContents() { return 0; }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {}
-
-        protected Configurator(Parcel in) {}
-
-        public static final Creator<Configurator> CREATOR = new Creator<Configurator>() {
-            @Override
-            public Configurator createFromParcel(Parcel source) {return new Configurator(source);}
-
-            @Override
-            public Configurator[] newArray(int size) {return new Configurator[size];}
-        };
     }
 
-    /************************************* Parceable code *****************************************/
-
+    /***********************************************************************************************
+     *                              Parcelable methods implementation.                             *
+     **********************************************************************************************/
     @Override
     public int describeContents() { return 0; }
 
@@ -394,32 +402,7 @@ public class PlaceHolderManager implements Parcelable {
         dest.writeInt(this.viewEmptyImage);
     }
 
-    protected PlaceHolderManager(Parcel in) {
-        this.viewErrorBackgroundColor = in.readInt();
-        this.viewErrorBackgroundResource = in.readInt();
-        this.viewErrorText = in.readInt();
-        this.viewErrorTextSize = in.readInt();
-        this.viewErrorTextColor = in.readInt();
-        this.viewErrorTryAgainButtonText = in.readInt();
-        this.viewErrorTryAgainButtonBackgroundResource = in.readInt();
-        this.viewErrorImage = in.readInt();
-        this.viewLoadingBackgroundColor = in.readInt();
-        this.viewLoadingBackgroundResource = in.readInt();
-        this.viewLoadingProgressBarColor = in.readInt();
-        this.viewLoadingText = in.readInt();
-        this.viewLoadingTextSize = in.readInt();
-        this.viewLoadingTextColor = in.readInt();
-        this.viewEmptyBackgroundColor = in.readInt();
-        this.viewEmptyBackgroundResource = in.readInt();
-        this.viewEmptyText = in.readInt();
-        this.viewEmptyTextSize = in.readInt();
-        this.viewEmptyTextColor = in.readInt();
-        this.viewEmptyTryAgainButtonText = in.readInt();
-        this.viewEmptyTryAgainButtonBackgroundResource = in.readInt();
-        this.viewEmptyImage = in.readInt();
-    }
-
-    public static final Parcelable.Creator<PlaceHolderManager> CREATOR = new Parcelable.Creator<PlaceHolderManager>() {
+    public static final Creator<PlaceHolderManager> CREATOR = new Creator<PlaceHolderManager>() {
         @Override
         public PlaceHolderManager createFromParcel(Parcel source) {return new PlaceHolderManager(source);}
 
