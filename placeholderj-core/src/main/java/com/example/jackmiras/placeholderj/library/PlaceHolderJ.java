@@ -37,9 +37,6 @@ public class PlaceHolderJ implements Parcelable {
     public ImageView viewErrorImage = null;
     public TextView viewErrorMessage = null;
     public Button viewErrorTryAgainButton = null;
-    private boolean isLoadingViewBeingShown;
-    private boolean isErrorViewBeingShown;
-    private boolean isEmptyViewBeingShown;
     private boolean viewsAreCustomized;
 
     private PlaceHolderJ(Parcel in) {
@@ -151,7 +148,6 @@ public class PlaceHolderJ implements Parcelable {
      * Makes the loading view visible if the loading view was added to your layout.
      */
     public void showLoading() {
-        isLoadingViewBeingShown = true;
         hideUnlessViewEquals(viewLoading.getId());
         setViewVisibility(viewLoading, VISIBLE);
     }
@@ -178,7 +174,6 @@ public class PlaceHolderJ implements Parcelable {
      * @param onClickListener The action that will be performed by the try again button present in empty view layout.
      */
     public void showEmpty(View.OnClickListener onClickListener) {
-        isEmptyViewBeingShown = true;
         hideUnlessViewEquals(viewEmpty.getId());
         if (onClickListener == null) {
             viewEmptyTryAgainButton.setVisibility(GONE);
@@ -199,7 +194,6 @@ public class PlaceHolderJ implements Parcelable {
         if (viewLoading == null) {
             throw new NullPointerException("Unable to access Error View, check if the error view was initialized.");
         } else {
-            isErrorViewBeingShown = true;
             hideUnlessViewEquals(viewError.getId());
             if (!viewsAreCustomized) {
                 boolean isNetworkError = error != null && error instanceof UnknownHostException;
