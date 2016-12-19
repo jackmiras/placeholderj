@@ -124,7 +124,18 @@ public class PlaceHolderJ implements Parcelable {
     private void customizeViews() {
         if (mPlaceHolderManager != null && !mViewsAreCustomized) {
             CustomizeViews customizeViews = new CustomizeViews(mPlaceHolderManager, mContext);
-            customizeViews.customize(mViewLoading, mViewLoadingMessage, mViewEmpty, mViewEmptyImage, mViewEmptyMessage, mViewEmptyTryAgainButton, mViewError, mViewErrorImage, mViewErrorMessage, mViewErrorTryAgainButton);
+            customizeViews.customize(
+                    mViewLoading,
+                    mViewLoadingMessage,
+                    mViewEmpty,
+                    mViewEmptyImage,
+                    mViewEmptyMessage,
+                    mViewEmptyTryAgainButton,
+                    mViewError,
+                    mViewErrorImage,
+                    mViewErrorMessage,
+                    mViewErrorTryAgainButton
+            );
             mViewsAreCustomized = true;
         }
     }
@@ -230,7 +241,7 @@ public class PlaceHolderJ implements Parcelable {
 
 
     /***********************************************************************************************
-     *                             Parcelable methods implementation.                              *
+     * Parcelable methods implementation.                              *
      **********************************************************************************************/
     @Override
     public int describeContents() { return 0; }
