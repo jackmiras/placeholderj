@@ -20,35 +20,35 @@ import static android.view.View.VISIBLE;
  */
 public class PlaceHolderJ implements Parcelable {
 
-    private View parent;
-    private PlaceHolderManager placeHolderManager;
-    private Context context;
+    private View mParent;
+    private PlaceHolderManager mPlaceHolderManager;
+    private Context mContext;
 
-    private View viewContent = null;
-    private int viewContentId = 0;
+    private View mViewContent = null;
+    private int mViewContentId = 0;
 
-    private ViewGroup viewLoading = null;
-    private TextView viewLoadingMessage = null;
+    private ViewGroup mViewLoading = null;
+    private TextView mViewLoadingMessage = null;
 
-    private ViewGroup viewEmpty = null;
-    private ImageView viewEmptyImage = null;
-    private TextView viewEmptyMessage = null;
-    private Button viewEmptyTryAgainButton = null;
+    private ViewGroup mViewEmpty = null;
+    private ImageView mViewEmptyImage = null;
+    private TextView mViewEmptyMessage = null;
+    private Button mViewEmptyTryAgainButton = null;
 
-    private ViewGroup viewError = null;
-    private ImageView viewErrorImage = null;
-    private TextView viewErrorMessage = null;
-    private Button viewErrorTryAgainButton = null;
+    private ViewGroup mViewError = null;
+    private ImageView mViewErrorImage = null;
+    private TextView mViewErrorMessage = null;
+    private Button mViewErrorTryAgainButton = null;
 
-    private boolean viewsAreCustomized;
+    private boolean mViewsAreCustomized;
 
     private PlaceHolderJ(Parcel in) {
-        this.viewsAreCustomized = in.readByte() != 0;
+        this.mViewsAreCustomized = in.readByte() != 0;
     }
 
     /**
-     * @param activity           The activity used to find the parent with the viewContentId and the placeholders in the init method.
-     * @param viewContentId      The parent that represent your content and will be replaced by PlaceHolderJ views.
+     * @param activity           The activity used to find the mParent with the mViewContentId and the placeholders in the init method.
+     * @param viewContentId      The mParent that represent your content and will be replaced by PlaceHolderJ views.
      * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views.
      */
     public PlaceHolderJ(Activity activity, int viewContentId, PlaceHolderManager placeHolderManager) {
@@ -56,37 +56,37 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * @param parent             The parent used to find the parent with the viewContentId and the placeholders in the init method.
-     * @param viewContentId      The parent that represent your content and will be replaced by PlaceHolderJ views.
+     * @param parent             The mParent used to find the mParent with the mViewContentId and the placeholders in the init method.
+     * @param viewContentId      The mParent that represent your content and will be replaced by PlaceHolderJ views.
      * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views.
      */
     public PlaceHolderJ(View parent, int viewContentId, PlaceHolderManager placeHolderManager) {
         this(parent, viewContentId);
-        this.placeHolderManager = placeHolderManager;
+        this.mPlaceHolderManager = placeHolderManager;
     }
 
     /**
-     * @param activity      The activity used to find the parent with the viewContentId and the placeholders in the init method.
-     * @param viewContentId The parent that represent your content and will be replaced by PlaceHolderJ views.
+     * @param activity      The activity used to find the mParent with the mViewContentId and the placeholders in the init method.
+     * @param viewContentId The mParent that represent your content and will be replaced by PlaceHolderJ views.
      */
     public PlaceHolderJ(Activity activity, int viewContentId) {
         this(activity.getWindow().getDecorView(), viewContentId);
     }
 
     /**
-     * @param parent        The parent used to find the parent with the viewContentId and the placeholders in the init method.
-     * @param viewContentId The parent that represent your content and will be replaced by PlaceHolderJ views.
+     * @param parent        The mParent used to find the mParent with the mViewContentId and the placeholders in the init method.
+     * @param viewContentId The mParent that represent your content and will be replaced by PlaceHolderJ views.
      */
     public PlaceHolderJ(View parent, int viewContentId) {
-        this.parent = parent;
-        this.viewContentId = viewContentId;
+        this.mParent = parent;
+        this.mViewContentId = viewContentId;
         findContainerView(viewContentId);
     }
 
     private void findContainerView(int viewContentId) {
-        viewContent = parent.findViewById(viewContentId);
-        if (viewContent == null) {
-            throw new NullPointerException("Unable to access Container View. You should pass the parent that will be replaced by PlaceHolderJ views");
+        mViewContent = mParent.findViewById(viewContentId);
+        if (mViewContent == null) {
+            throw new NullPointerException("Unable to access Container View. You should pass the mParent that will be replaced by PlaceHolderJ views");
         }
     }
 
@@ -98,34 +98,34 @@ public class PlaceHolderJ implements Parcelable {
      * @param viewsId ids of the placeholder views
      */
     public void init(int... viewsId) {
-        context = parent.getContext();
+        mContext = mParent.getContext();
         for (int aViewsId : viewsId) {
             if (aViewsId == R.id.view_loading) {
-                viewLoading = (ViewGroup) parent.findViewById(R.id.view_loading);
-                viewLoadingMessage = (TextView) viewLoading.findViewById(R.id.view_loading_text);
+                mViewLoading = (ViewGroup) mParent.findViewById(R.id.view_loading);
+                mViewLoadingMessage = (TextView) mViewLoading.findViewById(R.id.view_loading_text);
             } else if (aViewsId == R.id.view_empty) {
-                viewEmpty = (ViewGroup) parent.findViewById(R.id.view_empty);
-                viewEmptyImage = (ImageView) parent.findViewById(R.id.imageview_empty_icon);
-                viewEmptyMessage = (TextView) parent.findViewById(R.id.textview_empty_message);
-                viewEmptyTryAgainButton = (Button) parent.findViewById(R.id.button_empty_try_again);
+                mViewEmpty = (ViewGroup) mParent.findViewById(R.id.view_empty);
+                mViewEmptyImage = (ImageView) mParent.findViewById(R.id.imageview_empty_icon);
+                mViewEmptyMessage = (TextView) mParent.findViewById(R.id.textview_empty_message);
+                mViewEmptyTryAgainButton = (Button) mParent.findViewById(R.id.button_empty_try_again);
             } else if (aViewsId == R.id.view_error) {
-                viewError = (ViewGroup) parent.findViewById(R.id.view_error);
-                viewErrorImage = (ImageView) parent.findViewById(R.id.imageview_error_icon);
-                viewErrorMessage = (TextView) parent.findViewById(R.id.textview_error_message);
-                viewErrorTryAgainButton = (Button) parent.findViewById(R.id.button_error_try_again);
+                mViewError = (ViewGroup) mParent.findViewById(R.id.view_error);
+                mViewErrorImage = (ImageView) mParent.findViewById(R.id.imageview_error_icon);
+                mViewErrorMessage = (TextView) mParent.findViewById(R.id.textview_error_message);
+                mViewErrorTryAgainButton = (Button) mParent.findViewById(R.id.button_error_try_again);
             }
         }
-        if (viewEmpty == null && viewError == null && viewLoading == null) {
-            throw new NullPointerException("Unable to access Empty View, Error View or Loading View. You should pass at least one placeholder parent to init PlaceHolderJ");
+        if (mViewEmpty == null && mViewError == null && mViewLoading == null) {
+            throw new NullPointerException("Unable to access Empty View, Error View or Loading View. You should pass at least one placeholder mParent to init PlaceHolderJ");
         }
         customizeViews();
     }
 
     private void customizeViews() {
-        if (placeHolderManager != null && !viewsAreCustomized) {
-            CustomizeViews customizeViews = new CustomizeViews(placeHolderManager, context);
-            customizeViews.customize(viewLoading, viewLoadingMessage, viewEmpty, viewEmptyImage, viewEmptyMessage, viewEmptyTryAgainButton, viewError, viewErrorImage, viewErrorMessage, viewErrorTryAgainButton);
-            viewsAreCustomized = true;
+        if (mPlaceHolderManager != null && !mViewsAreCustomized) {
+            CustomizeViews customizeViews = new CustomizeViews(mPlaceHolderManager, mContext);
+            customizeViews.customize(mViewLoading, mViewLoadingMessage, mViewEmpty, mViewEmptyImage, mViewEmptyMessage, mViewEmptyTryAgainButton, mViewError, mViewErrorImage, mViewErrorMessage, mViewErrorTryAgainButton);
+            mViewsAreCustomized = true;
         }
     }
 
@@ -136,96 +136,96 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * Makes the loading parent visible if the loading parent was added to your layout.
+     * Makes the loading mParent visible if the loading mParent was added to your layout.
      */
     public void showLoading(int textRes) {
-        if (viewLoading == null) {
-            throw new NullPointerException("Unable to access Loading View, check if the loading parent was initialized");
+        if (mViewLoading == null) {
+            throw new NullPointerException("Unable to access Loading View, check if the loading mParent was initialized");
         } else {
-            viewLoadingMessage.setText(textRes);
+            mViewLoadingMessage.setText(textRes);
             showLoading();
         }
     }
 
     /**
-     * Makes the loading parent visible if the loading parent was added to your layout.
+     * Makes the loading mParent visible if the loading mParent was added to your layout.
      */
     public void showLoading() {
-        hideUnlessViewEquals(viewLoading.getId());
-        setViewVisibility(viewLoading, VISIBLE);
+        hideUnlessViewEquals(mViewLoading.getId());
+        setViewVisibility(mViewLoading, VISIBLE);
     }
 
     /**
-     * Makes the empty parent visible if the empty parent was added to your layout.
+     * Makes the empty mParent visible if the empty mParent was added to your layout.
      *
-     * @param messageRes      The message that will be shown in the empty parent.
-     * @param onClickListener The action that will be performed by the try again button present in empty parent layout.
+     * @param messageRes      The message that will be shown in the empty mParent.
+     * @param onClickListener The action that will be performed by the try again button present in empty mParent layout.
      */
     public void showEmpty(int messageRes, View.OnClickListener onClickListener) {
-        if (viewLoading == null) {
-            throw new NullPointerException("Unable to access Empty View, check if the empty parent was initialized.");
+        if (mViewLoading == null) {
+            throw new NullPointerException("Unable to access Empty View, check if the empty mParent was initialized.");
         } else {
             messageRes = messageRes == 0 ? R.string.global_empty_list : messageRes;
-            viewEmptyMessage.setText(messageRes);
+            mViewEmptyMessage.setText(messageRes);
             showEmpty(onClickListener);
         }
     }
 
     /**
-     * Makes the empty parent visible if the empty parent was added to your layout.
+     * Makes the empty mParent visible if the empty mParent was added to your layout.
      *
-     * @param onClickListener The action that will be performed by the try again button present in empty parent layout.
+     * @param onClickListener The action that will be performed by the try again button present in empty mParent layout.
      */
     public void showEmpty(View.OnClickListener onClickListener) {
-        hideUnlessViewEquals(viewEmpty.getId());
+        hideUnlessViewEquals(mViewEmpty.getId());
         if (onClickListener == null) {
-            viewEmptyTryAgainButton.setVisibility(GONE);
+            mViewEmptyTryAgainButton.setVisibility(GONE);
         } else {
-            viewEmptyTryAgainButton.setVisibility(VISIBLE);
-            viewEmptyTryAgainButton.setOnClickListener(onClickListener);
+            mViewEmptyTryAgainButton.setVisibility(VISIBLE);
+            mViewEmptyTryAgainButton.setOnClickListener(onClickListener);
         }
-        setViewVisibility(viewEmpty, VISIBLE);
+        setViewVisibility(mViewEmpty, VISIBLE);
     }
 
     /**
-     * Makes the error parent visible if the error parent was added to your layout.
+     * Makes the error mParent visible if the error mParent was added to your layout.
      *
      * @param error           The retrofit error from one of your application requests.
-     * @param onClickListener The action that will be performed by the try again button present in error parent layout.
+     * @param onClickListener The action that will be performed by the try again button present in error mParent layout.
      */
     public void showError(Throwable error, View.OnClickListener onClickListener) {
-        if (viewLoading == null) {
-            throw new NullPointerException("Unable to access Error View, check if the error parent was initialized.");
+        if (mViewLoading == null) {
+            throw new NullPointerException("Unable to access Error View, check if the error mParent was initialized.");
         } else {
-            hideUnlessViewEquals(viewError.getId());
-            if (!viewsAreCustomized) {
+            hideUnlessViewEquals(mViewError.getId());
+            if (!mViewsAreCustomized) {
                 boolean isNetworkError = error != null && error instanceof UnknownHostException;
-                viewErrorImage.setImageResource(isNetworkError ? R.drawable.icon_error_network : R.drawable.icon_error_unknown);
-                viewErrorMessage.setText(isNetworkError ? R.string.global_network_error : R.string.global_unknown_error);
+                mViewErrorImage.setImageResource(isNetworkError ? R.drawable.icon_error_network : R.drawable.icon_error_unknown);
+                mViewErrorMessage.setText(isNetworkError ? R.string.global_network_error : R.string.global_unknown_error);
             }
-            viewErrorTryAgainButton.setOnClickListener(onClickListener);
-            setViewVisibility(viewError, VISIBLE);
+            mViewErrorTryAgainButton.setOnClickListener(onClickListener);
+            setViewVisibility(mViewError, VISIBLE);
         }
     }
 
     /**
-     * Makes the content parent visible if the content parent was added to your layout.
+     * Makes the content mParent visible if the content mParent was added to your layout.
      */
     public void showContent() {
-        if (viewContent == null) {
-            throw new NullPointerException("Unable to access Content View, check if the content parent " +
+        if (mViewContent == null) {
+            throw new NullPointerException("Unable to access Content View, check if the content mParent " +
                     "was initialized.");
         } else {
-            hideUnlessViewEquals(viewContentId);
-            setViewVisibility(viewContent, VISIBLE);
+            hideUnlessViewEquals(mViewContentId);
+            setViewVisibility(mViewContent, VISIBLE);
         }
     }
 
     private void hideUnlessViewEquals(int viewId) {
-        if (R.id.view_loading != viewId) setViewVisibility(viewLoading, GONE);
-        if (R.id.view_empty != viewId) setViewVisibility(viewEmpty, GONE);
-        if (R.id.view_error != viewId) setViewVisibility(viewError, GONE);
-        if (viewContentId != viewId) setViewVisibility(viewContent, GONE);
+        if (R.id.view_loading != viewId) setViewVisibility(mViewLoading, GONE);
+        if (R.id.view_empty != viewId) setViewVisibility(mViewEmpty, GONE);
+        if (R.id.view_error != viewId) setViewVisibility(mViewError, GONE);
+        if (mViewContentId != viewId) setViewVisibility(mViewContent, GONE);
     }
 
 
@@ -237,7 +237,7 @@ public class PlaceHolderJ implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeByte(this.viewsAreCustomized ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.mViewsAreCustomized ? (byte) 1 : (byte) 0);
     }
 
     public static final Creator<PlaceHolderJ> CREATOR = new Creator<PlaceHolderJ>() {
