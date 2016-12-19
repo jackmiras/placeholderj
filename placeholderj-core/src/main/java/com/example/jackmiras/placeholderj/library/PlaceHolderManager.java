@@ -56,7 +56,17 @@ public class PlaceHolderManager implements Parcelable {
         this.mViewEmptyImage = in.readInt();
     }
 
-    public PlaceHolderManager(int viewErrorBackgroundColor, int viewErrorBackgroundResource, int viewErrorText, int viewErrorTextSize, int viewErrorTextColor, int viewErrorTryAgainButtonText, int viewErrorTryAgainButtonBackgroundResource, int viewErrorImage, int viewLoadingBackgroundColor, int viewLoadingBackgroundResource, int viewLoadingProgressBarColor, int viewLoadingText, int viewLoadingTextSize, int viewLoadingTextColor, int viewEmptyBackgroundColor, int viewEmptyBackgroundResource, int viewEmptyText, int viewEmptyTextSize, int viewEmptyTextColor, int viewEmptyTryAgainButtonText, int viewEmptyTryAgainButtonBackgroundResource, int viewEmptyImage) {
+    public PlaceHolderManager(int viewErrorBackgroundColor, int viewErrorBackgroundResource,
+                              int viewErrorText, int viewErrorTextSize, int viewErrorTextColor,
+                              int viewErrorTryAgainButtonText,
+                              int viewErrorTryAgainButtonBackgroundResource, int viewErrorImage,
+                              int viewLoadingBackgroundColor, int viewLoadingBackgroundResource,
+                              int viewLoadingProgressBarColor, int viewLoadingText,
+                              int viewLoadingTextSize, int viewLoadingTextColor,
+                              int viewEmptyBackgroundColor, int viewEmptyBackgroundResource,
+                              int viewEmptyText, int viewEmptyTextSize, int viewEmptyTextColor,
+                              int viewEmptyTryAgainButtonText,
+                              int viewEmptyTryAgainButtonBackgroundResource, int viewEmptyImage) {
         this.mViewErrorBackgroundColor = viewErrorBackgroundColor;
         this.mViewErrorBackgroundResource = viewErrorBackgroundResource;
         this.mViewErrorText = viewErrorText;
