@@ -38,79 +38,79 @@ public class CustomizeViews implements Parcelable {
 
     private void customizeViewError(ViewGroup viewError, ImageView viewErrorImage, TextView viewErrorMessage, Button viewErrorTryAgainButton) {
         if (viewError != null) {
-            if (mPlaceHolderManager.viewErrorBackgroundColor != 0) {
-                viewError.setBackgroundColor(ContextCompat.getColor(mContext, mPlaceHolderManager.viewErrorBackgroundColor));
-            } else if (mPlaceHolderManager.viewErrorBackgroundResource > 0) {
-                viewError.setBackgroundResource(mPlaceHolderManager.viewErrorBackgroundResource);
+            if (mPlaceHolderManager.mViewErrorBackgroundColor != 0) {
+                viewError.setBackgroundColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewErrorBackgroundColor));
+            } else if (mPlaceHolderManager.mViewErrorBackgroundResource > 0) {
+                viewError.setBackgroundResource(mPlaceHolderManager.mViewErrorBackgroundResource);
             }
-            if (mPlaceHolderManager.viewErrorText > 0) {
-                viewErrorMessage.setText(mPlaceHolderManager.viewErrorText);
+            if (mPlaceHolderManager.mViewErrorText > 0) {
+                viewErrorMessage.setText(mPlaceHolderManager.mViewErrorText);
             }
-            if (mPlaceHolderManager.viewErrorTextSize > 0) {
-                viewErrorMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, mPlaceHolderManager.viewErrorTextSize);
+            if (mPlaceHolderManager.mViewErrorTextSize > 0) {
+                viewErrorMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, mPlaceHolderManager.mViewErrorTextSize);
             }
-            if (mPlaceHolderManager.viewErrorTextColor != 0) {
-                viewErrorMessage.setTextColor(ContextCompat.getColor(mContext, mPlaceHolderManager.viewErrorTextColor));
+            if (mPlaceHolderManager.mViewErrorTextColor != 0) {
+                viewErrorMessage.setTextColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewErrorTextColor));
             }
-            if (mPlaceHolderManager.viewErrorTryAgainButtonText > 0) {
-                viewErrorTryAgainButton.setText(mPlaceHolderManager.viewErrorTryAgainButtonText);
+            if (mPlaceHolderManager.mViewErrorTryAgainButtonText > 0) {
+                viewErrorTryAgainButton.setText(mPlaceHolderManager.mViewErrorTryAgainButtonText);
             }
-            if (mPlaceHolderManager.viewErrorTryAgainButtonBackgroundResource > 0) {
-                viewErrorTryAgainButton.setBackgroundResource(mPlaceHolderManager.viewErrorTryAgainButtonBackgroundResource);
+            if (mPlaceHolderManager.mViewErrorTryAgainButtonBackgroundResource > 0) {
+                viewErrorTryAgainButton.setBackgroundResource(mPlaceHolderManager.mViewErrorTryAgainButtonBackgroundResource);
             }
-            if (mPlaceHolderManager.viewErrorImage > 0) {
-                viewErrorImage.setImageDrawable(ContextCompat.getDrawable(mContext, mPlaceHolderManager.viewErrorImage));
+            if (mPlaceHolderManager.mViewErrorImage > 0) {
+                viewErrorImage.setImageDrawable(ContextCompat.getDrawable(mContext, mPlaceHolderManager.mViewErrorImage));
             }
         }
     }
 
     private void customizeViewLoading(View viewLoading, TextView viewLoadingMessage) {
         if (viewLoading != null) {
-            if (mPlaceHolderManager.viewLoadingBackgroundColor != 0) {
-                viewLoading.setBackgroundColor(ContextCompat.getColor(mContext, mPlaceHolderManager.viewLoadingBackgroundColor));
-            } else if (mPlaceHolderManager.viewLoadingBackgroundResource > 0) {
-                viewLoading.setBackgroundResource(mPlaceHolderManager.viewLoadingBackgroundResource);
+            if (mPlaceHolderManager.mViewLoadingBackgroundColor != 0) {
+                viewLoading.setBackgroundColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewLoadingBackgroundColor));
+            } else if (mPlaceHolderManager.mViewLoadingBackgroundResource > 0) {
+                viewLoading.setBackgroundResource(mPlaceHolderManager.mViewLoadingBackgroundResource);
             }
-            if (mPlaceHolderManager.viewLoadingProgressBarColor != 0) {
+            if (mPlaceHolderManager.mViewLoadingProgressBarColor != 0) {
                 ProgressBar progressBar = (ProgressBar) viewLoading.findViewById(R.id.view_loading_progress);
-                progressBar.getIndeterminateDrawable().setColorFilter(mPlaceHolderManager.viewLoadingProgressBarColor, PorterDuff.Mode.SRC_IN);
+                progressBar.getIndeterminateDrawable().setColorFilter(mPlaceHolderManager.mViewLoadingProgressBarColor, PorterDuff.Mode.SRC_IN);
             }
-            if (mPlaceHolderManager.viewLoadingText > 0) {
-                viewLoadingMessage.setText(mPlaceHolderManager.viewLoadingText);
+            if (mPlaceHolderManager.mViewLoadingText > 0) {
+                viewLoadingMessage.setText(mPlaceHolderManager.mViewLoadingText);
             }
-            if (mPlaceHolderManager.viewLoadingTextSize > 0) {
-                viewLoadingMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, mPlaceHolderManager.viewLoadingTextSize);
+            if (mPlaceHolderManager.mViewLoadingTextSize > 0) {
+                viewLoadingMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, mPlaceHolderManager.mViewLoadingTextSize);
             }
-            if (mPlaceHolderManager.viewLoadingTextColor != 0) {
-                viewLoadingMessage.setTextColor(ContextCompat.getColor(mContext, mPlaceHolderManager.viewLoadingTextColor));
+            if (mPlaceHolderManager.mViewLoadingTextColor != 0) {
+                viewLoadingMessage.setTextColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewLoadingTextColor));
             }
         }
     }
 
     private void customizeViewEmpty(ViewGroup viewEmpty, ImageView viewEmptyImage, TextView viewEmptyMessage, Button viewEmptyTryAgainButton) {
         if (viewEmpty != null) {
-            if (mPlaceHolderManager.viewEmptyBackgroundColor != 0) {
-                viewEmpty.setBackgroundColor(ContextCompat.getColor(mContext, mPlaceHolderManager.viewEmptyBackgroundColor));
-            } else if (mPlaceHolderManager.viewEmptyBackgroundResource > 0) {
-                viewEmpty.setBackgroundResource(mPlaceHolderManager.viewEmptyBackgroundResource);
+            if (mPlaceHolderManager.mViewEmptyBackgroundColor != 0) {
+                viewEmpty.setBackgroundColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewEmptyBackgroundColor));
+            } else if (mPlaceHolderManager.mViewEmptyBackgroundResource > 0) {
+                viewEmpty.setBackgroundResource(mPlaceHolderManager.mViewEmptyBackgroundResource);
             }
-            if (mPlaceHolderManager.viewEmptyText > 0) {
-                viewEmptyMessage.setText(mPlaceHolderManager.viewEmptyText);
+            if (mPlaceHolderManager.mViewEmptyText > 0) {
+                viewEmptyMessage.setText(mPlaceHolderManager.mViewEmptyText);
             }
-            if (mPlaceHolderManager.viewEmptyTextSize > 0) {
-                viewEmptyMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, mPlaceHolderManager.viewEmptyTextSize);
+            if (mPlaceHolderManager.mViewEmptyTextSize > 0) {
+                viewEmptyMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, mPlaceHolderManager.mViewEmptyTextSize);
             }
-            if (mPlaceHolderManager.viewEmptyTextColor != 0) {
-                viewEmptyMessage.setTextColor(ContextCompat.getColor(mContext, mPlaceHolderManager.viewEmptyTextColor));
+            if (mPlaceHolderManager.mViewEmptyTextColor != 0) {
+                viewEmptyMessage.setTextColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewEmptyTextColor));
             }
-            if (mPlaceHolderManager.viewEmptyTryAgainButtonText > 0) {
-                viewEmptyTryAgainButton.setText(mPlaceHolderManager.viewEmptyTryAgainButtonText);
+            if (mPlaceHolderManager.mViewEmptyTryAgainButtonText > 0) {
+                viewEmptyTryAgainButton.setText(mPlaceHolderManager.mViewEmptyTryAgainButtonText);
             }
-            if (mPlaceHolderManager.viewEmptyTryAgainButtonBackgroundResource > 0) {
-                viewEmptyTryAgainButton.setBackgroundResource(mPlaceHolderManager.viewEmptyTryAgainButtonBackgroundResource);
+            if (mPlaceHolderManager.mViewEmptyTryAgainButtonBackgroundResource > 0) {
+                viewEmptyTryAgainButton.setBackgroundResource(mPlaceHolderManager.mViewEmptyTryAgainButtonBackgroundResource);
             }
-            if (mPlaceHolderManager.viewEmptyImage > 0) {
-                viewEmptyImage.setImageDrawable(ContextCompat.getDrawable(mContext, mPlaceHolderManager.viewEmptyImage));
+            if (mPlaceHolderManager.mViewEmptyImage > 0) {
+                viewEmptyImage.setImageDrawable(ContextCompat.getDrawable(mContext, mPlaceHolderManager.mViewEmptyImage));
             }
         }
     }

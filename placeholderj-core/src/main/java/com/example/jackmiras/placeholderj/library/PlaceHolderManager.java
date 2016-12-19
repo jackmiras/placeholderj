@@ -8,127 +8,127 @@ import android.os.Parcelable;
  */
 public class PlaceHolderManager implements Parcelable {
 
-    public int viewErrorBackgroundColor;
-    public int viewErrorBackgroundResource;
-    public int viewErrorText;
-    public int viewErrorTextSize;
-    public int viewErrorTextColor;
-    public int viewErrorTryAgainButtonText;
-    public int viewErrorTryAgainButtonBackgroundResource;
-    public int viewErrorImage;
-    public int viewLoadingBackgroundColor;
-    public int viewLoadingBackgroundResource;
-    public int viewLoadingProgressBarColor;
-    public int viewLoadingText;
-    public int viewLoadingTextSize;
-    public int viewLoadingTextColor;
-    public int viewEmptyBackgroundColor;
-    public int viewEmptyBackgroundResource;
-    public int viewEmptyText;
-    public int viewEmptyTextSize;
-    public int viewEmptyTextColor;
-    public int viewEmptyTryAgainButtonText;
-    public int viewEmptyTryAgainButtonBackgroundResource;
-    public int viewEmptyImage;
+    public int mViewErrorBackgroundColor;
+    public int mViewErrorBackgroundResource;
+    public int mViewErrorText;
+    public int mViewErrorTextSize;
+    public int mViewErrorTextColor;
+    public int mViewErrorTryAgainButtonText;
+    public int mViewErrorTryAgainButtonBackgroundResource;
+    public int mViewErrorImage;
+    public int mViewLoadingBackgroundColor;
+    public int mViewLoadingBackgroundResource;
+    public int mViewLoadingProgressBarColor;
+    public int mViewLoadingText;
+    public int mViewLoadingTextSize;
+    public int mViewLoadingTextColor;
+    public int mViewEmptyBackgroundColor;
+    public int mViewEmptyBackgroundResource;
+    public int mViewEmptyText;
+    public int mViewEmptyTextSize;
+    public int mViewEmptyTextColor;
+    public int mViewEmptyTryAgainButtonText;
+    public int mViewEmptyTryAgainButtonBackgroundResource;
+    public int mViewEmptyImage;
 
     protected PlaceHolderManager(Parcel in) {
-        this.viewErrorBackgroundColor = in.readInt();
-        this.viewErrorBackgroundResource = in.readInt();
-        this.viewErrorText = in.readInt();
-        this.viewErrorTextSize = in.readInt();
-        this.viewErrorTextColor = in.readInt();
-        this.viewErrorTryAgainButtonText = in.readInt();
-        this.viewErrorTryAgainButtonBackgroundResource = in.readInt();
-        this.viewErrorImage = in.readInt();
-        this.viewLoadingBackgroundColor = in.readInt();
-        this.viewLoadingBackgroundResource = in.readInt();
-        this.viewLoadingProgressBarColor = in.readInt();
-        this.viewLoadingText = in.readInt();
-        this.viewLoadingTextSize = in.readInt();
-        this.viewLoadingTextColor = in.readInt();
-        this.viewEmptyBackgroundColor = in.readInt();
-        this.viewEmptyBackgroundResource = in.readInt();
-        this.viewEmptyText = in.readInt();
-        this.viewEmptyTextSize = in.readInt();
-        this.viewEmptyTextColor = in.readInt();
-        this.viewEmptyTryAgainButtonText = in.readInt();
-        this.viewEmptyTryAgainButtonBackgroundResource = in.readInt();
-        this.viewEmptyImage = in.readInt();
+        this.mViewErrorBackgroundColor = in.readInt();
+        this.mViewErrorBackgroundResource = in.readInt();
+        this.mViewErrorText = in.readInt();
+        this.mViewErrorTextSize = in.readInt();
+        this.mViewErrorTextColor = in.readInt();
+        this.mViewErrorTryAgainButtonText = in.readInt();
+        this.mViewErrorTryAgainButtonBackgroundResource = in.readInt();
+        this.mViewErrorImage = in.readInt();
+        this.mViewLoadingBackgroundColor = in.readInt();
+        this.mViewLoadingBackgroundResource = in.readInt();
+        this.mViewLoadingProgressBarColor = in.readInt();
+        this.mViewLoadingText = in.readInt();
+        this.mViewLoadingTextSize = in.readInt();
+        this.mViewLoadingTextColor = in.readInt();
+        this.mViewEmptyBackgroundColor = in.readInt();
+        this.mViewEmptyBackgroundResource = in.readInt();
+        this.mViewEmptyText = in.readInt();
+        this.mViewEmptyTextSize = in.readInt();
+        this.mViewEmptyTextColor = in.readInt();
+        this.mViewEmptyTryAgainButtonText = in.readInt();
+        this.mViewEmptyTryAgainButtonBackgroundResource = in.readInt();
+        this.mViewEmptyImage = in.readInt();
     }
 
     public PlaceHolderManager(int viewErrorBackgroundColor, int viewErrorBackgroundResource, int viewErrorText, int viewErrorTextSize, int viewErrorTextColor, int viewErrorTryAgainButtonText, int viewErrorTryAgainButtonBackgroundResource, int viewErrorImage, int viewLoadingBackgroundColor, int viewLoadingBackgroundResource, int viewLoadingProgressBarColor, int viewLoadingText, int viewLoadingTextSize, int viewLoadingTextColor, int viewEmptyBackgroundColor, int viewEmptyBackgroundResource, int viewEmptyText, int viewEmptyTextSize, int viewEmptyTextColor, int viewEmptyTryAgainButtonText, int viewEmptyTryAgainButtonBackgroundResource, int viewEmptyImage) {
-        this.viewErrorBackgroundColor = viewErrorBackgroundColor;
-        this.viewErrorBackgroundResource = viewErrorBackgroundResource;
-        this.viewErrorText = viewErrorText;
-        this.viewErrorTextSize = viewErrorTextSize;
-        this.viewErrorTextColor = viewErrorTextColor;
-        this.viewErrorTryAgainButtonText = viewErrorTryAgainButtonText;
-        this.viewErrorTryAgainButtonBackgroundResource = viewErrorTryAgainButtonBackgroundResource;
-        this.viewErrorImage = viewErrorImage;
-        this.viewLoadingBackgroundColor = viewLoadingBackgroundColor;
-        this.viewLoadingBackgroundResource = viewLoadingBackgroundResource;
-        this.viewLoadingProgressBarColor = viewLoadingProgressBarColor;
-        this.viewLoadingText = viewLoadingText;
-        this.viewLoadingTextSize = viewLoadingTextSize;
-        this.viewLoadingTextColor = viewLoadingTextColor;
-        this.viewEmptyBackgroundColor = viewEmptyBackgroundColor;
-        this.viewEmptyBackgroundResource = viewEmptyBackgroundResource;
-        this.viewEmptyText = viewEmptyText;
-        this.viewEmptyTextSize = viewEmptyTextSize;
-        this.viewEmptyTextColor = viewEmptyTextColor;
-        this.viewEmptyTryAgainButtonText = viewEmptyTryAgainButtonText;
-        this.viewEmptyTryAgainButtonBackgroundResource = viewEmptyTryAgainButtonBackgroundResource;
-        this.viewEmptyImage = viewEmptyImage;
+        this.mViewErrorBackgroundColor = viewErrorBackgroundColor;
+        this.mViewErrorBackgroundResource = viewErrorBackgroundResource;
+        this.mViewErrorText = viewErrorText;
+        this.mViewErrorTextSize = viewErrorTextSize;
+        this.mViewErrorTextColor = viewErrorTextColor;
+        this.mViewErrorTryAgainButtonText = viewErrorTryAgainButtonText;
+        this.mViewErrorTryAgainButtonBackgroundResource = viewErrorTryAgainButtonBackgroundResource;
+        this.mViewErrorImage = viewErrorImage;
+        this.mViewLoadingBackgroundColor = viewLoadingBackgroundColor;
+        this.mViewLoadingBackgroundResource = viewLoadingBackgroundResource;
+        this.mViewLoadingProgressBarColor = viewLoadingProgressBarColor;
+        this.mViewLoadingText = viewLoadingText;
+        this.mViewLoadingTextSize = viewLoadingTextSize;
+        this.mViewLoadingTextColor = viewLoadingTextColor;
+        this.mViewEmptyBackgroundColor = viewEmptyBackgroundColor;
+        this.mViewEmptyBackgroundResource = viewEmptyBackgroundResource;
+        this.mViewEmptyText = viewEmptyText;
+        this.mViewEmptyTextSize = viewEmptyTextSize;
+        this.mViewEmptyTextColor = viewEmptyTextColor;
+        this.mViewEmptyTryAgainButtonText = viewEmptyTryAgainButtonText;
+        this.mViewEmptyTryAgainButtonBackgroundResource = viewEmptyTryAgainButtonBackgroundResource;
+        this.mViewEmptyImage = viewEmptyImage;
     }
 
 
     public static class Configurator {
-        private static int viewErrorBackgroundColor;
-        private static int viewErrorBackgroundResource;
-        private static int viewErrorText;
-        private static int viewErrorTextSize;
-        private static int viewErrorTextColor;
-        private static int viewErrorTryAgainButtonText;
-        private static int viewErrorTryAgainButtonBackgroundResource;
-        private static int viewErrorImage;
-        private static int viewLoadingBackgroundColor;
-        private static int viewLoadingBackgroundResource;
-        private static int viewLoadingProgressBarColor;
-        private static int viewLoadingText;
-        private static int viewLoadingTextSize;
-        private static int viewLoadingTextColor;
-        private static int viewEmptyBackgroundColor;
-        private static int viewEmptyBackgroundResource;
-        private static int viewEmptyText;
-        private static int viewEmptyTextSize;
-        private static int viewEmptyTextColor;
-        private static int viewEmptyTryAgainButtonText;
-        private static int viewEmptyTryAgainButtonBackgroundResource;
-        private static int viewEmptyImage;
+        private static int sViewErrorBackgroundColor;
+        private static int sViewErrorBackgroundResource;
+        private static int sViewErrorText;
+        private static int sViewErrorTextSize;
+        private static int sViewErrorTextColor;
+        private static int sViewErrorTryAgainButtonText;
+        private static int sViewErrorTryAgainButtonBackgroundResource;
+        private static int sViewErrorImage;
+        private static int sViewLoadingBackgroundColor;
+        private static int sViewLoadingBackgroundResource;
+        private static int sViewLoadingProgressBarColor;
+        private static int sViewLoadingText;
+        private static int sViewLoadingTextSize;
+        private static int sViewLoadingTextColor;
+        private static int sViewEmptyBackgroundColor;
+        private static int sViewEmptyBackgroundResource;
+        private static int sViewEmptyText;
+        private static int sViewEmptyTextSize;
+        private static int sViewEmptyTextColor;
+        private static int sViewEmptyTryAgainButtonText;
+        private static int sViewEmptyTryAgainButtonBackgroundResource;
+        private static int sViewEmptyImage;
 
         public Configurator() {
-            viewErrorBackgroundColor = 0;
-            viewErrorBackgroundResource = 0;
-            viewErrorText = 0;
-            viewErrorTextSize = 0;
-            viewErrorTextColor = 0;
-            viewErrorTryAgainButtonText = 0;
-            viewErrorTryAgainButtonBackgroundResource = 0;
-            viewErrorImage = 0;
-            viewLoadingBackgroundColor = 0;
-            viewLoadingBackgroundResource = 0;
-            viewLoadingProgressBarColor = 0;
-            viewLoadingText = 0;
-            viewLoadingTextSize = 0;
-            viewLoadingTextColor = 0;
-            viewEmptyBackgroundColor = 0;
-            viewEmptyBackgroundResource = 0;
-            viewEmptyText = 0;
-            viewEmptyTextSize = 0;
-            viewEmptyTextColor = 0;
-            viewEmptyTryAgainButtonText = 0;
-            viewEmptyTryAgainButtonBackgroundResource = 0;
-            viewEmptyImage = 0;
+            sViewErrorBackgroundColor = 0;
+            sViewErrorBackgroundResource = 0;
+            sViewErrorText = 0;
+            sViewErrorTextSize = 0;
+            sViewErrorTextColor = 0;
+            sViewErrorTryAgainButtonText = 0;
+            sViewErrorTryAgainButtonBackgroundResource = 0;
+            sViewErrorImage = 0;
+            sViewLoadingBackgroundColor = 0;
+            sViewLoadingBackgroundResource = 0;
+            sViewLoadingProgressBarColor = 0;
+            sViewLoadingText = 0;
+            sViewLoadingTextSize = 0;
+            sViewLoadingTextColor = 0;
+            sViewEmptyBackgroundColor = 0;
+            sViewEmptyBackgroundResource = 0;
+            sViewEmptyText = 0;
+            sViewEmptyTextSize = 0;
+            sViewEmptyTextColor = 0;
+            sViewEmptyTryAgainButtonText = 0;
+            sViewEmptyTryAgainButtonBackgroundResource = 0;
+            sViewEmptyImage = 0;
         }
 
         /**
@@ -139,7 +139,7 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator errorBackground(int color) {
             if (color != 0) {
-                viewErrorBackgroundColor = color;
+                sViewErrorBackgroundColor = color;
             }
             return this;
         }
@@ -152,7 +152,7 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator errorBackgroundResource(int backgroundRes) {
             if (backgroundRes > 0) {
-                viewErrorBackgroundResource = backgroundRes;
+                sViewErrorBackgroundResource = backgroundRes;
             }
             return this;
         }
@@ -167,13 +167,13 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator errorText(int textRes, int textSize, int textColor) {
             if (textRes > 0) {
-                viewErrorText = textRes;
+                sViewErrorText = textRes;
             }
             if (textSize > 0) {
-                viewErrorTextSize = textSize;
+                sViewErrorTextSize = textSize;
             }
             if (textColor > 0) {
-                viewErrorTextColor = textColor;
+                sViewErrorTextColor = textColor;
             }
             return this;
         }
@@ -187,10 +187,10 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator errorButton(int textRes, int backgroundRes) {
             if (textRes > 0) {
-                viewErrorTryAgainButtonText = textRes;
+                sViewErrorTryAgainButtonText = textRes;
             }
             if (backgroundRes > 0) {
-                viewErrorTryAgainButtonBackgroundResource = backgroundRes;
+                sViewErrorTryAgainButtonBackgroundResource = backgroundRes;
             }
             return this;
         }
@@ -203,7 +203,7 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator errorImage(int imageRes) {
             if (imageRes > 0) {
-                viewErrorImage = imageRes;
+                sViewErrorImage = imageRes;
             }
             return this;
         }
@@ -218,13 +218,13 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator loadingText(int textRes, int textSize, int textColor) {
             if (textRes > 0) {
-                viewLoadingText = textRes;
+                sViewLoadingText = textRes;
             }
             if (textSize > 0) {
-                viewLoadingTextSize = textSize;
+                sViewLoadingTextSize = textSize;
             }
             if (textColor > 0) {
-                viewLoadingTextColor = textColor;
+                sViewLoadingTextColor = textColor;
             }
             return this;
         }
@@ -237,7 +237,7 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator loadingBackground(int color) {
             if (color != 0) {
-                viewLoadingBackgroundColor = color;
+                sViewLoadingBackgroundColor = color;
             }
             return this;
         }
@@ -250,7 +250,7 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator loadingBackgroundResource(int backgroundRes) {
             if (backgroundRes > 0) {
-                viewLoadingBackgroundResource = backgroundRes;
+                sViewLoadingBackgroundResource = backgroundRes;
             }
             return this;
         }
@@ -263,7 +263,7 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator progressBarColor(int color) {
             if (color != 0) {
-                viewLoadingProgressBarColor = color;
+                sViewLoadingProgressBarColor = color;
             }
             return this;
         }
@@ -276,7 +276,7 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator emptyBackground(int color) {
             if (color != 0) {
-                viewEmptyBackgroundColor = color;
+                sViewEmptyBackgroundColor = color;
             }
             return this;
         }
@@ -289,7 +289,7 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator emptyBackgroundResource(int backgroundRes) {
             if (backgroundRes > 0) {
-                viewEmptyBackgroundResource = backgroundRes;
+                sViewEmptyBackgroundResource = backgroundRes;
             }
             return this;
         }
@@ -304,13 +304,13 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator emptyText(int textRes, int textSize, int textColor) {
             if (textRes > 0) {
-                viewEmptyText = textRes;
+                sViewEmptyText = textRes;
             }
             if (textSize > 0) {
-                viewEmptyTextSize = textSize;
+                sViewEmptyTextSize = textSize;
             }
             if (textColor > 0) {
-                viewEmptyTextColor = textColor;
+                sViewEmptyTextColor = textColor;
             }
             return this;
         }
@@ -324,10 +324,10 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator emptyButton(int textRes, int backgroundRes) {
             if (textRes > 0) {
-                viewEmptyTryAgainButtonText = textRes;
+                sViewEmptyTryAgainButtonText = textRes;
             }
             if (backgroundRes > 0) {
-                viewEmptyTryAgainButtonBackgroundResource = backgroundRes;
+                sViewEmptyTryAgainButtonBackgroundResource = backgroundRes;
             }
             return this;
         }
@@ -340,33 +340,33 @@ public class PlaceHolderManager implements Parcelable {
          */
         public Configurator emptyImage(int imageRes) {
             if (imageRes > 0) {
-                viewEmptyImage = imageRes;
+                sViewEmptyImage = imageRes;
             }
             return this;
         }
 
         public PlaceHolderManager config() {
-            return new PlaceHolderManager(viewErrorBackgroundColor,
-                    viewErrorBackgroundResource,
-                    viewErrorText, viewErrorTextSize,
-                    viewErrorTextColor,
-                    viewErrorTryAgainButtonText,
-                    viewErrorTryAgainButtonBackgroundResource,
-                    viewErrorImage,
-                    viewLoadingBackgroundColor,
-                    viewLoadingBackgroundResource,
-                    viewLoadingProgressBarColor,
-                    viewLoadingText,
-                    viewLoadingTextSize,
-                    viewLoadingTextColor,
-                    viewEmptyBackgroundColor,
-                    viewEmptyBackgroundResource,
-                    viewEmptyText,
-                    viewEmptyTextSize,
-                    viewEmptyTextColor,
-                    viewEmptyTryAgainButtonText,
-                    viewEmptyTryAgainButtonBackgroundResource,
-                    viewEmptyImage);
+            return new PlaceHolderManager(sViewErrorBackgroundColor,
+                    sViewErrorBackgroundResource,
+                    sViewErrorText, sViewErrorTextSize,
+                    sViewErrorTextColor,
+                    sViewErrorTryAgainButtonText,
+                    sViewErrorTryAgainButtonBackgroundResource,
+                    sViewErrorImage,
+                    sViewLoadingBackgroundColor,
+                    sViewLoadingBackgroundResource,
+                    sViewLoadingProgressBarColor,
+                    sViewLoadingText,
+                    sViewLoadingTextSize,
+                    sViewLoadingTextColor,
+                    sViewEmptyBackgroundColor,
+                    sViewEmptyBackgroundResource,
+                    sViewEmptyText,
+                    sViewEmptyTextSize,
+                    sViewEmptyTextColor,
+                    sViewEmptyTryAgainButtonText,
+                    sViewEmptyTryAgainButtonBackgroundResource,
+                    sViewEmptyImage);
         }
     }
 
@@ -378,28 +378,28 @@ public class PlaceHolderManager implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.viewErrorBackgroundColor);
-        dest.writeInt(this.viewErrorBackgroundResource);
-        dest.writeInt(this.viewErrorText);
-        dest.writeInt(this.viewErrorTextSize);
-        dest.writeInt(this.viewErrorTextColor);
-        dest.writeInt(this.viewErrorTryAgainButtonText);
-        dest.writeInt(this.viewErrorTryAgainButtonBackgroundResource);
-        dest.writeInt(this.viewErrorImage);
-        dest.writeInt(this.viewLoadingBackgroundColor);
-        dest.writeInt(this.viewLoadingBackgroundResource);
-        dest.writeInt(this.viewLoadingProgressBarColor);
-        dest.writeInt(this.viewLoadingText);
-        dest.writeInt(this.viewLoadingTextSize);
-        dest.writeInt(this.viewLoadingTextColor);
-        dest.writeInt(this.viewEmptyBackgroundColor);
-        dest.writeInt(this.viewEmptyBackgroundResource);
-        dest.writeInt(this.viewEmptyText);
-        dest.writeInt(this.viewEmptyTextSize);
-        dest.writeInt(this.viewEmptyTextColor);
-        dest.writeInt(this.viewEmptyTryAgainButtonText);
-        dest.writeInt(this.viewEmptyTryAgainButtonBackgroundResource);
-        dest.writeInt(this.viewEmptyImage);
+        dest.writeInt(this.mViewErrorBackgroundColor);
+        dest.writeInt(this.mViewErrorBackgroundResource);
+        dest.writeInt(this.mViewErrorText);
+        dest.writeInt(this.mViewErrorTextSize);
+        dest.writeInt(this.mViewErrorTextColor);
+        dest.writeInt(this.mViewErrorTryAgainButtonText);
+        dest.writeInt(this.mViewErrorTryAgainButtonBackgroundResource);
+        dest.writeInt(this.mViewErrorImage);
+        dest.writeInt(this.mViewLoadingBackgroundColor);
+        dest.writeInt(this.mViewLoadingBackgroundResource);
+        dest.writeInt(this.mViewLoadingProgressBarColor);
+        dest.writeInt(this.mViewLoadingText);
+        dest.writeInt(this.mViewLoadingTextSize);
+        dest.writeInt(this.mViewLoadingTextColor);
+        dest.writeInt(this.mViewEmptyBackgroundColor);
+        dest.writeInt(this.mViewEmptyBackgroundResource);
+        dest.writeInt(this.mViewEmptyText);
+        dest.writeInt(this.mViewEmptyTextSize);
+        dest.writeInt(this.mViewEmptyTextColor);
+        dest.writeInt(this.mViewEmptyTryAgainButtonText);
+        dest.writeInt(this.mViewEmptyTryAgainButtonBackgroundResource);
+        dest.writeInt(this.mViewEmptyImage);
     }
 
     public static final Creator<PlaceHolderManager> CREATOR = new Creator<PlaceHolderManager>() {
