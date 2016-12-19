@@ -2,6 +2,7 @@ package com.example.jackmiras.placeholderj.library;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
@@ -30,16 +31,20 @@ public class CustomizeViews implements Parcelable {
         this.mContext = context;
     }
 
-    void customize(View viewLoading, TextView viewLoadingMessage, ViewGroup viewEmpty, ImageView viewEmptyImage, TextView viewEmptyMessage, Button viewEmptyTryAgainButton, ViewGroup viewError, ImageView viewErrorImage, TextView viewErrorMessage, Button viewErrorTryAgainButton) {
+    void customize(View viewLoading, TextView viewLoadingMessage, ViewGroup viewEmpty,
+                   ImageView viewEmptyImage, TextView viewEmptyMessage,
+                   Button viewEmptyTryAgainButton, ViewGroup viewError, ImageView viewErrorImage,
+                   TextView viewErrorMessage, Button viewErrorTryAgainButton) {
         customizeViewError(viewError, viewErrorImage, viewErrorMessage, viewErrorTryAgainButton);
         customizeViewLoading(viewLoading, viewLoadingMessage);
         customizeViewEmpty(viewEmpty, viewEmptyImage, viewEmptyMessage, viewEmptyTryAgainButton);
     }
 
-    private void customizeViewError(ViewGroup viewError, ImageView viewErrorImage, TextView viewErrorMessage, Button viewErrorTryAgainButton) {
+    private void customizeViewError(ViewGroup viewError, ImageView viewErrorImage,
+                                    TextView viewErrorMessage, Button viewErrorTryAgainButton) {
         if (viewError != null) {
             if (mPlaceHolderManager.mViewErrorBackgroundColor != 0) {
-                viewError.setBackgroundColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewErrorBackgroundColor));
+                viewError.setBackgroundColor(getColor(mPlaceHolderManager.mViewErrorBackgroundColor));
             } else if (mPlaceHolderManager.mViewErrorBackgroundResource > 0) {
                 viewError.setBackgroundResource(mPlaceHolderManager.mViewErrorBackgroundResource);
             }
@@ -47,19 +52,20 @@ public class CustomizeViews implements Parcelable {
                 viewErrorMessage.setText(mPlaceHolderManager.mViewErrorText);
             }
             if (mPlaceHolderManager.mViewErrorTextSize > 0) {
-                viewErrorMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, mPlaceHolderManager.mViewErrorTextSize);
+                setTextSize(viewErrorMessage, mPlaceHolderManager.mViewErrorTextSize);
             }
             if (mPlaceHolderManager.mViewErrorTextColor != 0) {
-                viewErrorMessage.setTextColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewErrorTextColor));
+                viewErrorMessage.setTextColor(getColor(mPlaceHolderManager.mViewErrorTextColor));
             }
             if (mPlaceHolderManager.mViewErrorTryAgainButtonText > 0) {
                 viewErrorTryAgainButton.setText(mPlaceHolderManager.mViewErrorTryAgainButtonText);
             }
             if (mPlaceHolderManager.mViewErrorTryAgainButtonBackgroundResource > 0) {
-                viewErrorTryAgainButton.setBackgroundResource(mPlaceHolderManager.mViewErrorTryAgainButtonBackgroundResource);
+                int backgroundRes = mPlaceHolderManager.mViewErrorTryAgainButtonBackgroundResource;
+                viewErrorTryAgainButton.setBackgroundResource(backgroundRes);
             }
             if (mPlaceHolderManager.mViewErrorImage > 0) {
-                viewErrorImage.setImageDrawable(ContextCompat.getDrawable(mContext, mPlaceHolderManager.mViewErrorImage));
+                viewErrorImage.setImageDrawable(getDrawable(mPlaceHolderManager.mViewErrorImage));
             }
         }
     }
@@ -67,30 +73,32 @@ public class CustomizeViews implements Parcelable {
     private void customizeViewLoading(View viewLoading, TextView viewLoadingMessage) {
         if (viewLoading != null) {
             if (mPlaceHolderManager.mViewLoadingBackgroundColor != 0) {
-                viewLoading.setBackgroundColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewLoadingBackgroundColor));
+                viewLoading.setBackgroundColor(getColor(mPlaceHolderManager.mViewLoadingBackgroundColor));
             } else if (mPlaceHolderManager.mViewLoadingBackgroundResource > 0) {
                 viewLoading.setBackgroundResource(mPlaceHolderManager.mViewLoadingBackgroundResource);
             }
             if (mPlaceHolderManager.mViewLoadingProgressBarColor != 0) {
                 ProgressBar progressBar = (ProgressBar) viewLoading.findViewById(R.id.view_loading_progress);
-                progressBar.getIndeterminateDrawable().setColorFilter(mPlaceHolderManager.mViewLoadingProgressBarColor, PorterDuff.Mode.SRC_IN);
+                int color = mPlaceHolderManager.mViewLoadingProgressBarColor;
+                progressBar.getIndeterminateDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
             }
             if (mPlaceHolderManager.mViewLoadingText > 0) {
                 viewLoadingMessage.setText(mPlaceHolderManager.mViewLoadingText);
             }
             if (mPlaceHolderManager.mViewLoadingTextSize > 0) {
-                viewLoadingMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, mPlaceHolderManager.mViewLoadingTextSize);
+                setTextSize(viewLoadingMessage, mPlaceHolderManager.mViewLoadingTextSize);
             }
             if (mPlaceHolderManager.mViewLoadingTextColor != 0) {
-                viewLoadingMessage.setTextColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewLoadingTextColor));
+                viewLoadingMessage.setTextColor(getColor(mPlaceHolderManager.mViewLoadingTextColor));
             }
         }
     }
 
-    private void customizeViewEmpty(ViewGroup viewEmpty, ImageView viewEmptyImage, TextView viewEmptyMessage, Button viewEmptyTryAgainButton) {
+    private void customizeViewEmpty(ViewGroup viewEmpty, ImageView viewEmptyImage,
+                                    TextView viewEmptyMessage, Button viewEmptyTryAgainButton) {
         if (viewEmpty != null) {
             if (mPlaceHolderManager.mViewEmptyBackgroundColor != 0) {
-                viewEmpty.setBackgroundColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewEmptyBackgroundColor));
+                viewEmpty.setBackgroundColor(getColor(mPlaceHolderManager.mViewEmptyBackgroundColor));
             } else if (mPlaceHolderManager.mViewEmptyBackgroundResource > 0) {
                 viewEmpty.setBackgroundResource(mPlaceHolderManager.mViewEmptyBackgroundResource);
             }
@@ -98,25 +106,38 @@ public class CustomizeViews implements Parcelable {
                 viewEmptyMessage.setText(mPlaceHolderManager.mViewEmptyText);
             }
             if (mPlaceHolderManager.mViewEmptyTextSize > 0) {
-                viewEmptyMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, mPlaceHolderManager.mViewEmptyTextSize);
+                setTextSize(viewEmptyMessage, mPlaceHolderManager.mViewEmptyTextSize);
             }
             if (mPlaceHolderManager.mViewEmptyTextColor != 0) {
-                viewEmptyMessage.setTextColor(ContextCompat.getColor(mContext, mPlaceHolderManager.mViewEmptyTextColor));
+                viewEmptyMessage.setTextColor(getColor(mPlaceHolderManager.mViewEmptyTextColor));
             }
             if (mPlaceHolderManager.mViewEmptyTryAgainButtonText > 0) {
                 viewEmptyTryAgainButton.setText(mPlaceHolderManager.mViewEmptyTryAgainButtonText);
             }
             if (mPlaceHolderManager.mViewEmptyTryAgainButtonBackgroundResource > 0) {
-                viewEmptyTryAgainButton.setBackgroundResource(mPlaceHolderManager.mViewEmptyTryAgainButtonBackgroundResource);
+                int backgroundRes = mPlaceHolderManager.mViewEmptyTryAgainButtonBackgroundResource;
+                viewEmptyTryAgainButton.setBackgroundResource(backgroundRes);
             }
             if (mPlaceHolderManager.mViewEmptyImage > 0) {
-                viewEmptyImage.setImageDrawable(ContextCompat.getDrawable(mContext, mPlaceHolderManager.mViewEmptyImage));
+                viewEmptyImage.setImageDrawable(getDrawable(mPlaceHolderManager.mViewEmptyImage));
             }
         }
     }
 
+    private int getColor(int colorRes) {
+        return ContextCompat.getColor(mContext, colorRes);
+    }
+
+    private Drawable getDrawable(int drawableRes) {
+        return ContextCompat.getDrawable(mContext, drawableRes);
+    }
+
+    private void setTextSize(TextView textView, int textSize) {
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+    }
+
     /***********************************************************************************************
-     *                              Parcelable methods implementation.                             *
+     * Parcelable methods implementation.                             *
      **********************************************************************************************/
     @Override
     public int describeContents() { return 0; }
