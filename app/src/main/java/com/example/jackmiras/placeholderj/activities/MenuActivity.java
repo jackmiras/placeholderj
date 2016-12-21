@@ -32,16 +32,24 @@ public class MenuActivity extends BaseActivity {
     public void onMenuOptionsSelected(View v) {
         switch (v.getId()) {
             case R.id.button_loading:
-                startActivity(new Intent(this, CouponsActivity.class).putExtra(Constants.SAMPLE_LOADING, Constants.SAMPLE_LOADING).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(this, CouponsActivity.class)
+                        .putExtra(Constants.SAMPLE_LOADING, Constants.SAMPLE_LOADING)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;
             case R.id.button_empty:
-                startActivity(new Intent(this, CouponsActivity.class).putExtra(Constants.SAMPLE_EMPTY, Constants.SAMPLE_EMPTY).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(this, CouponsActivity.class)
+                        .putExtra(Constants.SAMPLE_EMPTY, Constants.SAMPLE_EMPTY)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;
             case R.id.button_empty_try_again:
-                startActivity(new Intent(this, CouponsActivity.class).putExtra(Constants.SAMPLE_EMPTY_WITH_TRY_AGAIN, Constants.SAMPLE_EMPTY_WITH_TRY_AGAIN).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(this, CouponsActivity.class)
+                        .putExtra(Constants.SAMPLE_EMPTY_WITH_TRY_AGAIN, Constants.SAMPLE_EMPTY_WITH_TRY_AGAIN)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;
             case R.id.button_error:
-                startActivity(new Intent(this, CouponsActivity.class).putExtra(Constants.SAMPLE_ERROR, Constants.SAMPLE_ERROR).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(this, CouponsActivity.class)
+                        .putExtra(Constants.SAMPLE_ERROR, Constants.SAMPLE_ERROR)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;
         }
     }
