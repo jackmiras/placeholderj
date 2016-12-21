@@ -27,6 +27,7 @@ android {
 
 def android_support_version = "25.0.1"
 def retrofit2_version = "2.1.0"
+def okhttp3_version = "3.4.2"
 def butterknife_version = "8.4.0"
 
 dependencies {
@@ -39,8 +40,10 @@ dependencies {
 
     compile "com.squareup.retrofit2:retrofit:${retrofit2_version}"
     compile "com.squareup.retrofit2:converter-jackson:${retrofit2_version}"
-    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile "com.squareup.okhttp3:okhttp:${okhttp3_version}"
+    compile "com.squareup.okhttp3:logging-interceptor:${okhttp3_version}"
 
     compile "com.jakewharton:butterknife:${butterknife_version}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknife_version}"
