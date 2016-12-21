@@ -68,11 +68,9 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
     }
 
     public void showErrorView(Throwable t) {
-        placeHolderJ.hideLoading();
         placeHolderJ.showError(t, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                placeHolderJ.hideError();
                 placeHolderJ.showLoading();
                 requestUserCoupons();
             }
@@ -110,18 +108,17 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
 
     @Override
     public void onResponse(Call<CouponResponse> call, Response<CouponResponse> response) {
-        placeHolderJ.hideLoading();
         if (response.isSuccessful() && response.body() != null) {
             //If isListEmpty is true, so the couponResponse.result receives an empty array to make the view empty visible.
             response.body().result = isListEmpty ? new ArrayList<Coupon>() : response.body().result;
             if (response.body().result != null && response.body().result.size() > 0) {
                 recyclerView.setAdapter(new MenuAdapter(CouponsActivity.this, response.body().result));
+                placeHolderJ.showContent();
             } else if (isListEmptyTryAgainEnabled) {
                 //If isListEmptyTryAgainEnabled is true, so the empty view with try again button will be shown.
                 placeHolderJ.showEmpty(R.string.activity_coupons_empty, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        placeHolderJ.hideEmpty();
                         requestUserCoupons();
                     }
                 });
