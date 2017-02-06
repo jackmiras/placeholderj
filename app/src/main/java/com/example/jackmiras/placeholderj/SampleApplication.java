@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.example.jackmiras.placeholderj.library.PlaceHolderManager;
 
+
 /**
  * Created by jackson on 14/12/15.
  */
