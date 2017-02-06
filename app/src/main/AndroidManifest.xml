@@ -13,8 +13,7 @@
         android:theme="@style/SampleTheme">
 
         <activity
-            android:name=".activities.MenuActivity"
-            android:label="@string/activity_main_label">
+            android:name=".activities.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
