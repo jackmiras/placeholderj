@@ -5,14 +5,14 @@ group = 'com.github.jackmiras'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 12
-        versionName "2.3.0"
-        resConfigs "en-rUS", "pt"
+        versionName '2.3.0'
+        resConfigs 'en-rUS', 'pt'
     }
     buildTypes {
         release {
@@ -23,7 +23,7 @@ android {
     }
 }
 
-def android_support_version = "25.1.1"
+def android_support_version = '25.3.1'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -33,7 +33,6 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
 }
 
-// build a jar with source files
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
@@ -46,7 +45,6 @@ task javadoc(type: Javadoc) {
     classpath += configurations.compile
 }
 
-// build a jar with javadoc
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir

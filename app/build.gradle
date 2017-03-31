@@ -2,15 +2,15 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
-        applicationId "com.example.jackmiras.placeholderj"
+        applicationId 'com.example.jackmiras.placeholderj'
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 6
-        versionName "2.1.5"
-        resConfigs "en-rUS", "pt"
+        versionName '2.1.5'
+        resConfigs 'en-rUS', 'pt'
     }
     buildTypes {
         release {
@@ -27,10 +27,10 @@ android {
 
 }
 
-def android_support_version = "25.1.1"
-def retrofit2_version = "2.1.0"
-def okhttp3_version = "3.4.2"
-def butterknife_version = "8.4.0"
+def android_support_version = '25.3.1'
+def retrofit2_version = '2.1.0'
+def okhttp3_version = '3.4.2'
+def butterknife_version = '8.4.0'
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -49,5 +49,4 @@ dependencies {
 
     compile "com.jakewharton:butterknife:${butterknife_version}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknife_version}"
-
 }
