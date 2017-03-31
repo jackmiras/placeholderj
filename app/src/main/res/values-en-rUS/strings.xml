@@ -2,7 +2,7 @@
     <string name="placeholderj_app_name">PlaceholderJ Sample</string>
 
     <string name="activity_coupons_label">Coupons</string>
-    <string name="activity_coupons_empty">You don\'\ t coupons</string>
+    <string name="activity_coupons_empty">You don\'\ t have any coupons</string>
     <string name="activity_coupons_expiration_date">Expiration: %s</string>
 
     <string name="activity_main_label">Sample</string>
