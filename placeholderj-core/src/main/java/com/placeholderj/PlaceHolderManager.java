@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj.library;
+package com.placeholderj;
 
 import android.os.Parcel;
 import android.os.Parcelable;

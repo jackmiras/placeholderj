@@ -27,7 +27,6 @@ public class Coupon implements Serializable {
     @JsonProperty("code")
     public String code;
     @JsonProperty("expiration_date")
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     public Date exprirationDate;
     @JsonProperty("redeem_phone")
     public String redeemPhone;

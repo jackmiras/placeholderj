@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj.library;
+package com.placeholderj;
 
 import android.app.Activity;
 import android.content.Context;
@@ -244,7 +244,9 @@ public class PlaceHolderJ implements Parcelable {
      *                              Parcelable methods implementation.                             *
      **********************************************************************************************/
     @Override
-    public int describeContents() { return 0; }
+    public int describeContents() {
+        return 0;
+    }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -253,9 +255,13 @@ public class PlaceHolderJ implements Parcelable {
 
     public static final Creator<PlaceHolderJ> CREATOR = new Creator<PlaceHolderJ>() {
         @Override
-        public PlaceHolderJ createFromParcel(Parcel source) {return new PlaceHolderJ(source);}
+        public PlaceHolderJ createFromParcel(Parcel source) {
+            return new PlaceHolderJ(source);
+        }
 
         @Override
-        public PlaceHolderJ[] newArray(int size) {return new PlaceHolderJ[size];}
+        public PlaceHolderJ[] newArray(int size) {
+            return new PlaceHolderJ[size];
+        }
     };
 }

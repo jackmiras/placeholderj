@@ -2,8 +2,7 @@ package com.example.jackmiras.placeholderj;
 
 import android.app.Application;
 
-import com.example.jackmiras.placeholderj.library.PlaceHolderManager;
-
+import com.placeholderj.PlaceHolderManager;
 
 /**
  * Created by jackson on 14/12/15.

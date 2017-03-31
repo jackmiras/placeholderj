@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj.library;
+package com.placeholderj;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -140,7 +140,9 @@ public class CustomizeViews implements Parcelable {
      *                              Parcelable methods implementation.                             *
      **********************************************************************************************/
     @Override
-    public int describeContents() { return 0; }
+    public int describeContents() {
+        return 0;
+    }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -149,9 +151,13 @@ public class CustomizeViews implements Parcelable {
 
     public static final Creator<CustomizeViews> CREATOR = new Creator<CustomizeViews>() {
         @Override
-        public CustomizeViews createFromParcel(Parcel source) {return new CustomizeViews(source);}
+        public CustomizeViews createFromParcel(Parcel source) {
+            return new CustomizeViews(source);
+        }
 
         @Override
-        public CustomizeViews[] newArray(int size) {return new CustomizeViews[size];}
+        public CustomizeViews[] newArray(int size) {
+            return new CustomizeViews[size];
+        }
     };
 }

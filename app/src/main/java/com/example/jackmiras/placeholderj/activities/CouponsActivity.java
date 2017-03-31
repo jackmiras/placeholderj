@@ -12,9 +12,9 @@ import com.example.jackmiras.placeholderj.Constants;
 import com.example.jackmiras.placeholderj.R;
 import com.example.jackmiras.placeholderj.adapter.MenuAdapter;
 import com.example.jackmiras.placeholderj.api.ApiClient;
-import com.example.jackmiras.placeholderj.library.PlaceHolderJ;
 import com.example.jackmiras.placeholderj.models.Coupon;
 import com.example.jackmiras.placeholderj.models.CouponResponse;
+import com.placeholderj.PlaceHolderJ;
 
 import java.util.ArrayList;
 
