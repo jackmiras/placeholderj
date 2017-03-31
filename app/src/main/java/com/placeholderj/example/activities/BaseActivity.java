@@ -1,10 +1,10 @@
-package com.example.jackmiras.placeholderj.activities;
+package com.placeholderj.example.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-import com.example.jackmiras.placeholderj.R;
+import com.placeholderj.example.R;
 
 /**
  * Created by jackson on 26/12/15.

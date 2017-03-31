@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj;
+package com.placeholderj.example;
 
 import android.app.Application;
 

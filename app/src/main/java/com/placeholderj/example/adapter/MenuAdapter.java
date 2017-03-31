@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj.adapter;
+package com.placeholderj.example.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.jackmiras.placeholderj.R;
-import com.example.jackmiras.placeholderj.models.Coupon;
+import com.placeholderj.example.R;
+import com.placeholderj.example.models.Coupon;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

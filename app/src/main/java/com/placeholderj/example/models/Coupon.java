@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj.models;
+package com.placeholderj.example.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

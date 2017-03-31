@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj.api;
+package com.placeholderj.example.api;
 
 import java.io.IOException;
 

@@ -1,12 +1,12 @@
-package com.example.jackmiras.placeholderj.activities;
+package com.placeholderj.example.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.example.jackmiras.placeholderj.Constants;
-import com.example.jackmiras.placeholderj.R;
+import com.placeholderj.example.Constants;
+import com.placeholderj.example.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,6 +1,6 @@
-package com.example.jackmiras.placeholderj.api;
+package com.placeholderj.example.api;
 
-import com.example.jackmiras.placeholderj.models.CouponResponse;
+import com.placeholderj.example.models.CouponResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

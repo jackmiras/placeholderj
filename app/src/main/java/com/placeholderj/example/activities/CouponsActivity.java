@@ -1,4 +1,4 @@
-package com.example.jackmiras.placeholderj.activities;
+package com.placeholderj.example.activities;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,13 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.jackmiras.placeholderj.Constants;
-import com.example.jackmiras.placeholderj.R;
-import com.example.jackmiras.placeholderj.adapter.MenuAdapter;
-import com.example.jackmiras.placeholderj.api.ApiClient;
-import com.example.jackmiras.placeholderj.models.Coupon;
-import com.example.jackmiras.placeholderj.models.CouponResponse;
 import com.placeholderj.PlaceHolderJ;
+import com.placeholderj.example.Constants;
+import com.placeholderj.example.R;
+import com.placeholderj.example.adapter.MenuAdapter;
+import com.placeholderj.example.api.ApiClient;
+import com.placeholderj.example.models.Coupon;
+import com.placeholderj.example.models.CouponResponse;
 
 import java.util.ArrayList;
 
