@@ -4,4 +4,11 @@
     <string name="global_unknown_error">Oops! Something didn\'\ t happened as planned.</string>
     <string name="global_network_error">Check your internet connection.</string>
     <string name="global_loading">Loading…</string>
+
+    <string name="placeholderj_container_view_exception">Unable to access Content View, check if the content view was initialized.</string>
+    <string name="placeholderj_no_container_view_exception">Unable to access Container View. You should pass the view that will be replaced by PlaceHolderJ views.</string>
+    <string name="placeholderj_no_views_exception">Unable to access Empty View, Error View or Loading View. You should pass at least one placeholder view to init PlaceHolderJ.</string>
+    <string name="placeholderj_no_loading_view_exception">Unable to access Loading View, check if the loading view was initialized</string>
+    <string name="placeholderj_no_empty_view_exception">Unable to access Empty View, check if the empty view was initialized.</string>
+    <string name="placeholderj_no_error_view_exception">Unable to access Error View, check if the error view was initialized.</string>
 </resources>

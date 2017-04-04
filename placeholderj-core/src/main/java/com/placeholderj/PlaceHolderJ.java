@@ -86,7 +86,8 @@ public class PlaceHolderJ implements Parcelable {
     private void findContainerView(int viewContentId) {
         mViewContent = mParent.findViewById(viewContentId);
         if (mViewContent == null) {
-            throw new NullPointerException("Unable to access Container View. You should pass the view that will be replaced by PlaceHolderJ views");
+            String message = mContext.getString(R.string.placeholderj_no_container_view_exception);
+            throw new NullPointerException(message);
         }
     }
 
@@ -116,8 +117,8 @@ public class PlaceHolderJ implements Parcelable {
             }
         }
         if (mViewEmpty == null && mViewError == null && mViewLoading == null) {
-            throw new NullPointerException("Unable to access Empty View, Error View or Loading View. " +
-                    "You should pass at least one placeholder view to init PlaceHolderJ");
+            String message = mContext.getString(R.string.placeholderj_no_views_exception);
+            throw new NullPointerException(message);
         }
         customizeViews();
     }
@@ -152,7 +153,8 @@ public class PlaceHolderJ implements Parcelable {
      */
     public void showLoading(int textRes) {
         if (mViewLoading == null) {
-            throw new NullPointerException("Unable to access Loading View, check if the loading view was initialized");
+            String message = mContext.getString(R.string.placeholderj_no_loading_view_exception);
+            throw new NullPointerException(message);
         } else {
             mViewLoadingMessage.setText(textRes);
             showLoading();
@@ -175,7 +177,8 @@ public class PlaceHolderJ implements Parcelable {
      */
     public void showEmpty(int messageRes, View.OnClickListener onClickListener) {
         if (mViewLoading == null) {
-            throw new NullPointerException("Unable to access Empty View, check if the empty view was initialized.");
+            String message = mContext.getString(R.string.placeholderj_no_empty_view_exception);
+            throw new NullPointerException(message);
         } else {
             messageRes = messageRes == 0 ? R.string.global_empty_list : messageRes;
             mViewEmptyMessage.setText(messageRes);
@@ -216,7 +219,8 @@ public class PlaceHolderJ implements Parcelable {
      */
     public void showError(Throwable error, View.OnClickListener onClickListener) {
         if (mViewLoading == null) {
-            throw new NullPointerException("Unable to access Error View, check if the error view was initialized.");
+            String message = mContext.getString(R.string.placeholderj_no_error_view_exception);
+            throw new NullPointerException(message);
         } else {
             hideUnlessViewEquals(mViewError.getId());
             if (!mViewsAreCustomized) {
@@ -234,8 +238,8 @@ public class PlaceHolderJ implements Parcelable {
      */
     public void showContent() {
         if (mViewContent == null) {
-            throw new NullPointerException("Unable to access Content View, check if the content view " +
-                    "was initialized.");
+            String message = mContext.getString(R.string.placeholderj_container_view_exception);
+            throw new NullPointerException(message);
         } else {
             hideUnlessViewEquals(mViewContentId);
             setViewVisibility(mViewContent, VISIBLE);
