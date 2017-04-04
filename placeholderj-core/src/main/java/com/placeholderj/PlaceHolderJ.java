@@ -47,8 +47,8 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * @param activity           The activity used to find the mParent with the mViewContentId and the placeholders in the init method.
-     * @param viewContentId      The mParent that represent your content and will be replaced by PlaceHolderJ views.
+     * @param activity           The activity used to find the view with the mViewContentId and the placeholders in the init method.
+     * @param viewContentId      The id that represent your content view that will be replaced by PlaceHolderJ views.
      * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views.
      */
     public PlaceHolderJ(Activity activity, int viewContentId, PlaceHolderManager placeHolderManager) {
@@ -56,8 +56,8 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * @param parent             The mParent used to find the mParent with the mViewContentId and the placeholders in the init method.
-     * @param viewContentId      The mParent that represent your content and will be replaced by PlaceHolderJ views.
+     * @param parent             The view used to find the view with the mViewContentId and the placeholders in the init method.
+     * @param viewContentId      The id that represent your content view that will be replaced by PlaceHolderJ views.
      * @param placeHolderManager The instance of PlaceHolderManager that will be used to customize PlaceHolderJ views.
      */
     public PlaceHolderJ(View parent, int viewContentId, PlaceHolderManager placeHolderManager) {
@@ -66,16 +66,16 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * @param activity      The activity used to find the mParent with the mViewContentId and the placeholders in the init method.
-     * @param viewContentId The mParent that represent your content and will be replaced by PlaceHolderJ views.
+     * @param activity           The activity used to find the view with the mViewContentId and the placeholders in the init method.
+     * @param viewContentId The id that represent your content view that will be replaced by PlaceHolderJ views.
      */
     public PlaceHolderJ(Activity activity, int viewContentId) {
         this(activity.getWindow().getDecorView(), viewContentId);
     }
 
     /**
-     * @param parent        The mParent used to find the mParent with the mViewContentId and the placeholders in the init method.
-     * @param viewContentId The mParent that represent your content and will be replaced by PlaceHolderJ views.
+     * @param parent        The view used to find the parent with the mViewContentId and the placeholders in the init method.
+     * @param viewContentId The id that represent your content view that will be replaced by PlaceHolderJ views.
      */
     public PlaceHolderJ(View parent, int viewContentId) {
         this.mParent = parent;
@@ -86,7 +86,7 @@ public class PlaceHolderJ implements Parcelable {
     private void findContainerView(int viewContentId) {
         mViewContent = mParent.findViewById(viewContentId);
         if (mViewContent == null) {
-            throw new NullPointerException("Unable to access Container View. You should pass the mParent that will be replaced by PlaceHolderJ views");
+            throw new NullPointerException("Unable to access Container View. You should pass the view that will be replaced by PlaceHolderJ views");
         }
     }
 
@@ -116,7 +116,8 @@ public class PlaceHolderJ implements Parcelable {
             }
         }
         if (mViewEmpty == null && mViewError == null && mViewLoading == null) {
-            throw new NullPointerException("Unable to access Empty View, Error View or Loading View. You should pass at least one placeholder mParent to init PlaceHolderJ");
+            throw new NullPointerException("Unable to access Empty View, Error View or Loading View. " +
+                    "You should pass at least one placeholder view to init PlaceHolderJ");
         }
         customizeViews();
     }
@@ -147,11 +148,11 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * Makes the loading mParent visible if the loading mParent was added to your layout.
+     * Makes the loading view visible if the loading view was added to your layout.
      */
     public void showLoading(int textRes) {
         if (mViewLoading == null) {
-            throw new NullPointerException("Unable to access Loading View, check if the loading mParent was initialized");
+            throw new NullPointerException("Unable to access Loading View, check if the loading view was initialized");
         } else {
             mViewLoadingMessage.setText(textRes);
             showLoading();
@@ -159,7 +160,7 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * Makes the loading mParent visible if the loading mParent was added to your layout.
+     * Makes the loading view visible if the loading view was added to your layout.
      */
     public void showLoading() {
         hideUnlessViewEquals(mViewLoading.getId());
@@ -167,14 +168,14 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * Makes the empty mParent visible if the empty mParent was added to your layout.
+     * Makes the empty view visible if the empty view was added to your layout.
      *
-     * @param messageRes      The message that will be shown in the empty mParent.
-     * @param onClickListener The action that will be performed by the try again button present in empty mParent layout.
+     * @param messageRes      The message that will be shown in the empty view.
+     * @param onClickListener The action that will be performed by the try again button present in empty view layout.
      */
     public void showEmpty(int messageRes, View.OnClickListener onClickListener) {
         if (mViewLoading == null) {
-            throw new NullPointerException("Unable to access Empty View, check if the empty mParent was initialized.");
+            throw new NullPointerException("Unable to access Empty View, check if the empty view was initialized.");
         } else {
             messageRes = messageRes == 0 ? R.string.global_empty_list : messageRes;
             mViewEmptyMessage.setText(messageRes);
@@ -183,18 +184,18 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * Makes the empty mParent visible if the empty mParent was added to your layout.
+     * Makes the empty view visible if the empty view was added to your layout.
      *
-     * @param messageRes The message that will be shown in the empty mParent.
+     * @param messageRes The message that will be shown in the empty view.
      */
     public void showEmpty(int messageRes) {
         showEmpty(messageRes, null);
     }
 
     /**
-     * Makes the empty mParent visible if the empty mParent was added to your layout.
+     * Makes the empty view visible if the empty view was added to your layout.
      *
-     * @param onClickListener The action that will be performed by the try again button present in empty mParent layout.
+     * @param onClickListener The action that will be performed by the try again button present in empty view layout.
      */
     public void showEmpty(View.OnClickListener onClickListener) {
         hideUnlessViewEquals(mViewEmpty.getId());
@@ -208,14 +209,14 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * Makes the error mParent visible if the error mParent was added to your layout.
+     * Makes the error view visible if the error view was added to your layout.
      *
      * @param error           The retrofit error from one of your application requests.
-     * @param onClickListener The action that will be performed by the try again button present in error mParent layout.
+     * @param onClickListener The action that will be performed by the try again button present in error view layout.
      */
     public void showError(Throwable error, View.OnClickListener onClickListener) {
         if (mViewLoading == null) {
-            throw new NullPointerException("Unable to access Error View, check if the error mParent was initialized.");
+            throw new NullPointerException("Unable to access Error View, check if the error view was initialized.");
         } else {
             hideUnlessViewEquals(mViewError.getId());
             if (!mViewsAreCustomized) {
@@ -229,11 +230,11 @@ public class PlaceHolderJ implements Parcelable {
     }
 
     /**
-     * Makes the content mParent visible if the content mParent was added to your layout.
+     * Makes the content view visible if the content view was added to your layout.
      */
     public void showContent() {
         if (mViewContent == null) {
-            throw new NullPointerException("Unable to access Content View, check if the content mParent " +
+            throw new NullPointerException("Unable to access Content View, check if the content view " +
                     "was initialized.");
         } else {
             hideUnlessViewEquals(mViewContentId);
