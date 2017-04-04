@@ -185,6 +185,15 @@ public class PlaceHolderJ implements Parcelable {
     /**
      * Makes the empty mParent visible if the empty mParent was added to your layout.
      *
+     * @param messageRes The message that will be shown in the empty mParent.
+     */
+    public void showEmpty(int messageRes) {
+        showEmpty(messageRes, null);
+    }
+
+    /**
+     * Makes the empty mParent visible if the empty mParent was added to your layout.
+     *
      * @param onClickListener The action that will be performed by the try again button present in empty mParent layout.
      */
     public void showEmpty(View.OnClickListener onClickListener) {
