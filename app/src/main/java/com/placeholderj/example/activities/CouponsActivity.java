@@ -124,7 +124,7 @@ public class CouponsActivity extends BaseActivity implements Callback<CouponResp
                 });
             } else {
                 //If isListEmptyTryAgainEnabled is false, so the empty view without try again button will be shown.
-                placeHolderJ.showEmpty(R.string.activity_coupons_empty, null);
+                placeHolderJ.showEmpty(R.string.activity_coupons_empty);
             }
         } else {
             onFailure(null, null);
