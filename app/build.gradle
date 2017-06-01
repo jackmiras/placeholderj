@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         applicationId "com.example.jackmiras.placeholderj"
@@ -25,10 +25,10 @@ android {
 
 }
 
-def android_support_version = "25.0.1"
-def retrofit2_version = "2.1.0"
-def okhttp3_version = "3.4.2"
-def butterknife_version = "8.4.0"
+def android_support_version = "25.3.1"
+def retrofit2_version = "2.3.0"
+def okhttp3_version = "3.8.0"
+def butterknife_version = "8.6.0"
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
