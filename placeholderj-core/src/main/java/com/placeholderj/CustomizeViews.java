@@ -22,10 +22,6 @@ public class CustomizeViews implements Parcelable {
     private final PlaceHolderManager mPlaceHolderManager;
     private Context mContext;
 
-    private CustomizeViews(Parcel in) {
-        this.mPlaceHolderManager = in.readParcelable(PlaceHolderManager.class.getClassLoader());
-    }
-
     CustomizeViews(PlaceHolderManager placeHolderManager, Context context) {
         this.mPlaceHolderManager = placeHolderManager;
         this.mContext = context;
@@ -59,6 +55,9 @@ public class CustomizeViews implements Parcelable {
             }
             if (mPlaceHolderManager.mViewErrorTryAgainButtonText > 0) {
                 viewErrorTryAgainButton.setText(mPlaceHolderManager.mViewErrorTryAgainButtonText);
+            }
+            if (mPlaceHolderManager.mViewErrorTryAgainButtonTextColor > 0) {
+                viewErrorTryAgainButton.setTextColor(mPlaceHolderManager.mViewErrorTryAgainButtonTextColor);
             }
             if (mPlaceHolderManager.mViewErrorTryAgainButtonBackgroundResource > 0) {
                 int backgroundRes = mPlaceHolderManager.mViewErrorTryAgainButtonBackgroundResource;
@@ -114,6 +113,9 @@ public class CustomizeViews implements Parcelable {
             if (mPlaceHolderManager.mViewEmptyTryAgainButtonText > 0) {
                 viewEmptyTryAgainButton.setText(mPlaceHolderManager.mViewEmptyTryAgainButtonText);
             }
+            if (mPlaceHolderManager.mViewEmptyTryAgainButtonTextColor > 0) {
+                viewEmptyTryAgainButton.setTextColor(mPlaceHolderManager.mViewEmptyTryAgainButtonTextColor);
+            }
             if (mPlaceHolderManager.mViewEmptyTryAgainButtonBackgroundResource > 0) {
                 int backgroundRes = mPlaceHolderManager.mViewEmptyTryAgainButtonBackgroundResource;
                 viewEmptyTryAgainButton.setBackgroundResource(backgroundRes);
@@ -139,6 +141,10 @@ public class CustomizeViews implements Parcelable {
     /***********************************************************************************************
      *                              Parcelable methods implementation.                             *
      **********************************************************************************************/
+    private CustomizeViews(Parcel in) {
+        this.mPlaceHolderManager = in.readParcelable(PlaceHolderManager.class.getClassLoader());
+    }
+
     @Override
     public int describeContents() {
         return 0;

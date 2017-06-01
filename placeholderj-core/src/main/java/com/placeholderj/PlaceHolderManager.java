@@ -14,6 +14,7 @@ public class PlaceHolderManager implements Parcelable {
     public int mViewErrorTextSize;
     public int mViewErrorTextColor;
     public int mViewErrorTryAgainButtonText;
+    public int mViewErrorTryAgainButtonTextColor;
     public int mViewErrorTryAgainButtonBackgroundResource;
     public int mViewErrorImage;
     public int mViewLoadingBackgroundColor;
@@ -28,44 +29,20 @@ public class PlaceHolderManager implements Parcelable {
     public int mViewEmptyTextSize;
     public int mViewEmptyTextColor;
     public int mViewEmptyTryAgainButtonText;
+    public int mViewEmptyTryAgainButtonTextColor;
     public int mViewEmptyTryAgainButtonBackgroundResource;
     public int mViewEmptyImage;
 
-    protected PlaceHolderManager(Parcel in) {
-        this.mViewErrorBackgroundColor = in.readInt();
-        this.mViewErrorBackgroundResource = in.readInt();
-        this.mViewErrorText = in.readInt();
-        this.mViewErrorTextSize = in.readInt();
-        this.mViewErrorTextColor = in.readInt();
-        this.mViewErrorTryAgainButtonText = in.readInt();
-        this.mViewErrorTryAgainButtonBackgroundResource = in.readInt();
-        this.mViewErrorImage = in.readInt();
-        this.mViewLoadingBackgroundColor = in.readInt();
-        this.mViewLoadingBackgroundResource = in.readInt();
-        this.mViewLoadingProgressBarColor = in.readInt();
-        this.mViewLoadingText = in.readInt();
-        this.mViewLoadingTextSize = in.readInt();
-        this.mViewLoadingTextColor = in.readInt();
-        this.mViewEmptyBackgroundColor = in.readInt();
-        this.mViewEmptyBackgroundResource = in.readInt();
-        this.mViewEmptyText = in.readInt();
-        this.mViewEmptyTextSize = in.readInt();
-        this.mViewEmptyTextColor = in.readInt();
-        this.mViewEmptyTryAgainButtonText = in.readInt();
-        this.mViewEmptyTryAgainButtonBackgroundResource = in.readInt();
-        this.mViewEmptyImage = in.readInt();
-    }
-
     public PlaceHolderManager(int viewErrorBackgroundColor, int viewErrorBackgroundResource,
                               int viewErrorText, int viewErrorTextSize, int viewErrorTextColor,
-                              int viewErrorTryAgainButtonText,
+                              int viewErrorTryAgainButtonText, int viewErrorTryAgainButtonTextColor,
                               int viewErrorTryAgainButtonBackgroundResource, int viewErrorImage,
                               int viewLoadingBackgroundColor, int viewLoadingBackgroundResource,
                               int viewLoadingProgressBarColor, int viewLoadingText,
                               int viewLoadingTextSize, int viewLoadingTextColor,
                               int viewEmptyBackgroundColor, int viewEmptyBackgroundResource,
                               int viewEmptyText, int viewEmptyTextSize, int viewEmptyTextColor,
-                              int viewEmptyTryAgainButtonText,
+                              int viewEmptyTryAgainButtonText, int viewEmptyTryAgainButtonTextColor,
                               int viewEmptyTryAgainButtonBackgroundResource, int viewEmptyImage) {
         this.mViewErrorBackgroundColor = viewErrorBackgroundColor;
         this.mViewErrorBackgroundResource = viewErrorBackgroundResource;
@@ -73,6 +50,7 @@ public class PlaceHolderManager implements Parcelable {
         this.mViewErrorTextSize = viewErrorTextSize;
         this.mViewErrorTextColor = viewErrorTextColor;
         this.mViewErrorTryAgainButtonText = viewErrorTryAgainButtonText;
+        this.mViewErrorTryAgainButtonTextColor = viewErrorTryAgainButtonTextColor;
         this.mViewErrorTryAgainButtonBackgroundResource = viewErrorTryAgainButtonBackgroundResource;
         this.mViewErrorImage = viewErrorImage;
         this.mViewLoadingBackgroundColor = viewLoadingBackgroundColor;
@@ -87,6 +65,7 @@ public class PlaceHolderManager implements Parcelable {
         this.mViewEmptyTextSize = viewEmptyTextSize;
         this.mViewEmptyTextColor = viewEmptyTextColor;
         this.mViewEmptyTryAgainButtonText = viewEmptyTryAgainButtonText;
+        this.mViewEmptyTryAgainButtonTextColor = viewEmptyTryAgainButtonTextColor;
         this.mViewEmptyTryAgainButtonBackgroundResource = viewEmptyTryAgainButtonBackgroundResource;
         this.mViewEmptyImage = viewEmptyImage;
     }
@@ -99,6 +78,7 @@ public class PlaceHolderManager implements Parcelable {
         private static int sViewErrorTextSize;
         private static int sViewErrorTextColor;
         private static int sViewErrorTryAgainButtonText;
+        private static int sViewErrorTryAgainButtonTextColor;
         private static int sViewErrorTryAgainButtonBackgroundResource;
         private static int sViewErrorImage;
         private static int sViewLoadingBackgroundColor;
@@ -113,6 +93,7 @@ public class PlaceHolderManager implements Parcelable {
         private static int sViewEmptyTextSize;
         private static int sViewEmptyTextColor;
         private static int sViewEmptyTryAgainButtonText;
+        private static int sViewEmptyTryAgainButtonTextColor;
         private static int sViewEmptyTryAgainButtonBackgroundResource;
         private static int sViewEmptyImage;
 
@@ -195,9 +176,12 @@ public class PlaceHolderManager implements Parcelable {
          * @param backgroundRes Id of the resource to be applied to the background
          * @return Configurator The configurator object with the text and background resource to the error button.
          */
-        public Configurator errorButton(int textRes, int backgroundRes) {
+        public Configurator errorButton(int textRes, int textColor, int backgroundRes) {
             if (textRes > 0) {
                 sViewErrorTryAgainButtonText = textRes;
+            }
+            if (textColor > 0) {
+                sViewErrorTryAgainButtonTextColor = textColor;
             }
             if (backgroundRes > 0) {
                 sViewErrorTryAgainButtonBackgroundResource = backgroundRes;
@@ -332,9 +316,12 @@ public class PlaceHolderManager implements Parcelable {
          * @param backgroundRes Id of the resource to be applied to the background
          * @return Configurator The configurator object with the text and background resource to the empty view.
          */
-        public Configurator emptyButton(int textRes, int backgroundRes) {
+        public Configurator emptyButton(int textRes, int textColor, int backgroundRes) {
             if (textRes > 0) {
                 sViewEmptyTryAgainButtonText = textRes;
+            }
+            if (textColor > 0) {
+                sViewEmptyTryAgainButtonTextColor = textColor;
             }
             if (backgroundRes > 0) {
                 sViewEmptyTryAgainButtonBackgroundResource = backgroundRes;
@@ -361,6 +348,7 @@ public class PlaceHolderManager implements Parcelable {
                     sViewErrorText, sViewErrorTextSize,
                     sViewErrorTextColor,
                     sViewErrorTryAgainButtonText,
+                    sViewErrorTryAgainButtonTextColor,
                     sViewErrorTryAgainButtonBackgroundResource,
                     sViewErrorImage,
                     sViewLoadingBackgroundColor,
@@ -375,6 +363,7 @@ public class PlaceHolderManager implements Parcelable {
                     sViewEmptyTextSize,
                     sViewEmptyTextColor,
                     sViewEmptyTryAgainButtonText,
+                    sViewEmptyTryAgainButtonTextColor,
                     sViewEmptyTryAgainButtonBackgroundResource,
                     sViewEmptyImage);
         }
@@ -383,6 +372,33 @@ public class PlaceHolderManager implements Parcelable {
     /***********************************************************************************************
      *                              Parcelable methods implementation.                             *
      **********************************************************************************************/
+    protected PlaceHolderManager(Parcel in) {
+        this.mViewErrorBackgroundColor = in.readInt();
+        this.mViewErrorBackgroundResource = in.readInt();
+        this.mViewErrorText = in.readInt();
+        this.mViewErrorTextSize = in.readInt();
+        this.mViewErrorTextColor = in.readInt();
+        this.mViewErrorTryAgainButtonText = in.readInt();
+        this.mViewErrorTryAgainButtonTextColor = in.readInt();
+        this.mViewErrorTryAgainButtonBackgroundResource = in.readInt();
+        this.mViewErrorImage = in.readInt();
+        this.mViewLoadingBackgroundColor = in.readInt();
+        this.mViewLoadingBackgroundResource = in.readInt();
+        this.mViewLoadingProgressBarColor = in.readInt();
+        this.mViewLoadingText = in.readInt();
+        this.mViewLoadingTextSize = in.readInt();
+        this.mViewLoadingTextColor = in.readInt();
+        this.mViewEmptyBackgroundColor = in.readInt();
+        this.mViewEmptyBackgroundResource = in.readInt();
+        this.mViewEmptyText = in.readInt();
+        this.mViewEmptyTextSize = in.readInt();
+        this.mViewEmptyTextColor = in.readInt();
+        this.mViewEmptyTryAgainButtonText = in.readInt();
+        this.mViewEmptyTryAgainButtonTextColor = in.readInt();
+        this.mViewEmptyTryAgainButtonBackgroundResource = in.readInt();
+        this.mViewEmptyImage = in.readInt();
+    }
+
     @Override
     public int describeContents() { return 0; }
 
@@ -394,6 +410,7 @@ public class PlaceHolderManager implements Parcelable {
         dest.writeInt(this.mViewErrorTextSize);
         dest.writeInt(this.mViewErrorTextColor);
         dest.writeInt(this.mViewErrorTryAgainButtonText);
+        dest.writeInt(this.mViewErrorTryAgainButtonTextColor);
         dest.writeInt(this.mViewErrorTryAgainButtonBackgroundResource);
         dest.writeInt(this.mViewErrorImage);
         dest.writeInt(this.mViewLoadingBackgroundColor);
@@ -408,6 +425,7 @@ public class PlaceHolderManager implements Parcelable {
         dest.writeInt(this.mViewEmptyTextSize);
         dest.writeInt(this.mViewEmptyTextColor);
         dest.writeInt(this.mViewEmptyTryAgainButtonText);
+        dest.writeInt(this.mViewEmptyTryAgainButtonTextColor);
         dest.writeInt(this.mViewEmptyTryAgainButtonBackgroundResource);
         dest.writeInt(this.mViewEmptyImage);
     }
